@@ -1,0 +1,10 @@
+{
+  "name": "我的塔罗",
+  "short_name": "我的塔罗",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#111016",
+  "theme_color": "#17151b",
+  "lang": "zh-CN",
+  "icons": []
+}

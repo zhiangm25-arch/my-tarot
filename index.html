@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#17151b">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="我的塔罗">
+<link rel="manifest" href="manifest.json">
+<title>我的塔罗</title>
+<style>
+:root{--bg:#111016;--panel:#1b1921;--panel2:#24212b;--text:#f3eee5;--muted:#aaa2b0;--gold:#cdb58a;--line:#393440;--danger:#b86d72}
+*{box-sizing:border-box}html,body{margin:0;background:radial-gradient(circle at top,#28232e 0,#111016 48%);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Noto Sans CJK SC",sans-serif;min-height:100%}
+body{padding-bottom:env(safe-area-inset-bottom)}button,input,textarea{font:inherit}button{cursor:pointer}
+.app{max-width:760px;margin:0 auto;min-height:100vh;padding:20px 16px 32px}
+header{display:flex;align-items:center;justify-content:space-between;padding:6px 0 18px}
+.logo{font-size:24px;letter-spacing:.08em;font-weight:650}.sub{font-size:12px;color:var(--muted);margin-top:3px}
+.iconbtn{border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text);width:42px;height:42px;border-radius:14px}
+.view{display:none}.view.active{display:block}
+.hero{background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.02));border:1px solid var(--line);border-radius:24px;padding:26px 20px;box-shadow:0 18px 60px rgba(0,0,0,.25)}
+.hero h1{font-size:34px;margin:0 0 10px}.hero p{color:var(--muted);line-height:1.65;margin:0 0 22px}
+.primary{width:100%;border:0;border-radius:16px;padding:15px 18px;background:var(--gold);color:#17130f;font-weight:700}
+.secondary{border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--text);padding:12px 15px}
+.linkbtn{border:0;background:none;color:var(--gold);padding:8px 0}
+.section-title{display:flex;justify-content:space-between;align-items:center;margin:24px 2px 12px;font-weight:650}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{background:var(--panel);border:1px solid var(--line);padding:15px;border-radius:16px}.stat b{font-size:22px}.stat span{display:block;color:var(--muted);font-size:12px;margin-top:4px}
+.spread-toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:10px}.count{color:var(--muted);font-size:13px}
+.table{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;padding:6px 0 18px}
+.cardback{aspect-ratio:5/8;border-radius:9px;border:1px solid #776a55;background:repeating-linear-gradient(45deg,#25202a 0,#25202a 5px,#2c2631 5px,#2c2631 10px);box-shadow:0 6px 16px rgba(0,0,0,.28);position:relative;transition:.16s;touch-action:manipulation}
+.cardback:after{content:"✦";position:absolute;inset:8px;border:1px solid rgba(205,181,138,.5);border-radius:6px;display:grid;place-items:center;color:var(--gold);font-size:18px}
+.cardback.selected{transform:translateY(-6px) scale(1.04);box-shadow:0 12px 24px rgba(205,181,138,.2);border-color:var(--gold)}
+.notice{padding:12px 14px;border-radius:14px;background:rgba(205,181,138,.08);color:#d8cbb6;font-size:13px;line-height:1.55;margin-bottom:12px}
+.bottom-actions{position:sticky;bottom:12px;display:flex;gap:10px;background:linear-gradient(transparent,rgba(17,16,22,.96) 35%);padding-top:24px}
+.bottom-actions button{flex:1}
+.revealed-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.drawn-card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:10px;position:relative}
+.drawn-card img{width:100%;display:block;border-radius:10px;background:#eee}
+.drawn-card.reversed img{transform:rotate(180deg)}
+.card-name{text-align:center;font-weight:650;margin:10px 4px 2px}.orientation{text-align:center;color:var(--gold);font-size:13px}
+.flip-hint{font-size:12px;color:var(--muted);text-align:center;margin:4px 0 12px}
+.form{display:grid;gap:10px;margin-top:18px}.form input,.form textarea{width:100%;background:var(--panel);border:1px solid var(--line);border-radius:14px;color:var(--text);padding:13px;outline:none}.form textarea{min-height:110px;resize:vertical}
+.history-item{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:14px;margin-bottom:10px}.history-head{display:flex;justify-content:space-between;gap:10px}.history-date{color:var(--muted);font-size:12px}.history-cards{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}.pill{background:var(--panel2);border:1px solid var(--line);padding:7px 9px;border-radius:10px;font-size:12px}.history-q{margin-top:8px;color:#ddd5ca;font-size:13px}
+.empty{text-align:center;color:var(--muted);padding:50px 10px}
+.small-actions{display:flex;gap:8px;margin-top:12px}.small-actions button{flex:1}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:flex-end;justify-content:center;z-index:20}.modal.show{display:flex}.sheet{width:min(760px,100%);background:#19171e;border:1px solid var(--line);border-radius:24px 24px 0 0;padding:20px 16px calc(20px + env(safe-area-inset-bottom));max-height:88vh;overflow:auto}
+.sheet h2{margin:0 0 16px}.sheet-row{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid var(--line)}.danger{color:#df8d92}
+.loading{position:fixed;inset:0;background:#111016;display:grid;place-items:center;z-index:30}.loading.hidden{display:none}.spinner{width:30px;height:30px;border:3px solid #3b3641;border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+@media(min-width:620px){.revealed-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.table{grid-template-columns:repeat(10,minmax(0,1fr))}.app{padding-top:28px}}
+</style>
+</head>
+<body>
+<div class="loading" id="loading"><div><div class="spinner"></div><div style="color:#aaa2b0;margin-top:12px;font-size:13px">正在准备牌桌…</div></div></div>
+
+<div class="app">
+<header>
+  <div><div class="logo">🔮 我的塔罗</div><div class="sub">你选牌，我只负责记录</div></div>
+  <button class="iconbtn" id="historyBtn" aria-label="抽牌记录">☰</button>
+</header>
+
+<section id="home" class="view active">
+  <div class="hero">
+    <h1>今天，想问什么？</h1>
+    <p>78 张牌全部背面朝上。你凭感觉点击想要的牌，想抽几张都可以。选好后再翻牌；同一次抽牌不会重复。</p>
+    <button class="primary" id="startBtn">开始抽牌</button>
+  </div>
+  <div class="section-title">我的记录</div>
+  <div class="stats">
+    <div class="stat"><b id="readingCount">0</b><span>次抽牌</span></div>
+    <div class="stat"><b id="cardCount">0</b><span>张已记录</span></div>
+  </div>
+</section>
+
+<section id="select" class="view">
+  <div class="spread-toolbar"><button class="linkbtn" id="backHome">‹ 返回</button><div class="count">已选择 <b id="selectedCount">0</b> 张</div></div>
+  <div class="notice">凭感觉点牌即可。再次点击已选的牌可以取消。现在不会显示任何牌名。</div>
+  <div class="table" id="table"></div>
+  <div class="bottom-actions">
+    <button class="secondary" id="clearSelection">重新选</button>
+    <button class="primary" id="confirmSelection">选好了</button>
+  </div>
+</section>
+
+<section id="reveal" class="view">
+  <div class="spread-toolbar"><button class="linkbtn" id="backSelect">‹ 返回选牌</button><div class="count">本次 <b id="revealCount">0</b> 张</div></div>
+  <div class="notice">牌已经锁定。点每张牌可以单独翻开；正位 / 逆位会在翻牌时确定。</div>
+  <div class="revealed-grid" id="revealedGrid"></div>
+  <div class="bottom-actions">
+    <button class="secondary" id="revealAll">全部翻开</button>
+    <button class="primary" id="saveReading">保存记录</button>
+  </div>
+  <div class="form">
+    <input id="question" placeholder="今天想问的问题（可不填）">
+    <textarea id="note" placeholder="我的解读 / 当下的直觉 / 后续发生了什么（可不填）"></textarea>
+  </div>
+</section>
+
+<section id="history" class="view">
+  <div class="spread-toolbar"><button class="linkbtn" id="backFromHistory">‹ 返回首页</button><div class="count">全部记录</div></div>
+  <div id="historyList"></div>
+</section>
+</div>
+
+<div class="modal" id="detailModal"><div class="sheet"><div style="display:flex;justify-content:space-between;align-items:center"><h2>抽牌记录</h2><button class="iconbtn" id="closeModal">×</button></div><div id="detailContent"></div></div></div>
+
+<script>
+const API="https://petaloverflow.github.io/tarot-api/cards.json";
+let deck=[], selected=[], revealed=[], currentReading=null;
+
+const $=id=>document.getElementById(id);
+function show(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));$(id).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+function getHistory(){try{return JSON.parse(localStorage.getItem('myTarotHistory')||'[]')}catch(e){return[]}}
+function setHistory(x){localStorage.setItem('myTarotHistory',JSON.stringify(x))}
+function updateStats(){const h=getHistory();$('readingCount').textContent=h.length;$('cardCount').textContent=h.reduce((n,r)=>n+r.cards.length,0)}
+function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
+
+async function loadDeck(){
+  try{
+    const r=await fetch(API); if(!r.ok) throw new Error();
+    deck=await r.json();
+  }catch(e){
+    // Minimal fallback: the API normally supplies the full 78-card public-domain deck.
+    deck=[];
+  }
+  if(!deck.length){
+    document.querySelector('#loading div div:last-child').textContent='牌库加载失败，请检查网络后刷新页面。';
+    return;
+  }
+  $('loading').classList.add('hidden'); updateStats();
+}
+
+function renderTable(){
+  const t=$('table');t.innerHTML='';
+  deck.forEach((card,i)=>{
+    const b=document.createElement('button');b.className='cardback'+(selected.includes(i)?' selected':'');b.setAttribute('aria-label','牌 '+(i+1));
+    b.onclick=()=>{if(selected.includes(i))selected=selected.filter(x=>x!==i);else selected.push(i);renderTable();$('selectedCount').textContent=selected.length};
+    t.appendChild(b);
+  });
+  $('selectedCount').textContent=selected.length;
+}
+function start(){selected=[];renderTable();show('select')}
+function confirmSelection(){
+  if(!selected.length){alert('先选至少 1 张牌。');return}
+  revealed=selected.map(i=>({card:deck[i],orientation:null,revealed:false}));
+  currentReading={startedAt:new Date().toISOString(),cards:revealed};
+  $('revealCount').textContent=revealed.length;
+  renderReveal();show('reveal');
+}
+function renderReveal(){
+  const g=$('revealedGrid');g.innerHTML='';
+  revealed.forEach((x,i)=>{
+    const d=document.createElement('div');d.className='drawn-card'+(x.orientation==='reversed'?' reversed':'');
+    if(x.revealed){
+      d.innerHTML=`<img src="${x.card.image}" alt="${esc(x.card.name)}"><div class="card-name">${esc(x.card.name)}</div><div class="orientation">${x.orientation==='reversed'?'逆位':'正位'}</div>`;
+      d.onclick=()=>flip(i);
+    }else{
+      d.innerHTML=`<button class="cardback" style="width:100%" aria-label="翻开第${i+1}张"></button><div class="flip-hint">点击翻牌</div>`;
+      d.onclick=()=>flip(i);
+    }
+    g.appendChild(d);
+  });
+}
+function flip(i){if(!revealed[i].revealed){revealed[i].orientation=Math.random()<.5?'upright':'reversed';revealed[i].revealed=true;renderReveal()}}
+function revealAll(){revealed.forEach(x=>{if(!x.revealed){x.orientation=Math.random()<.5?'upright':'reversed';x.revealed=true}});renderReveal()}
+function save(){
+  if(!revealed.every(x=>x.revealed)){alert('还有牌没有翻开。你可以点“全部翻开”，也可以逐张翻开。');return}
+  const h=getHistory();
+  h.unshift({id:crypto.randomUUID?crypto.randomUUID():String(Date.now()),date:new Date().toISOString(),question:$('question').value.trim(),note:$('note').value.trim(),cards:revealed.map(x=>({name:x.card.name,image:x.card.image,orientation:x.orientation}))});
+  setHistory(h);updateStats();alert('已保存。');show('home');
+}
+function renderHistory(){
+  const h=getHistory(),box=$('historyList');box.innerHTML='';
+  if(!h.length){box.innerHTML='<div class="empty">还没有抽牌记录。<br>去抽第一组吧。</div>';return}
+  h.forEach((r,idx)=>{
+    const d=document.createElement('div');d.className='history-item';
+    const date=new Date(r.date);const ds=date.toLocaleString('zh-CN',{year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'});
+    d.innerHTML=`<div class="history-head"><b>${esc(r.question||'自由抽牌')}</b><span class="history-date">${ds}</span></div>
+    <div class="history-cards">${r.cards.map(c=>`<span class="pill">${esc(c.name)} · ${c.orientation==='reversed'?'逆位':'正位'}</span>`).join('')}</div>
+    ${r.note?`<div class="history-q">${esc(r.note).replace(/\n/g,'<br>')}</div>`:''}
+    <div class="small-actions"><button class="secondary" data-open="${idx}">查看</button><button class="secondary danger" data-delete="${idx}">删除</button></div>`;
+    box.appendChild(d);
+  });
+  box.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>openDetail(Number(b.dataset.open)));
+  box.querySelectorAll('[data-delete]').forEach(b=>b.onclick=()=>{if(confirm('删除这条记录？')){const h=getHistory();h.splice(Number(b.dataset.delete),1);setHistory(h);renderHistory();updateStats()}});
+}
+function openDetail(i){
+  const r=getHistory()[i];$('detailContent').innerHTML=`
+    <div class="history-date">${new Date(r.date).toLocaleString('zh-CN')}</div>
+    <h3>${esc(r.question||'自由抽牌')}</h3>
+    <div class="revealed-grid">${r.cards.map(c=>`<div class="drawn-card${c.orientation==='reversed'?' reversed':''}"><img src="${c.image}" alt="${esc(c.name)}"><div class="card-name">${esc(c.name)}</div><div class="orientation">${c.orientation==='reversed'?'逆位':'正位'}</div></div>`).join('')}</div>
+    ${r.note?`<div class="form"><textarea readonly>${esc(r.note)}</textarea></div>`:''}`;
+  $('detailModal').classList.add('show');
+}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+
+$('startBtn').onclick=start;$('historyBtn').onclick=()=>{renderHistory();show('history')};$('backHome').onclick=()=>show('home');$('backFromHistory').onclick=()=>show('home');$('clearSelection').onclick=()=>{selected=[];renderTable()};$('confirmSelection').onclick=confirmSelection;$('backSelect').onclick=()=>show('select');$('revealAll').onclick=revealAll;$('saveReading').onclick=save;$('closeModal').onclick=()=>$('detailModal').classList.remove('show');$('detailModal').onclick=e=>{if(e.target.id==='detailModal')$('detailModal').classList.remove('show')};
+
+if('serviceWorker' in navigator && location.protocol!=='file:'){navigator.serviceWorker.register('sw.js').catch(()=>{})}
+loadDeck();
+</script>
+</body>
+</html>
