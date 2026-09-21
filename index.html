@@ -22,7 +22,9 @@
   --danger:#b86d72
 }
 
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box
+}
 
 html,body{
   margin:0;
@@ -187,13 +189,14 @@ header{
   aspect-ratio:5/8;
   border-radius:9px;
   border:1px solid #776a55;
-  background:repeating-linear-gradient(
-    45deg,
-    #25202a 0,
-    #25202a 5px,
-    #2c2631 5px,
-    #2c2631 10px
-  );
+  background:
+    repeating-linear-gradient(
+      45deg,
+      #25202a 0,
+      #25202a 5px,
+      #2c2631 5px,
+      #2c2631 10px
+    );
   box-shadow:0 6px 16px rgba(0,0,0,.28);
   position:relative;
   transition:.16s;
@@ -394,18 +397,6 @@ header{
   margin:0 0 16px
 }
 
-.sheet-row{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:13px 0;
-  border-bottom:1px solid var(--line)
-}
-
-.danger{
-  color:#df8d92
-}
-
 .loading{
   position:fixed;
   inset:0;
@@ -429,10 +420,13 @@ header{
 }
 
 @keyframes spin{
-  to{transform:rotate(360deg)}
+  to{
+    transform:rotate(360deg)
+  }
 }
 
 @media(min-width:620px){
+
   .revealed-grid{
     grid-template-columns:repeat(4,minmax(0,1fr))
   }
@@ -444,6 +438,7 @@ header{
   .app{
     padding-top:28px
   }
+
 }
 </style>
 </head>
@@ -451,33 +446,56 @@ header{
 <body>
 
 <div class="loading" id="loading">
+
   <div>
+
     <div class="spinner"></div>
+
     <div style="color:#aaa2b0;margin-top:12px;font-size:13px">
       正在准备牌桌…
     </div>
+
   </div>
+
 </div>
+
 
 <div class="app">
 
 <header>
+
   <div>
-    <div class="logo">🔮 我的塔罗</div>
-    <div class="sub">你选牌，我只负责记录</div>
+
+    <div class="logo">
+      🔮 我的塔罗
+    </div>
+
+    <div class="sub">
+      你选牌，我只负责记录
+    </div>
+
   </div>
 
-  <button class="iconbtn" id="historyBtn" aria-label="抽牌记录">
+  <button
+    class="iconbtn"
+    id="historyBtn"
+    aria-label="抽牌记录"
+  >
     ☰
   </button>
+
 </header>
 
+
+<!-- 首页 -->
 
 <section id="home" class="view active">
 
   <div class="hero">
 
-    <h1>今天，想问什么？</h1>
+    <h1>
+      今天，想问什么？
+    </h1>
 
     <p>
       78 张牌全部背面朝上。
@@ -485,26 +503,46 @@ header{
       选好后再翻牌；同一次抽牌不会重复。
     </p>
 
-    <button class="primary" id="startBtn">
+    <button
+      class="primary"
+      id="startBtn"
+    >
       开始抽牌
     </button>
 
   </div>
 
+
   <div class="section-title">
     我的记录
   </div>
 
+
   <div class="stats">
 
     <div class="stat">
-      <b id="readingCount">0</b>
-      <span>次抽牌</span>
+
+      <b id="readingCount">
+        0
+      </b>
+
+      <span>
+        次抽牌
+      </span>
+
     </div>
 
+
     <div class="stat">
-      <b id="cardCount">0</b>
-      <span>张已记录</span>
+
+      <b id="cardCount">
+        0
+      </b>
+
+      <span>
+        张已记录
+      </span>
+
     </div>
 
   </div>
@@ -512,35 +550,58 @@ header{
 </section>
 
 
+<!-- 选牌 -->
+
 <section id="select" class="view">
 
   <div class="spread-toolbar">
 
-    <button class="linkbtn" id="backHome">
+    <button
+      class="linkbtn"
+      id="backHome"
+    >
       ‹ 返回
     </button>
 
     <div class="count">
-      已选择 <b id="selectedCount">0</b> 张
+
+      已选择
+      <b id="selectedCount">0</b>
+      张
+
     </div>
 
   </div>
 
+
   <div class="notice">
+
     凭感觉点牌即可。
     再次点击已选的牌可以取消。
     现在不会显示任何牌名。
+
   </div>
 
-  <div class="table" id="table"></div>
+
+  <div
+    class="table"
+    id="table"
+  ></div>
+
 
   <div class="bottom-actions">
 
-    <button class="secondary" id="clearSelection">
+    <button
+      class="secondary"
+      id="clearSelection"
+    >
       重新选
     </button>
 
-    <button class="primary" id="confirmSelection">
+    <button
+      class="primary"
+      id="confirmSelection"
+    >
       选好了
     </button>
 
@@ -549,39 +610,63 @@ header{
 </section>
 
 
+<!-- 翻牌 -->
+
 <section id="reveal" class="view">
 
   <div class="spread-toolbar">
 
-    <button class="linkbtn" id="backSelect">
+    <button
+      class="linkbtn"
+      id="backSelect"
+    >
       ‹ 返回选牌
     </button>
 
     <div class="count">
-      本次 <b id="revealCount">0</b> 张
+
+      本次
+      <b id="revealCount">0</b>
+      张
+
     </div>
 
   </div>
 
+
   <div class="notice">
+
     牌已经锁定。
     点每张牌可以单独翻开；
     正位 / 逆位会在翻牌时确定。
+
   </div>
 
-  <div class="revealed-grid" id="revealedGrid"></div>
+
+  <div
+    class="revealed-grid"
+    id="revealedGrid"
+  ></div>
+
 
   <div class="bottom-actions">
 
-    <button class="secondary" id="revealAll">
+    <button
+      class="secondary"
+      id="revealAll"
+    >
       全部翻开
     </button>
 
-    <button class="primary" id="saveReading">
+    <button
+      class="primary"
+      id="saveReading"
+    >
       保存记录
     </button>
 
   </div>
+
 
   <div class="form">
 
@@ -600,11 +685,16 @@ header{
 </section>
 
 
+<!-- 历史 -->
+
 <section id="history" class="view">
 
   <div class="spread-toolbar">
 
-    <button class="linkbtn" id="backFromHistory">
+    <button
+      class="linkbtn"
+      id="backFromHistory"
+    >
       ‹ 返回首页
     </button>
 
@@ -614,6 +704,7 @@ header{
 
   </div>
 
+
   <div id="historyList"></div>
 
 </section>
@@ -621,19 +712,36 @@ header{
 </div>
 
 
-<div class="modal" id="detailModal">
+<!-- 历史详情 -->
+
+<div
+  class="modal"
+  id="detailModal"
+>
 
   <div class="sheet">
 
-    <div style="display:flex;justify-content:space-between;align-items:center">
+    <div
+      style="
+        display:flex;
+        justify-content:space-between;
+        align-items:center
+      "
+    >
 
-      <h2>抽牌记录</h2>
+      <h2>
+        抽牌记录
+      </h2>
 
-      <button class="iconbtn" id="closeModal">
+      <button
+        class="iconbtn"
+        id="closeModal"
+      >
         ×
       </button>
 
     </div>
+
 
     <div id="detailContent"></div>
 
@@ -645,137 +753,150 @@ header{
 <script>
 
 /* =========================================================
-   78 张 Rider-Waite 塔罗牌
-   图片使用 GitHub 上的公版牌面资源
-   不再依赖已经失效的 petaloverflow API
+   牌库
+   图片全部来自当前 GitHub Pages 仓库根目录
    ========================================================= */
 
-const IMAGE_BASE =
-  "https://raw.githubusercontent.com/seven102161/elaine-tarot-cards/main/cards/";
+const IMAGE_BASE = "./";
 
 
 const deck = [
 
-  /* 大阿卡纳 */
+  /* ================= 大阿卡纳 ================= */
 
-  {name:"愚人", code:"ar00"},
-  {name:"魔术师", code:"ar01"},
-  {name:"女祭司", code:"ar02"},
-  {name:"皇后", code:"ar03"},
-  {name:"皇帝", code:"ar04"},
-  {name:"教皇", code:"ar05"},
-  {name:"恋人", code:"ar06"},
-  {name:"战车", code:"ar07"},
-  {name:"力量", code:"ar08"},
-  {name:"隐者", code:"ar09"},
-  {name:"命运之轮", code:"ar10"},
-  {name:"正义", code:"ar11"},
-  {name:"倒吊人", code:"ar12"},
-  {name:"死神", code:"ar13"},
-  {name:"节制", code:"ar14"},
-  {name:"恶魔", code:"ar15"},
-  {name:"高塔", code:"ar16"},
-  {name:"星星", code:"ar17"},
-  {name:"月亮", code:"ar18"},
-  {name:"太阳", code:"ar19"},
-  {name:"审判", code:"ar20"},
-  {name:"世界", code:"ar21"},
-
-
-  /* 权杖 */
-
-  {name:"权杖王牌", code:"wa01"},
-  {name:"权杖二", code:"wa02"},
-  {name:"权杖三", code:"wa03"},
-  {name:"权杖四", code:"wa04"},
-  {name:"权杖五", code:"wa05"},
-  {name:"权杖六", code:"wa06"},
-  {name:"权杖七", code:"wa07"},
-  {name:"权杖八", code:"wa08"},
-  {name:"权杖九", code:"wa09"},
-  {name:"权杖十", code:"wa10"},
-  {name:"权杖侍者", code:"wa11"},
-  {name:"权杖骑士", code:"wa12"},
-  {name:"权杖王后", code:"wa13"},
-  {name:"权杖国王", code:"wa14"},
+  {name:"愚人",code:"ar00"},
+  {name:"魔术师",code:"ar01"},
+  {name:"女祭司",code:"ar02"},
+  {name:"皇后",code:"ar03"},
+  {name:"皇帝",code:"ar04"},
+  {name:"教皇",code:"ar05"},
+  {name:"恋人",code:"ar06"},
+  {name:"战车",code:"ar07"},
+  {name:"力量",code:"ar08"},
+  {name:"隐者",code:"ar09"},
+  {name:"命运之轮",code:"ar10"},
+  {name:"正义",code:"ar11"},
+  {name:"倒吊人",code:"ar12"},
+  {name:"死神",code:"ar13"},
+  {name:"节制",code:"ar14"},
+  {name:"恶魔",code:"ar15"},
+  {name:"高塔",code:"ar16"},
+  {name:"星星",code:"ar17"},
+  {name:"月亮",code:"ar18"},
+  {name:"太阳",code:"ar19"},
+  {name:"审判",code:"ar20"},
+  {name:"世界",code:"ar21"},
 
 
-  /* 圣杯 */
+  /* ================= 权杖 ================= */
 
-  {name:"圣杯王牌", code:"cu01"},
-  {name:"圣杯二", code:"cu02"},
-  {name:"圣杯三", code:"cu03"},
-  {name:"圣杯四", code:"cu04"},
-  {name:"圣杯五", code:"cu05"},
-  {name:"圣杯六", code:"cu06"},
-  {name:"圣杯七", code:"cu07"},
-  {name:"圣杯八", code:"cu08"},
-  {name:"圣杯九", code:"cu09"},
-  {name:"圣杯十", code:"cu10"},
-  {name:"圣杯侍者", code:"cu11"},
-  {name:"圣杯骑士", code:"cu12"},
-  {name:"圣杯王后", code:"cu13"},
-  {name:"圣杯国王", code:"cu14"},
-
-
-  /* 宝剑 */
-
-  {name:"宝剑王牌", code:"sw01"},
-  {name:"宝剑二", code:"sw02"},
-  {name:"宝剑三", code:"sw03"},
-  {name:"宝剑四", code:"sw04"},
-  {name:"宝剑五", code:"sw05"},
-  {name:"宝剑六", code:"sw06"},
-  {name:"宝剑七", code:"sw07"},
-  {name:"宝剑八", code:"sw08"},
-  {name:"宝剑九", code:"sw09"},
-  {name:"宝剑十", code:"sw10"},
-  {name:"宝剑侍者", code:"sw11"},
-  {name:"宝剑骑士", code:"sw12"},
-  {name:"宝剑王后", code:"sw13"},
-  {name:"宝剑国王", code:"sw14"},
+  {name:"权杖王牌",code:"waac"},
+  {name:"权杖二",code:"wa02"},
+  {name:"权杖三",code:"wa03"},
+  {name:"权杖四",code:"wa04"},
+  {name:"权杖五",code:"wa05"},
+  {name:"权杖六",code:"wa06"},
+  {name:"权杖七",code:"wa07"},
+  {name:"权杖八",code:"wa08"},
+  {name:"权杖九",code:"wa09"},
+  {name:"权杖十",code:"wa10"},
+  {name:"权杖侍者",code:"wapa"},
+  {name:"权杖骑士",code:"wakn"},
+  {name:"权杖王后",code:"waqu"},
+  {name:"权杖国王",code:"waki"},
 
 
-  /* 星币 */
+  /* ================= 圣杯 ================= */
 
-  {name:"星币王牌", code:"pe01"},
-  {name:"星币二", code:"pe02"},
-  {name:"星币三", code:"pe03"},
-  {name:"星币四", code:"pe04"},
-  {name:"星币五", code:"pe05"},
-  {name:"星币六", code:"pe06"},
-  {name:"星币七", code:"pe07"},
-  {name:"星币八", code:"pe08"},
-  {name:"星币九", code:"pe09"},
-  {name:"星币十", code:"pe10"},
-  {name:"星币侍者", code:"pe11"},
-  {name:"星币骑士", code:"pe12"},
-  {name:"星币王后", code:"pe13"},
-  {name:"星币国王", code:"pe14"}
+  {name:"圣杯王牌",code:"cuac"},
+  {name:"圣杯二",code:"cu02"},
+  {name:"圣杯三",code:"cu03"},
+  {name:"圣杯四",code:"cu04"},
+  {name:"圣杯五",code:"cu05"},
+  {name:"圣杯六",code:"cu06"},
+  {name:"圣杯七",code:"cu07"},
+  {name:"圣杯八",code:"cu08"},
+  {name:"圣杯九",code:"cu09"},
+  {name:"圣杯十",code:"cu10"},
+  {name:"圣杯侍者",code:"cupa"},
+  {name:"圣杯骑士",code:"cukn"},
+  {name:"圣杯王后",code:"cuqu"},
+  {name:"圣杯国王",code:"cuki"},
+
+
+  /* ================= 宝剑 ================= */
+
+  {name:"宝剑王牌",code:"swac"},
+  {name:"宝剑二",code:"sw02"},
+  {name:"宝剑三",code:"sw03"},
+  {name:"宝剑四",code:"sw04"},
+  {name:"宝剑五",code:"sw05"},
+  {name:"宝剑六",code:"sw06"},
+  {name:"宝剑七",code:"sw07"},
+  {name:"宝剑八",code:"sw08"},
+  {name:"宝剑九",code:"sw09"},
+  {name:"宝剑十",code:"sw10"},
+  {name:"宝剑侍者",code:"swpa"},
+  {name:"宝剑骑士",code:"swkn"},
+  {name:"宝剑王后",code:"swqu"},
+  {name:"宝剑国王",code:"swki"},
+
+
+  /* ================= 星币 ================= */
+
+  {name:"星币王牌",code:"peac"},
+  {name:"星币二",code:"pe02"},
+  {name:"星币三",code:"pe03"},
+  {name:"星币四",code:"pe04"},
+  {name:"星币五",code:"pe05"},
+  {name:"星币六",code:"pe06"},
+  {name:"星币七",code:"pe07"},
+  {name:"星币八",code:"pe08"},
+  {name:"星币九",code:"pe09"},
+  {name:"星币十",code:"pe10"},
+  {name:"星币侍者",code:"pepa"},
+  {name:"星币骑士",code:"pekn"},
+  {name:"星币王后",code:"pequ"},
+  {name:"星币国王",code:"peki"}
 
 ].map(card => ({
+
   ...card,
-  image: IMAGE_BASE + card.code + ".jpg"
+
+  image:
+    IMAGE_BASE +
+    card.code +
+    ".jpg"
+
 }));
 
 
+/* =========================================================
+   状态
+   ========================================================= */
+
 let selected = [];
+
 let revealed = [];
+
 let currentReading = null;
 
 
 /* =========================================================
-   基础工具
+   工具
    ========================================================= */
 
-const $ = id => document.getElementById(id);
+const $ = id =>
+  document.getElementById(id);
 
 
 function show(id){
 
   document
     .querySelectorAll(".view")
-    .forEach(v => v.classList.remove("active"));
+    .forEach(v =>
+      v.classList.remove("active")
+    );
 
   $(id).classList.add("active");
 
@@ -792,7 +913,9 @@ function getHistory(){
   try{
 
     return JSON.parse(
-      localStorage.getItem("myTarotHistory") || "[]"
+      localStorage.getItem(
+        "myTarotHistory"
+      ) || "[]"
     );
 
   }catch(e){
@@ -804,11 +927,11 @@ function getHistory(){
 }
 
 
-function setHistory(x){
+function setHistory(history){
 
   localStorage.setItem(
     "myTarotHistory",
-    JSON.stringify(x)
+    JSON.stringify(history)
   );
 
 }
@@ -816,27 +939,35 @@ function setHistory(x){
 
 function updateStats(){
 
-  const h = getHistory();
+  const history =
+    getHistory();
 
-  $("readingCount").textContent = h.length;
+  $("readingCount").textContent =
+    history.length;
 
   $("cardCount").textContent =
-    h.reduce((n,r) => n + r.cards.length, 0);
+    history.reduce(
+      (total,reading) =>
+        total + reading.cards.length,
+      0
+    );
 
 }
 
 
-function esc(s){
+function esc(value){
 
-  return String(s).replace(
+  return String(value).replace(
     /[&<>"']/g,
-    m => ({
+    char => ({
+
       "&":"&amp;",
       "<":"&lt;",
       ">":"&gt;",
       '"':"&quot;",
       "'":"&#039;"
-    }[m])
+
+    }[char])
   );
 
 }
@@ -847,11 +978,6 @@ function esc(s){
    ========================================================= */
 
 function loadDeck(){
-
-  /*
-   * 现在牌库已经直接写入 JS，
-   * 不需要 fetch API。
-   */
 
   if(deck.length !== 78){
 
@@ -865,85 +991,105 @@ function loadDeck(){
   }
 
   /*
-   * 稍微预加载第一张图片，
-   * 确认 GitHub 图片资源可以访问。
+   * 检查第一张牌是否可以正常读取。
    */
 
-  const testImage = new Image();
+  const testImage =
+    new Image();
 
   testImage.onload = () => {
 
-    $("loading").classList.add("hidden");
+    $("loading")
+      .classList
+      .add("hidden");
 
     updateStats();
 
   };
+
 
   testImage.onerror = () => {
 
     /*
-     * 即使第一张图片加载失败，
-     * 牌库本身仍然存在。
-     * 不再把整个牌库判定为失败。
+     * 图片测试失败也不阻止网页进入。
+     * 这样即使浏览器缓存了旧资源，
+     * 也不会再次出现“牌库加载失败”。
      */
 
-    $("loading").classList.add("hidden");
+    $("loading")
+      .classList
+      .add("hidden");
 
     updateStats();
 
   };
 
-  testImage.src = deck[0].image;
+
+  testImage.src =
+    deck[0].image;
 
 }
 
 
 /* =========================================================
-   选择牌
+   选牌
    ========================================================= */
 
 function renderTable(){
 
-  const t = $("table");
+  const table =
+    $("table");
 
-  t.innerHTML = "";
+  table.innerHTML = "";
 
-  deck.forEach((card,i) => {
 
-    const b = document.createElement("button");
+  deck.forEach((card,index) => {
 
-    b.className =
+    const button =
+      document.createElement("button");
+
+    button.className =
       "cardback" +
-      (selected.includes(i) ? " selected" : "");
+      (
+        selected.includes(index)
+          ? " selected"
+          : ""
+      );
 
-    b.setAttribute(
+
+    button.setAttribute(
       "aria-label",
-      "牌 " + (i + 1)
+      "第 " + (index + 1) + " 张牌"
     );
 
-    b.onclick = () => {
 
-      if(selected.includes(i)){
+    button.onclick = () => {
+
+      if(
+        selected.includes(index)
+      ){
 
         selected =
-          selected.filter(x => x !== i);
+          selected.filter(
+            x => x !== index
+          );
 
       }else{
 
-        selected.push(i);
+        selected.push(index);
 
       }
 
-      renderTable();
 
-      $("selectedCount").textContent =
-        selected.length;
+      renderTable();
 
     };
 
-    t.appendChild(b);
+
+    table.appendChild(button);
 
   });
+
 
   $("selectedCount").textContent =
     selected.length;
@@ -955,6 +1101,10 @@ function start(){
 
   selected = [];
 
+  revealed = [];
+
+  currentReading = null;
+
   renderTable();
 
   show("select");
@@ -963,39 +1113,47 @@ function start(){
 
 
 /* =========================================================
-   确认抽牌
+   确认选牌
    ========================================================= */
 
 function confirmSelection(){
 
-  if(!selected.length){
+  if(selected.length === 0){
 
-    alert("先选至少 1 张牌。");
+    alert(
+      "先选至少 1 张牌。"
+    );
 
     return;
 
   }
 
-  revealed = selected.map(i => ({
 
-    card:deck[i],
+  revealed =
+    selected.map(index => ({
 
-    orientation:null,
+      card:deck[index],
 
-    revealed:false
+      orientation:null,
 
-  }));
+      revealed:false
+
+    }));
+
 
   currentReading = {
 
-    startedAt:new Date().toISOString(),
+    startedAt:
+      new Date().toISOString(),
 
     cards:revealed
 
   };
 
+
   $("revealCount").textContent =
     revealed.length;
+
 
   renderReveal();
 
@@ -1010,38 +1168,44 @@ function confirmSelection(){
 
 function renderReveal(){
 
-  const g = $("revealedGrid");
+  const grid =
+    $("revealedGrid");
 
-  g.innerHTML = "";
+  grid.innerHTML = "";
 
-  revealed.forEach((x,i) => {
 
-    const d =
+  revealed.forEach((item,index) => {
+
+    const cardBox =
       document.createElement("div");
 
-    d.className =
+
+    cardBox.className =
       "drawn-card" +
-      (x.orientation === "reversed"
-        ? " reversed"
-        : "");
+      (
+        item.orientation === "reversed"
+          ? " reversed"
+          : ""
+      );
 
-    if(x.revealed){
 
-      d.innerHTML = `
+    if(item.revealed){
+
+      cardBox.innerHTML = `
 
         <img
-          src="${x.card.image}"
-          alt="${esc(x.card.name)}"
+          src="${item.card.image}"
+          alt="${esc(item.card.name)}"
           loading="lazy"
         >
 
         <div class="card-name">
-          ${esc(x.card.name)}
+          ${esc(item.card.name)}
         </div>
 
         <div class="orientation">
           ${
-            x.orientation === "reversed"
+            item.orientation === "reversed"
               ? "逆位"
               : "正位"
           }
@@ -1049,16 +1213,18 @@ function renderReveal(){
 
       `;
 
-      d.onclick = () => flip(i);
+
+      cardBox.onclick = () =>
+        flip(index);
 
     }else{
 
-      d.innerHTML = `
+      cardBox.innerHTML = `
 
         <button
           class="cardback"
           style="width:100%"
-          aria-label="翻开第${i+1}张"
+          aria-label="翻开第 ${index + 1} 张牌"
         ></button>
 
         <div class="flip-hint">
@@ -1067,51 +1233,63 @@ function renderReveal(){
 
       `;
 
-      d.onclick = () => flip(i);
+
+      cardBox.onclick = () =>
+        flip(index);
 
     }
 
-    g.appendChild(d);
+
+    grid.appendChild(cardBox);
 
   });
 
 }
 
 
-function flip(i){
+function flip(index){
 
-  if(!revealed[i].revealed){
+  if(
+    revealed[index].revealed
+  ){
 
-    revealed[i].orientation =
-      Math.random() < .5
-        ? "upright"
-        : "reversed";
-
-    revealed[i].revealed = true;
-
-    renderReveal();
+    return;
 
   }
+
+
+  revealed[index].orientation =
+    Math.random() < 0.5
+      ? "upright"
+      : "reversed";
+
+
+  revealed[index].revealed =
+    true;
+
+
+  renderReveal();
 
 }
 
 
 function revealAll(){
 
-  revealed.forEach(x => {
+  revealed.forEach(item => {
 
-    if(!x.revealed){
+    if(!item.revealed){
 
-      x.orientation =
-        Math.random() < .5
+      item.orientation =
+        Math.random() < 0.5
           ? "upright"
           : "reversed";
 
-      x.revealed = true;
+      item.revealed = true;
 
     }
 
   });
+
 
   renderReveal();
 
@@ -1119,12 +1297,16 @@ function revealAll(){
 
 
 /* =========================================================
-   保存记录
+   保存
    ========================================================= */
 
 function save(){
 
-  if(!revealed.every(x => x.revealed)){
+  if(
+    !revealed.every(
+      item => item.revealed
+    )
+  ){
 
     alert(
       "还有牌没有翻开。你可以点“全部翻开”，也可以逐张翻开。"
@@ -1134,45 +1316,65 @@ function save(){
 
   }
 
-  const h = getHistory();
 
-  h.unshift({
+  const history =
+    getHistory();
+
+
+  const reading = {
 
     id:
-      crypto.randomUUID
+      (
+        crypto &&
+        crypto.randomUUID
+      )
         ? crypto.randomUUID()
         : String(Date.now()),
 
-    date:new Date().toISOString(),
+    date:
+      new Date().toISOString(),
 
     question:
-      $("question").value.trim(),
+      $("question")
+        .value
+        .trim(),
 
     note:
-      $("note").value.trim(),
+      $("note")
+        .value
+        .trim(),
 
     cards:
-      revealed.map(x => ({
+      revealed.map(item => ({
 
-        name:x.card.name,
+        name:
+          item.card.name,
 
-        image:x.card.image,
+        image:
+          item.card.image,
 
-        orientation:x.orientation
+        orientation:
+          item.orientation
 
       }))
 
-  });
+  };
 
-  setHistory(h);
+
+  history.unshift(reading);
+
+  setHistory(history);
 
   updateStats();
 
-  alert("已保存。");
 
   $("question").value = "";
 
   $("note").value = "";
+
+
+  alert("已保存。");
+
 
   show("home");
 
@@ -1185,142 +1387,184 @@ function save(){
 
 function renderHistory(){
 
-  const h = getHistory();
+  const history =
+    getHistory();
 
-  const box = $("historyList");
+  const box =
+    $("historyList");
 
   box.innerHTML = "";
 
-  if(!h.length){
 
-    box.innerHTML =
-      '<div class="empty">还没有抽牌记录。<br>去抽第一组吧。</div>';
+  if(history.length === 0){
+
+    box.innerHTML = `
+      <div class="empty">
+        还没有抽牌记录。<br>
+        去抽第一组吧。
+      </div>
+    `;
 
     return;
 
   }
 
-  h.forEach((r,idx) => {
 
-    const d =
-      document.createElement("div");
+  history.forEach(
+    (reading,index) => {
 
-    d.className = "history-item";
+      const item =
+        document.createElement("div");
 
-    const date =
-      new Date(r.date);
+      item.className =
+        "history-item";
 
-    const ds =
-      date.toLocaleString(
-        "zh-CN",
-        {
-          year:"numeric",
-          month:"2-digit",
-          day:"2-digit",
-          hour:"2-digit",
-          minute:"2-digit"
-        }
-      );
 
-    d.innerHTML = `
+      const date =
+        new Date(reading.date);
 
-      <div class="history-head">
 
-        <b>
-          ${esc(r.question || "自由抽牌")}
-        </b>
+      const dateText =
+        date.toLocaleString(
+          "zh-CN",
+          {
+            year:"numeric",
+            month:"2-digit",
+            day:"2-digit",
+            hour:"2-digit",
+            minute:"2-digit"
+          }
+        );
 
-        <span class="history-date">
-          ${ds}
-        </span>
 
-      </div>
+      item.innerHTML = `
 
-      <div class="history-cards">
+        <div class="history-head">
 
-        ${r.cards.map(c => `
+          <b>
+            ${esc(
+              reading.question ||
+              "自由抽牌"
+            )}
+          </b>
 
-          <span class="pill">
-
-            ${esc(c.name)}
-            ·
-            ${
-              c.orientation === "reversed"
-                ? "逆位"
-                : "正位"
-            }
-
+          <span class="history-date">
+            ${dateText}
           </span>
 
-        `).join("")}
+        </div>
 
-      </div>
 
-      ${
-        r.note
-          ? `
-            <div class="history-q">
-              ${esc(r.note).replace(/\n/g,"<br>")}
-            </div>
-          `
-          : ""
-      }
+        <div class="history-cards">
 
-      <div class="small-actions">
+          ${reading.cards
+            .map(card => `
 
-        <button
-          class="secondary"
-          data-open="${idx}"
-        >
-          查看
-        </button>
+              <span class="pill">
 
-        <button
-          class="secondary danger"
-          data-delete="${idx}"
-        >
-          删除
-        </button>
+                ${esc(card.name)}
+                ·
+                ${
+                  card.orientation === "reversed"
+                    ? "逆位"
+                    : "正位"
+                }
 
-      </div>
+              </span>
 
-    `;
+            `)
+            .join("")
+          }
 
-    box.appendChild(d);
+        </div>
 
-  });
+
+        ${
+          reading.note
+            ? `
+              <div class="history-q">
+                ${esc(
+                  reading.note
+                ).replace(
+                  /\n/g,
+                  "<br>"
+                )}
+              </div>
+            `
+            : ""
+        }
+
+
+        <div class="small-actions">
+
+          <button
+            class="secondary"
+            data-open="${index}"
+          >
+            查看
+          </button>
+
+          <button
+            class="secondary danger"
+            data-delete="${index}"
+          >
+            删除
+          </button>
+
+        </div>
+
+      `;
+
+
+      box.appendChild(item);
+
+    }
+  );
 
 
   box
-    .querySelectorAll("[data-open]")
-    .forEach(b => {
+    .querySelectorAll(
+      "[data-open]"
+    )
+    .forEach(button => {
 
-      b.onclick = () =>
+      button.onclick = () =>
         openDetail(
-          Number(b.dataset.open)
+          Number(
+            button.dataset.open
+          )
         );
 
     });
 
 
   box
-    .querySelectorAll("[data-delete]")
-    .forEach(b => {
+    .querySelectorAll(
+      "[data-delete]"
+    )
+    .forEach(button => {
 
-      b.onclick = () => {
+      button.onclick = () => {
 
         if(
-          confirm("删除这条记录？")
+          confirm(
+            "删除这条记录？"
+          )
         ){
 
-          const h = getHistory();
+          const history =
+            getHistory();
 
-          h.splice(
-            Number(b.dataset.delete),
+
+          history.splice(
+            Number(
+              button.dataset.delete
+            ),
             1
           );
 
-          setHistory(h);
+
+          setHistory(history);
 
           renderHistory();
 
@@ -1336,72 +1580,92 @@ function renderHistory(){
 
 
 /* =========================================================
-   查看记录详情
+   历史详情
    ========================================================= */
 
-function openDetail(i){
+function openDetail(index){
 
-  const r = getHistory()[i];
+  const reading =
+    getHistory()[index];
+
+
+  if(!reading){
+
+    return;
+
+  }
+
 
   $("detailContent").innerHTML = `
 
     <div class="history-date">
 
-      ${new Date(r.date).toLocaleString("zh-CN")}
+      ${new Date(
+        reading.date
+      ).toLocaleString("zh-CN")}
 
     </div>
 
+
     <h3>
-      ${esc(r.question || "自由抽牌")}
+
+      ${esc(
+        reading.question ||
+        "自由抽牌"
+      )}
+
     </h3>
+
 
     <div class="revealed-grid">
 
-      ${r.cards.map(c => `
+      ${reading.cards
+        .map(card => `
 
-        <div
-          class="drawn-card
-            ${
-              c.orientation === "reversed"
-                ? "reversed"
-                : ""
-            }"
-        >
-
-          <img
-            src="${c.image}"
-            alt="${esc(c.name)}"
-            loading="lazy"
+          <div
+            class="drawn-card
+              ${
+                card.orientation === "reversed"
+                  ? "reversed"
+                  : ""
+              }"
           >
 
-          <div class="card-name">
-            ${esc(c.name)}
+            <img
+              src="${card.image}"
+              alt="${esc(card.name)}"
+              loading="lazy"
+            >
+
+            <div class="card-name">
+              ${esc(card.name)}
+            </div>
+
+            <div class="orientation">
+              ${
+                card.orientation === "reversed"
+                  ? "逆位"
+                  : "正位"
+              }
+            </div>
+
           </div>
 
-          <div class="orientation">
-
-            ${
-              c.orientation === "reversed"
-                ? "逆位"
-                : "正位"
-            }
-
-          </div>
-
-        </div>
-
-      `).join("")}
+        `)
+        .join("")
+      }
 
     </div>
 
+
     ${
-      r.note
+      reading.note
         ? `
           <div class="form">
 
-            <textarea readonly>
-${esc(r.note)}
-            </textarea>
+            <textarea readonly>${esc(
+              reading.note
+            )}</textarea>
 
           </div>
         `
@@ -1410,8 +1674,10 @@ ${esc(r.note)}
 
   `;
 
+
   $("detailModal")
-    .classList.add("show");
+    .classList
+    .add("show");
 
 }
 
@@ -1469,17 +1735,22 @@ $("saveReading").onclick =
 $("closeModal").onclick = () => {
 
   $("detailModal")
-    .classList.remove("show");
+    .classList
+    .remove("show");
 
 };
 
 
-$("detailModal").onclick = e => {
+$("detailModal").onclick = event => {
 
-  if(e.target.id === "detailModal"){
+  if(
+    event.target.id ===
+    "detailModal"
+  ){
 
     $("detailModal")
-      .classList.remove("show");
+      .classList
+      .remove("show");
 
   }
 
