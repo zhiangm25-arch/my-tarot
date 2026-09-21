@@ -805,6 +805,15 @@ button{
 
   object-fit:cover;
 
+  transition:
+    transform .15s ease;
+
+}
+
+.tarot-front img.reversed{
+
+  transform:rotate(180deg);
+
 }
 
 
@@ -2231,13 +2240,22 @@ function flipCard(index){
 
 
   const orientation =
-    $(`orientation-${index}`);
+  $(`orientation-${index}`);
+
+orientation.textContent =
+  card.orientation === "upright"
+    ? "正位"
+    : "逆位";
 
 
-  orientation.textContent =
-    card.orientation === "upright"
-      ? "正位"
-      : "逆位";
+const cardImage =
+  flip.querySelector("img");
+
+if(card.orientation === "reversed"){
+
+  cardImage.classList.add("reversed");
+
+}
 
 
   const info =
