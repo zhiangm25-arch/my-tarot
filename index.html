@@ -111,10 +111,6 @@ button{
 }
 
 
-/* =========================
-   页面基础
-========================= */
-
 .app{
 
   min-height:100vh;
@@ -241,9 +237,21 @@ button{
 }
 
 
+.home-buttons{
+
+  width:100%;
+  max-width:330px;
+
+  display:flex;
+  flex-direction:column;
+  gap:11px;
+
+}
+
+
 .primary-btn{
 
-  min-width:150px;
+  width:100%;
 
   padding:14px 26px;
 
@@ -283,21 +291,26 @@ button{
 }
 
 
-.secondary-btn{
+.spread-home-btn{
 
-  padding:10px 18px;
+  width:100%;
+
+  padding:13px 20px;
+
+  border-radius:30px;
 
   border:
     1px solid
-    var(--line);
+    rgba(205,181,138,.32);
 
-  border-radius:22px;
-
-  background:transparent;
+  background:
+    rgba(205,181,138,.04);
 
   color:var(--gold2);
 
-  font-size:12px;
+  font-size:13px;
+
+  letter-spacing:.08em;
 
 }
 
@@ -361,6 +374,206 @@ button{
 
 
 /* =========================
+   牌阵选择
+========================= */
+
+.spread-list{
+
+  margin-top:25px;
+
+  padding-bottom:35px;
+
+  display:flex;
+  flex-direction:column;
+
+  gap:10px;
+
+}
+
+
+.spread-card{
+
+  width:100%;
+
+  padding:17px 16px;
+
+  border:
+    1px solid
+    rgba(205,181,138,.17);
+
+  border-radius:12px;
+
+  background:#17151b;
+
+  color:var(--text);
+
+  text-align:left;
+
+  transition:
+    transform .18s ease,
+    border-color .18s ease,
+    background .18s ease;
+
+}
+
+
+.spread-card:active{
+
+  transform:scale(.985);
+
+}
+
+
+.spread-card-top{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  gap:10px;
+
+}
+
+
+.spread-name{
+
+  color:#eee8df;
+
+  font-size:15px;
+
+}
+
+
+.spread-count{
+
+  color:var(--gold);
+
+  font-size:10px;
+
+  flex:none;
+
+}
+
+
+.spread-category{
+
+  margin-top:7px;
+
+  color:#9c9288;
+
+  font-size:10px;
+
+  letter-spacing:.08em;
+
+}
+
+
+.spread-description{
+
+  margin-top:8px;
+
+  color:#aaa3ad;
+
+  font-size:12px;
+
+  line-height:1.65;
+
+}
+
+
+/* =========================
+   牌阵开始页面
+========================= */
+
+.spread-start-info{
+
+  margin-top:25px;
+
+  padding:18px;
+
+  border:
+    1px solid
+    rgba(205,181,138,.17);
+
+  border-radius:12px;
+
+  background:#17151b;
+
+}
+
+
+.spread-start-name{
+
+  color:var(--gold2);
+
+  text-align:center;
+
+  font-size:17px;
+
+}
+
+
+.spread-start-category{
+
+  margin-top:7px;
+
+  text-align:center;
+
+  color:var(--muted);
+
+  font-size:10px;
+
+}
+
+
+.spread-start-description{
+
+  margin-top:15px;
+
+  color:#b7afb6;
+
+  font-size:12px;
+
+  line-height:1.8;
+
+}
+
+
+.spread-start-rule{
+
+  margin-top:13px;
+
+  padding:11px 12px;
+
+  border-radius:8px;
+
+  background:rgba(205,181,138,.05);
+
+  color:#bba987;
+
+  font-size:11px;
+
+  line-height:1.7;
+
+}
+
+
+.spread-start-actions{
+
+  margin-top:20px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:10px;
+
+}
+
+
+/* =========================
    选择牌
 ========================= */
 
@@ -368,6 +581,14 @@ button{
 
   color:var(--gold2);
   font-size:12px;
+
+}
+
+
+.select-mode-label{
+
+  color:var(--muted);
+  font-size:11px;
 
 }
 
@@ -597,6 +818,21 @@ button{
 }
 
 
+.reveal-spread-name{
+
+  margin-top:18px;
+
+  text-align:center;
+
+  color:var(--gold2);
+
+  font-size:14px;
+
+  letter-spacing:.08em;
+
+}
+
+
 .reveal-grid{
 
   display:grid;
@@ -690,8 +926,6 @@ button{
 }
 
 
-/* 牌背 */
-
 .tarot-back{
 
   display:flex;
@@ -751,8 +985,6 @@ button{
 }
 
 
-/* 点击提示 */
-
 .tarot-back::after{
 
   content:"点击翻牌";
@@ -775,8 +1007,6 @@ button{
 
 }
 
-
-/* 牌面 */
 
 .tarot-front{
 
@@ -810,14 +1040,13 @@ button{
 
 }
 
+
 .tarot-front img.reversed{
 
   transform:rotate(180deg);
 
 }
 
-
-/* 翻开后的轻微光晕 */
 
 .tarot-flip.flipped
 .tarot-front{
@@ -833,8 +1062,21 @@ button{
 
 
 /* =========================
-   牌名
+   牌位名称
 ========================= */
+
+.card-position{
+
+  margin-bottom:5px;
+
+  color:#b9a88c;
+
+  font-size:10px;
+
+  line-height:1.4;
+
+}
+
 
 .card-info{
 
@@ -842,7 +1084,7 @@ button{
 
   margin-top:10px;
 
-  min-height:40px;
+  min-height:54px;
 
   opacity:0;
 
@@ -1076,6 +1318,17 @@ button{
 }
 
 
+.history-spread{
+
+  margin-top:7px;
+
+  color:#bcae96;
+
+  font-size:11px;
+
+}
+
+
 .history-question{
 
   margin-top:8px;
@@ -1096,6 +1349,8 @@ button{
   color:var(--muted);
 
   font-size:11px;
+
+  line-height:1.7;
 
 }
 
@@ -1225,6 +1480,19 @@ button{
 }
 
 
+.detail-spread{
+
+  margin-top:8px;
+
+  text-align:center;
+
+  color:#bcae96;
+
+  font-size:11px;
+
+}
+
+
 .detail-card{
 
   margin-top:18px;
@@ -1255,6 +1523,17 @@ button{
   color:#eee8df;
 
   font-size:13px;
+
+}
+
+
+.detail-position{
+
+  margin-bottom:5px;
+
+  color:#bcae96;
+
+  font-size:10px;
 
 }
 
@@ -1456,12 +1735,26 @@ button{
       静下来，凭第一感觉选择你的牌
     </div>
 
-    <button
-      class="primary-btn"
-      onclick="startReading()"
-    >
-      开始抽牌
-    </button>
+
+    <div class="home-buttons">
+
+      <button
+        class="primary-btn"
+        onclick="startReading()"
+      >
+        自由抽牌
+      </button>
+
+
+      <button
+        class="spread-home-btn"
+        onclick="openSpreadMode()"
+      >
+        牌阵占卜
+      </button>
+
+    </div>
+
 
     <button
       class="text-btn"
@@ -1472,6 +1765,100 @@ button{
     </button>
 
   </div>
+
+</section>
+
+
+
+<!-- =========================
+     牌阵列表
+========================= -->
+
+<section
+  id="spreadView"
+  class="hidden"
+>
+
+  <header class="header">
+
+    <div class="logo">
+      MY TAROT
+    </div>
+
+    <div class="subtitle">
+      SPREADS
+    </div>
+
+  </header>
+
+
+  <div class="top-actions">
+
+    <button
+      class="text-btn"
+      onclick="goHome()"
+    >
+      ← 返回
+    </button>
+
+  </div>
+
+
+  <div class="page-title">
+    选择牌阵
+  </div>
+
+  <div class="page-description">
+    找到适合你问题的牌阵
+  </div>
+
+
+  <div
+    id="spreadList"
+    class="spread-list"
+  ></div>
+
+</section>
+
+
+
+<!-- =========================
+     牌阵说明页面
+========================= -->
+
+<section
+  id="spreadStartView"
+  class="hidden"
+>
+
+  <header class="header">
+
+    <div class="logo">
+      MY TAROT
+    </div>
+
+    <div class="subtitle">
+      SPREAD
+    </div>
+
+  </header>
+
+
+  <div class="top-actions">
+
+    <button
+      class="text-btn"
+      onclick="openSpreadMode()"
+    >
+      ← 返回
+    </button>
+
+  </div>
+
+
+  <div
+    id="spreadStartContent"
+  ></div>
 
 </section>
 
@@ -1499,11 +1886,18 @@ button{
   </header>
 
 
-  <div class="page-title">
+  <div
+    id="selectSpreadName"
+    class="page-title"
+  >
     凭感觉选牌
   </div>
 
-  <div class="page-description">
+
+  <div
+    id="selectDescription"
+    class="page-description"
+  >
     不需要想太久。<br>
     哪张牌吸引你，就选择哪张。
   </div>
@@ -1516,6 +1910,13 @@ button{
       class="select-count"
     >
       已选择 0 张
+    </span>
+
+    <span
+      id="selectModeLabel"
+      class="select-mode-label"
+    >
+      自由抽牌
     </span>
 
     <button
@@ -1571,6 +1972,12 @@ button{
     </div>
 
   </header>
+
+
+  <div
+    id="revealSpreadName"
+    class="reveal-spread-name"
+  ></div>
 
 
   <div class="reveal-header">
@@ -1857,6 +2264,521 @@ const deck = [
 
 
 /* =========================
+   29 个牌阵
+========================= */
+
+const SPREADS = [
+
+  {
+    id:"three_triangle",
+    name:"圣三角",
+    category:"通用",
+    count:3,
+    description:"适合大多数问题，用原因、现况与结果看清事情的发展逻辑。",
+    positions:[
+      {n:1,label:"原因"},
+      {n:2,label:"现况"},
+      {n:3,label:"结果"}
+    ]
+  },
+
+
+  {
+    id:"arrow_of_time",
+    name:"时间之箭",
+    category:"通用",
+    count:3,
+    description:"从过去、现在与未来三个时间节点观察事情的发展。",
+    positions:[
+      {n:1,label:"过去"},
+      {n:2,label:"现在"},
+      {n:3,label:"未来"}
+    ]
+  },
+
+
+  {
+    id:"yes_no",
+    name:"是非问题",
+    category:"是非",
+    count:3,
+    description:"适合会不会、能不能、行不行、爱不爱等明确的是非问题。",
+    positions:[
+      {n:1,label:"第一张"},
+      {n:2,label:"第二张"},
+      {n:3,label:"第三张"}
+    ],
+    specialRule:"yes_no"
+  },
+
+
+  {
+    id:"self_exploration",
+    name:"自我探索",
+    category:"自我",
+    count:4,
+    description:"从当前状态、外在表现、内心想法与潜意识需求了解自己。",
+    positions:[
+      {n:1,label:"当前状态"},
+      {n:2,label:"外在表现"},
+      {n:3,label:"内心想法"},
+      {n:4,label:"潜意识需求"}
+    ]
+  },
+
+
+  {
+    id:"new_love",
+    name:"新的恋情",
+    category:"爱情",
+    count:6,
+    description:"适合单身时探索下一段感情的发展。",
+    positions:[
+      {n:1,label:"何时遇见下一任"},
+      {n:2,label:"对方的特征"},
+      {n:3,label:"相处方式"},
+      {n:4,label:"关系是否长久"},
+      {n:5,label:"是否是灵魂伴侣"},
+      {n:6,label:"是否正式确定关系"}
+    ]
+  },
+
+
+  {
+    id:"flower_cat",
+    name:"圣花猫占卜法",
+    category:"通用",
+    count:6,
+    description:"按照牌阵原规则，从洗牌后的牌堆中取第7～12张牌。",
+    specialRule:"flower_cat",
+    positions:[
+      {n:1,label:"过去"},
+      {n:2,label:"过去"},
+      {n:3,label:"现在"},
+      {n:4,label:"现在"},
+      {n:5,label:"未来发展"},
+      {n:6,label:"最终结果"}
+    ]
+  },
+
+
+  {
+    id:"emotional_relationship",
+    name:"情感关系",
+    category:"爱情",
+    count:5,
+    description:"适合已经处于关系中的两个人，观察感情的发展与最终结果。",
+    positions:[
+      {n:1,label:"当前情况"},
+      {n:2,label:"女性一方的感受"},
+      {n:3,label:"男性一方的感受"},
+      {n:4,label:"过去情况"},
+      {n:5,label:"最终结果"}
+    ]
+  },
+
+
+  {
+    id:"hexagram",
+    name:"六芒星",
+    category:"事业",
+    count:7,
+    description:"主要用于事业问题，从过去、现在、未来、环境与建议等角度分析。",
+    positions:[
+      {n:1,label:"过去"},
+      {n:2,label:"现在"},
+      {n:3,label:"未来"},
+      {n:4,label:"指导与方向"},
+      {n:5,label:"整体环境"},
+      {n:6,label:"希望与恐惧"},
+      {n:7,label:"最终方向"}
+    ]
+  },
+
+
+  {
+    id:"lover_pyramid",
+    name:"恋人金字塔",
+    category:"爱情",
+    count:4,
+    description:"比较双方期待，并观察当前关系与未来关系的发展。",
+    positions:[
+      {n:1,label:"你的期待"},
+      {n:2,label:"对方的期待"},
+      {n:3,label:"当前关系"},
+      {n:4,label:"未来关系"}
+    ]
+  },
+
+
+  {
+    id:"love_prospect",
+    name:"恋爱前景",
+    category:"爱情",
+    count:5,
+    description:"适合已经处于恋爱关系中，用于观察近期问题与未来发展。",
+    positions:[
+      {n:1,label:"你的当前状态"},
+      {n:2,label:"对方的当前状态"},
+      {n:3,label:"当前关系"},
+      {n:4,label:"即将出现的问题"},
+      {n:5,label:"未来发展"}
+    ]
+  },
+
+
+  {
+    id:"gypsy_cross",
+    name:"吉普赛十字",
+    category:"爱情",
+    count:5,
+    description:"从双方想法、关系问题与外部环境观察感情的发展。",
+    positions:[
+      {n:1,label:"对方的想法"},
+      {n:2,label:"你的想法"},
+      {n:3,label:"关系中的问题"},
+      {n:4,label:"影响关系的环境"},
+      {n:5,label:"关系发展与结果"}
+    ]
+  },
+
+
+  {
+    id:"marriage_analysis",
+    name:"婚姻剖析",
+    category:"婚姻",
+    count:8,
+    description:"从双方状态、婚姻历程、核心问题、未来与建议进行分析。",
+    positions:[
+      {n:1,label:"你的状态"},
+      {n:2,label:"对方的状态"},
+      {n:3,label:"过去婚姻状态"},
+      {n:4,label:"当前婚姻状态"},
+      {n:5,label:"对方的期待"},
+      {n:6,label:"情感问题"},
+      {n:7,label:"未来发展"},
+      {n:8,label:"塔罗建议"}
+    ]
+  },
+
+
+  {
+    id:"windmill_marriage",
+    name:"婚姻牌阵·风车形",
+    category:"婚姻",
+    count:7,
+    description:"从自身、婚姻过去与现在、问题、期待、恐惧及未来进行分析。",
+    positions:[
+      {n:1,label:"自己"},
+      {n:2,label:"过去婚姻状况"},
+      {n:3,label:"当前婚姻状况"},
+      {n:4,label:"婚姻中的问题"},
+      {n:5,label:"期待"},
+      {n:6,label:"恐惧"},
+      {n:7,label:"未来发展"}
+    ]
+  },
+
+
+  {
+    id:"peace_fan",
+    name:"平安扇牌阵",
+    category:"关系",
+    count:4,
+    description:"用于分析你与特定对象目前的关系、影响因素与未来趋势。",
+    positions:[
+      {n:1,label:"当前情况"},
+      {n:2,label:"影响因素"},
+      {n:3,label:"两人未来趋势"},
+      {n:4,label:"关系结论"}
+    ]
+  },
+
+
+  {
+    id:"court_guard",
+    name:"宫廷仪仗牌阵",
+    category:"自我",
+    count:4,
+    description:"只使用16张宫廷牌，从侍从、骑士、王后、国王四个层面获得行动方向。",
+    specialRule:"court_only",
+    positions:[
+      {n:1,label:"侍从｜你需要学习的"},
+      {n:2,label:"骑士｜你应该立即行动的"},
+      {n:3,label:"王后｜你需要培养的"},
+      {n:4,label:"国王｜你需要掌控与决定的"}
+    ]
+  },
+
+
+  {
+    id:"emotional_mirror",
+    name:"情感之镜",
+    category:"爱情",
+    count:5,
+    description:"适合感情关系或分手后的复合问题。",
+    positions:[
+      {n:1,label:"你的当前想法"},
+      {n:2,label:"对方的当前想法"},
+      {n:3,label:"当前情况"},
+      {n:4,label:"未来情感趋势"},
+      {n:5,label:"最终结果"}
+    ]
+  },
+
+
+  {
+    id:"two_choices",
+    name:"二选一",
+    category:"选择",
+    count:5,
+    description:"用于比较两个选择的近期发展与最终结果。",
+    positions:[
+      {n:1,label:"当前状态"},
+      {n:2,label:"选择A｜近期发展"},
+      {n:3,label:"选择B｜近期发展"},
+      {n:4,label:"选择A｜最终结果"},
+      {n:5,label:"选择B｜最终结果"}
+    ]
+  },
+
+
+  {
+    id:"wealth_hope",
+    name:"财富希望",
+    category:"财富",
+    count:4,
+    description:"观察未来财务趋势、优势、阻碍与改善方式。",
+    positions:[
+      {n:1,label:"你的优势与资产"},
+      {n:2,label:"财富阻碍"},
+      {n:3,label:"改善财富的方法"},
+      {n:4,label:"最终财务趋势"}
+    ]
+  },
+
+
+  {
+    id:"future_development",
+    name:"未来发展牌阵",
+    category:"综合",
+    count:6,
+    description:"从爱情、事业、财富与成就等方面综合观察未来。",
+    positions:[
+      {n:1,label:"当前状态"},
+      {n:2,label:"爱情发展"},
+      {n:3,label:"工作／事业／学习"},
+      {n:4,label:"财富"},
+      {n:5,label:"成就"},
+      {n:6,label:"最终结果"}
+    ]
+  },
+
+
+  {
+    id:"love_cross",
+    name:"爱情十字牌阵",
+    category:"爱情",
+    count:5,
+    description:"从双方状态、当前关系与障碍观察爱情的发展。",
+    positions:[
+      {n:1,label:"你的当前状态"},
+      {n:2,label:"对方对你的态度"},
+      {n:3,label:"当前关系"},
+      {n:4,label:"障碍与问题"},
+      {n:5,label:"最终结果"}
+    ]
+  },
+
+
+  {
+    id:"diamond",
+    name:"钻石展开法",
+    category:"通用",
+    count:4,
+    description:"观察当前状态、即将出现的问题与最终结果。",
+    positions:[
+      {n:1,label:"当前"},
+      {n:2,label:"即将出现的问题一"},
+      {n:3,label:"即将出现的问题二"},
+      {n:4,label:"结果"}
+    ]
+  },
+
+
+  {
+    id:"love_form",
+    name:"爱的模样牌阵",
+    category:"爱情",
+    count:6,
+    description:"仅适用于正在恋爱中的人，深入观察爱情的状态、意义与可以采取的行动。",
+    positions:[
+      {n:1,label:"当前关系"},
+      {n:2,label:"你的态度与想法"},
+      {n:3,label:"对方的态度与想法"},
+      {n:4,label:"爱情在你生命中的意义"},
+      {n:5,label:"你需要知道的未知信息"},
+      {n:6,label:"你能够采取的行动"}
+    ]
+  },
+
+
+  {
+    id:"career_development",
+    name:"事业发展",
+    category:"事业",
+    count:7,
+    description:"适合职业迷茫、事业发展与方向选择。",
+    positions:[
+      {n:1,label:"当前状态"},
+      {n:2,label:"潜力与才能"},
+      {n:3,label:"自我发展"},
+      {n:4,label:"事业方向"},
+      {n:5,label:"挑战与阻碍"},
+      {n:6,label:"未来趋势"},
+      {n:7,label:"塔罗建议"}
+    ]
+  },
+
+
+  {
+    id:"time_pyramid",
+    name:"时间金字塔牌阵",
+    category:"时间",
+    count:10,
+    description:"针对一个具体事件，从过去、现在、未来直到最终结果进行详细分析。",
+    specialRule:"significator",
+    positions:[
+      {n:1,label:"过去"},
+      {n:2,label:"过去"},
+      {n:3,label:"过去"},
+      {n:4,label:"过去"},
+      {n:5,label:"现在"},
+      {n:6,label:"现在"},
+      {n:7,label:"现在"},
+      {n:8,label:"未来"},
+      {n:9,label:"未来"},
+      {n:10,label:"最终结果"}
+    ]
+  },
+
+
+  {
+    id:"tree_of_life",
+    name:"生命之树牌阵",
+    category:"自我",
+    count:11,
+    description:"用于深入探索自我，从理想、创造力、智慧、人格、习惯到当前状态进行分析。",
+    specialRule:"significator",
+    positions:[
+      {n:1,label:"最高理想／人生目的"},
+      {n:2,label:"创造力"},
+      {n:3,label:"智慧"},
+      {n:4,label:"机会"},
+      {n:5,label:"冲突"},
+      {n:6,label:"人格"},
+      {n:7,label:"喜好／兴趣"},
+      {n:8,label:"表达／沟通／学习"},
+      {n:9,label:"习惯"},
+      {n:10,label:"当前状态"},
+      {n:11,label:"知识"}
+    ]
+  },
+
+
+  {
+    id:"future_gate",
+    name:"未来之门牌阵",
+    category:"未来",
+    count:9,
+    description:"比较不改变、改变路径一与改变路径二的未来发展。",
+    positions:[
+      {n:1,label:"过去"},
+      {n:2,label:"现在"},
+      {n:3,label:"不改变时的未来"},
+      {n:4,label:"改变后的未来一"},
+      {n:5,label:"建议一"},
+      {n:6,label:"建议二"},
+      {n:7,label:"改变后的未来二"},
+      {n:8,label:"建议三"},
+      {n:9,label:"建议四"}
+    ]
+  },
+
+
+  {
+    id:"birth_house",
+    name:"灵感出生宫牌阵",
+    category:"综合",
+    count:13,
+    description:"按照牌阵原规则，从洗牌后的第7张开始取13张牌，观察特定时期的整体趋势。",
+    specialRule:"birth_house",
+    positions:[
+      {n:1,label:"个人特征／行为方式"},
+      {n:2,label:"金钱"},
+      {n:3,label:"兄弟姐妹"},
+      {n:4,label:"家庭／与母亲的关系"},
+      {n:5,label:"爱情／子女"},
+      {n:6,label:"身体健康"},
+      {n:7,label:"人际关系／婚姻"},
+      {n:8,label:"性生活"},
+      {n:9,label:"学习／海外旅行机会"},
+      {n:10,label:"工作／与父亲的关系"},
+      {n:11,label:"朋友"},
+      {n:12,label:"意外事件"},
+      {n:13,label:"整体趋势"}
+    ]
+  },
+
+
+  {
+    id:"reconciliation",
+    name:"恋人复合牌阵",
+    category:"爱情",
+    count:9,
+    description:"专门用于分手后的复合问题。",
+    positions:[
+      {n:1,label:"你的过去"},
+      {n:2,label:"你的当前状态"},
+      {n:3,label:"对方的当前状态"},
+      {n:4,label:"你对复合的想法"},
+      {n:5,label:"对方对复合的想法"},
+      {n:6,label:"阻碍复合的因素"},
+      {n:7,label:"帮助复合的因素"},
+      {n:8,label:"未知信息"},
+      {n:9,label:"最终结果"}
+    ]
+  },
+
+
+  {
+    id:"zodiac_12",
+    name:"黄道12宫牌阵",
+    category:"综合",
+    count:12,
+    description:"通过十二宫位分析一个具体的人、事件或问题，需要结合一定的占星知识。",
+    specialRule:"significator",
+    positions:[
+      {n:1,label:"本质／个人因素／外在形象"},
+      {n:2,label:"物质基础／财务／价值观"},
+      {n:3,label:"沟通／学习／表达"},
+      {n:4,label:"根基／家庭／本地事务"},
+      {n:5,label:"娱乐／恋爱／自我表达"},
+      {n:6,label:"工作／劳务／健康"},
+      {n:7,label:"婚姻／合作／他人"},
+      {n:8,label:"共同财务／投资／性"},
+      {n:9,label:"信念／高等学习／远行"},
+      {n:10,label:"事业／社会形象／地位"},
+      {n:11,label:"朋友／团体／理想"},
+      {n:12,label:"隐藏事物／隐藏敌人／潜意识"}
+    ]
+  }
+
+];
+
+
+
+/* =========================
    状态
 ========================= */
 
@@ -1865,6 +2787,10 @@ let selected = [];
 let revealed = [];
 
 let readingCards = [];
+
+let currentSpread = null;
+
+let spreadDrawMode = "manual";
 
 
 
@@ -1876,10 +2802,13 @@ function showView(id){
 
   const views = [
     "homeView",
+    "spreadView",
+    "spreadStartView",
     "selectView",
     "revealView",
     "historyView"
   ];
+
 
   views.forEach(view => {
 
@@ -1887,9 +2816,11 @@ function showView(id){
 
   });
 
+
   $(id).classList.remove("hidden");
 
   $(id).classList.add("page-enter");
+
 
   setTimeout(() => {
 
@@ -1902,14 +2833,25 @@ function showView(id){
 
 function goHome(){
 
+  currentSpread = null;
+
   showView("homeView");
 
 }
 
 
+
+/* =========================
+   自由抽牌
+========================= */
+
 function startReading(){
 
+  currentSpread = null;
+
   selected = [];
+
+  spreadDrawMode = "manual";
 
   renderSelect();
 
@@ -1920,122 +2862,265 @@ function startReading(){
 
 
 /* =========================
-   选牌
+   牌阵入口
 ========================= */
 
-function renderSelect(){
+function openSpreadMode(){
 
-  const grid =
-    $("selectGrid");
+  renderSpreadList();
 
-  grid.innerHTML = "";
+  showView("spreadView");
 
-
-  deck.forEach((card,index) => {
-
-    const item =
-      document.createElement("div");
-
-    item.className =
-      "select-card";
+}
 
 
-    if(selected.includes(index)){
+function renderSpreadList(){
 
-      item.classList.add("selected");
+  const list =
+    $("spreadList");
 
-    }
+
+  list.innerHTML = "";
 
 
-    item.innerHTML = `
+  SPREADS.forEach(spread => {
 
-      <div class="select-card-inner"></div>
+    const button =
+      document.createElement("button");
+
+
+    button.className =
+      "spread-card";
+
+
+    button.innerHTML = `
+
+      <div class="spread-card-top">
+
+        <span class="spread-name">
+          ${spread.name}
+        </span>
+
+        <span class="spread-count">
+          ${spread.count} 张
+        </span>
+
+      </div>
+
+      <div class="spread-category">
+        ${spread.category}
+      </div>
+
+      <div class="spread-description">
+        ${spread.description}
+      </div>
 
     `;
 
 
-    item.onclick = () =>
-      toggleCard(index);
+    button.addEventListener(
+      "click",
+      () => selectSpread(spread.id)
+    );
 
 
-    grid.appendChild(item);
+    list.appendChild(button);
 
   });
 
-
-  updateSelectCount();
-
 }
 
 
-function toggleCard(index){
+function selectSpread(spreadId){
 
-  const pos =
-    selected.indexOf(index);
-
-
-  if(pos >= 0){
-
-    selected.splice(pos,1);
-
-  }else{
-
-    selected.push(index);
-
-  }
+  currentSpread =
+    SPREADS.find(
+      spread => spread.id === spreadId
+    );
 
 
-  renderSelect();
-
-}
-
-
-function updateSelectCount(){
-
-  $("selectCount").textContent =
-    `已选择 ${selected.length} 张`;
-
-
-  $("confirmBtn").disabled =
-    selected.length === 0;
-
-}
-
-
-function resetSelection(){
-
-  selected = [];
-
-  renderSelect();
-
-}
-
-
-function backToSelect(){
-
-  showView("selectView");
-
-}
-
-
-
-/* =========================
-   确认选牌
-========================= */
-
-function confirmSelection(){
-
-  if(selected.length === 0){
+  if(!currentSpread){
 
     return;
 
   }
 
 
-  readingCards =
-    selected.map(index => ({
+  renderSpreadStart();
 
-      ...deck[index],
+  showView("spreadStartView");
+
+}
+
+
+
+/* =========================
+   牌阵说明
+========================= */
+
+function renderSpreadStart(){
+
+  const spread =
+    currentSpread;
+
+
+  let ruleText =
+    `这个牌阵需要 ${spread.count} 张牌。`;
+
+
+  if(spread.specialRule === "flower_cat"){
+
+    ruleText =
+      "原牌阵规则：洗牌后，从牌堆顶开始数牌，使用第 7～12 张牌作为六个位置。";
+
+  }
+
+
+  if(spread.specialRule === "court_only"){
+
+    ruleText =
+      "原牌阵规则：只使用 16 张宫廷牌，并分别从侍从、骑士、王后、国王四组中各取一张。";
+
+  }
+
+
+  if(spread.specialRule === "birth_house"){
+
+    ruleText =
+      "原牌阵规则：洗牌后，从第 7 张牌开始依次取 13 张牌，对应 13 个位置。";
+
+  }
+
+
+  if(spread.specialRule === "significator"){
+
+    ruleText =
+      "这个牌阵包含额外的切牌／指示牌。当前版本会单独保存指示牌信息。";
+
+  }
+
+
+  $("spreadStartContent").innerHTML = `
+
+    <div class="spread-start-info">
+
+      <div class="spread-start-name">
+        ${spread.name}
+      </div>
+
+      <div class="spread-start-category">
+        ${spread.category} · ${spread.count} 张牌
+      </div>
+
+      <div class="spread-start-description">
+        ${spread.description}
+      </div>
+
+      <div class="spread-start-rule">
+        ${ruleText}
+      </div>
+
+      <div class="spread-start-actions">
+
+        <button
+          class="primary-btn"
+          onclick="beginSpread()"
+        >
+          开始占卜
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+
+/* =========================
+   开始牌阵
+========================= */
+
+function beginSpread(){
+
+  if(!currentSpread){
+
+    return;
+
+  }
+
+
+  selected = [];
+
+  spreadDrawMode =
+    currentSpread.specialRule || "manual";
+
+
+  /*
+    圣花猫：
+    按原规则自动从洗牌后的牌堆取第7～12张。
+  */
+
+  if(
+    currentSpread.specialRule ===
+    "flower_cat"
+  ){
+
+    startFlowerCat();
+
+    return;
+
+  }
+
+
+  /*
+    灵感出生宫：
+    按原规则自动从洗牌后的第7张开始取13张。
+  */
+
+  if(
+    currentSpread.specialRule ===
+    "birth_house"
+  ){
+
+    startBirthHouse();
+
+    return;
+
+  }
+
+
+  renderSelect();
+
+  showView("selectView");
+
+}
+
+
+
+/* =========================
+   圣花猫
+========================= */
+
+function startFlowerCat(){
+
+  const shuffled =
+    shuffleDeck(deck);
+
+
+  const chosen =
+    shuffled.slice(6,12);
+
+
+  readingCards =
+    chosen.map((card,index) => ({
+
+      ...card,
+
+      position:
+        currentSpread.positions[index],
 
       orientation:null,
 
@@ -2052,6 +3137,459 @@ function confirmSelection(){
 
   renderReveal();
 
+  showView("revealView");
+
+}
+
+
+
+/* =========================
+   灵感出生宫
+========================= */
+
+function startBirthHouse(){
+
+  const shuffled =
+    shuffleDeck(deck);
+
+
+  const chosen =
+    shuffled.slice(6,19);
+
+
+  readingCards =
+    chosen.map((card,index) => ({
+
+      ...card,
+
+      position:
+        currentSpread.positions[index],
+
+      orientation:null,
+
+      revealed:false
+
+    }));
+
+
+  revealed =
+    new Array(
+      readingCards.length
+    ).fill(false);
+
+
+  renderReveal();
+
+  showView("revealView");
+
+}
+
+
+
+/* =========================
+   洗牌
+========================= */
+
+function shuffleDeck(source){
+
+  const array =
+    [...source];
+
+
+  for(
+    let i = array.length - 1;
+    i > 0;
+    i--
+  ){
+
+    const j =
+      Math.floor(
+        Math.random() * (i + 1)
+      );
+
+
+    [
+      array[i],
+      array[j]
+    ] =
+    [
+      array[j],
+      array[i]
+    ];
+
+  }
+
+
+  return array;
+
+}
+
+
+
+/* =========================
+   选牌
+========================= */
+
+function renderSelect(){
+
+  const grid =
+    $("selectGrid");
+
+
+  grid.innerHTML = "";
+
+
+  let availableDeck =
+    deck;
+
+
+  /*
+    宫廷仪仗：
+    只显示 16 张宫廷牌。
+  */
+
+  if(
+    currentSpread &&
+    currentSpread.specialRule ===
+    "court_only"
+  ){
+
+    availableDeck =
+      deck.filter(card =>
+        [
+          "wapa","wakn","waqu","waki",
+          "cupa","cukn","cuqu","cuki",
+          "swpa","swkn","swqu","swki",
+          "pepa","pekn","pequ","peki"
+        ].includes(card.code)
+      );
+
+  }
+
+
+  availableDeck.forEach(card => {
+
+    const originalIndex =
+      deck.findIndex(
+        item =>
+          item.code === card.code
+      );
+
+
+    const item =
+      document.createElement("div");
+
+
+    item.className =
+      "select-card";
+
+
+    if(
+      selected.includes(
+        originalIndex
+      )
+    ){
+
+      item.classList.add("selected");
+
+    }
+
+
+    item.innerHTML = `
+
+      <div class="select-card-inner"></div>
+
+    `;
+
+
+    item.onclick = () =>
+      toggleCard(originalIndex);
+
+
+    grid.appendChild(item);
+
+  });
+
+
+  updateSelectCount();
+
+
+  if(currentSpread){
+
+    $("selectSpreadName").textContent =
+      currentSpread.name;
+
+
+    $("selectDescription").innerHTML =
+      `请选择 ${currentSpread.count} 张牌。<br>
+       ${currentSpread.description}`;
+
+
+    $("selectModeLabel").textContent =
+      currentSpread.specialRule ===
+      "court_only"
+        ? "仅限16张宫廷牌"
+        : `需要 ${currentSpread.count} 张`;
+
+  }else{
+
+    $("selectSpreadName").textContent =
+      "凭感觉选牌";
+
+
+    $("selectDescription").innerHTML =
+      `不需要想太久。<br>
+       哪张牌吸引你，就选择哪张。`;
+
+
+    $("selectModeLabel").textContent =
+      "自由抽牌";
+
+  }
+
+}
+
+
+
+/* =========================
+   点击牌
+========================= */
+
+function toggleCard(index){
+
+  const pos =
+    selected.indexOf(index);
+
+
+  if(pos >= 0){
+
+    selected.splice(
+      pos,
+      1
+    );
+
+  }else{
+
+    /*
+      牌阵模式必须达到准确数量。
+    */
+
+    if(
+      currentSpread &&
+      selected.length >=
+      currentSpread.count
+    ){
+
+      showToast(
+        `这个牌阵需要 ${currentSpread.count} 张牌`
+      );
+
+      return;
+
+    }
+
+
+    /*
+      宫廷仪仗：
+      四个宫廷等级各一张。
+    */
+
+    if(
+      currentSpread &&
+      currentSpread.specialRule ===
+      "court_only"
+    ){
+
+      const newCard =
+        deck[index];
+
+
+      const rank =
+        getCourtRank(
+          newCard.code
+        );
+
+
+      const already =
+        selected.some(
+          selectedIndex =>
+            getCourtRank(
+              deck[selectedIndex].code
+            ) === rank
+        );
+
+
+      if(already){
+
+        showToast(
+          `已经选择了一张${rank}，每组只能选择一张`
+        );
+
+        return;
+
+      }
+
+    }
+
+
+    selected.push(index);
+
+  }
+
+
+  renderSelect();
+
+}
+
+
+function getCourtRank(code){
+
+  if(
+    code.endsWith("pa")
+  ){
+
+    return "侍从";
+
+  }
+
+
+  if(
+    code.endsWith("kn")
+  ){
+
+    return "骑士";
+
+  }
+
+
+  if(
+    code.endsWith("qu")
+  ){
+
+    return "王后";
+
+  }
+
+
+  if(
+    code.endsWith("ki")
+  ){
+
+    return "国王";
+
+  }
+
+
+  return "";
+
+}
+
+
+
+/* =========================
+   选择数量
+========================= */
+
+function updateSelectCount(){
+
+  $("selectCount").textContent =
+    `已选择 ${selected.length} 张`;
+
+
+  if(currentSpread){
+
+    $("confirmBtn").disabled =
+      selected.length !==
+      currentSpread.count;
+
+  }else{
+
+    $("confirmBtn").disabled =
+      selected.length === 0;
+
+  }
+
+}
+
+
+function resetSelection(){
+
+  selected = [];
+
+  renderSelect();
+
+}
+
+
+function backToSelect(){
+
+  renderSelect();
+
+  showView("selectView");
+
+}
+
+
+
+/* =========================
+   确认选牌
+========================= */
+
+function confirmSelection(){
+
+  if(
+    currentSpread &&
+    selected.length !==
+    currentSpread.count
+  ){
+
+    showToast(
+      `请选择 ${currentSpread.count} 张牌`
+    );
+
+    return;
+
+  }
+
+
+  if(
+    !currentSpread &&
+    selected.length === 0
+  ){
+
+    return;
+
+  }
+
+
+  readingCards =
+    selected.map(
+      (index,positionIndex) => ({
+
+        ...deck[index],
+
+        position:
+          currentSpread
+            ? currentSpread.positions[
+                positionIndex
+              ]
+            : null,
+
+        orientation:null,
+
+        revealed:false
+
+      })
+    );
+
+
+  revealed =
+    new Array(
+      readingCards.length
+    ).fill(false);
+
+
+  renderReveal();
 
   showView("revealView");
 
@@ -2072,6 +3610,19 @@ function renderReveal(){
   grid.innerHTML = "";
 
 
+  if(currentSpread){
+
+    $("revealSpreadName").textContent =
+      currentSpread.name;
+
+  }else{
+
+    $("revealSpreadName").textContent =
+      "";
+
+  }
+
+
   readingCards.forEach(
     (card,index) => {
 
@@ -2079,11 +3630,29 @@ function renderReveal(){
         document.createElement("div");
 
 
+      const position =
+        document.createElement("div");
+
+
+      position.className =
+        "card-position";
+
+
+      if(card.position){
+
+        position.textContent =
+          `位置 ${card.position.n} · ${card.position.label}`;
+
+      }
+
+
       const flip =
         document.createElement("div");
 
+
       flip.className =
         "tarot-flip";
+
 
       flip.dataset.index =
         index;
@@ -2092,6 +3661,7 @@ function renderReveal(){
       const inner =
         document.createElement("div");
 
+
       inner.className =
         "tarot-inner";
 
@@ -2099,12 +3669,14 @@ function renderReveal(){
       const back =
         document.createElement("div");
 
+
       back.className =
         "tarot-face tarot-back";
 
 
       const front =
         document.createElement("div");
+
 
       front.className =
         "tarot-face tarot-front";
@@ -2131,14 +3703,18 @@ function renderReveal(){
 
       flip.appendChild(inner);
 
+      wrapper.appendChild(position);
+
       wrapper.appendChild(flip);
 
 
       const info =
         document.createElement("div");
 
+
       info.className =
         "card-info";
+
 
       info.id =
         `cardInfo-${index}`;
@@ -2222,12 +3798,6 @@ function flipCard(index){
   }
 
 
-  /*
-    等待浏览器完成初始渲染，
-    再添加 flipped，
-    确保 iPhone Safari 真正播放 3D 翻牌。
-  */
-
   requestAnimationFrame(() => {
 
     requestAnimationFrame(() => {
@@ -2240,22 +3810,29 @@ function flipCard(index){
 
 
   const orientation =
-  $(`orientation-${index}`);
-
-orientation.textContent =
-  card.orientation === "upright"
-    ? "正位"
-    : "逆位";
+    $(`orientation-${index}`);
 
 
-const cardImage =
-  flip.querySelector("img");
+  orientation.textContent =
+    card.orientation === "upright"
+      ? "正位"
+      : "逆位";
 
-if(card.orientation === "reversed"){
 
-  cardImage.classList.add("reversed");
+  const cardImage =
+    flip.querySelector("img");
 
-}
+
+  if(
+    card.orientation ===
+    "reversed"
+  ){
+
+    cardImage.classList.add(
+      "reversed"
+    );
+
+  }
 
 
   const info =
@@ -2350,7 +3927,9 @@ function saveReading(){
 
   if(!allRevealed){
 
-    showToast("请先揭示全部牌面");
+    showToast(
+      "请先揭示全部牌面"
+    );
 
     return;
 
@@ -2373,6 +3952,16 @@ function saveReading(){
     date:
       new Date().toISOString(),
 
+    spreadId:
+      currentSpread
+        ? currentSpread.id
+        : null,
+
+    spreadName:
+      currentSpread
+        ? currentSpread.name
+        : "自由抽牌",
+
     question:
       $("questionInput").value.trim(),
 
@@ -2381,6 +3970,14 @@ function saveReading(){
 
     cards:
       readingCards.map(card => ({
+
+        position:
+          card.position
+            ? {
+                n:card.position.n,
+                label:card.position.label
+              }
+            : null,
 
         name:
           card.name,
@@ -2405,7 +4002,9 @@ function saveReading(){
   );
 
 
-  showToast("已保存这次抽牌");
+  showToast(
+    "已保存这次抽牌"
+  );
 
 
   setTimeout(() => {
@@ -2492,13 +4091,20 @@ function renderHistory(){
 
     const names =
       record.cards
-        .map(card =>
-          `${card.name} · ${
+        .map(card => {
+
+          const position =
+            card.position
+              ? `${card.position.label}：`
+              : "";
+
+          return `${position}${card.name} · ${
             card.orientation === "upright"
               ? "正"
               : "逆"
-          }`
-        )
+          }`;
+
+        })
         .join("　");
 
 
@@ -2506,6 +4112,10 @@ function renderHistory(){
 
       <div class="history-date">
         ${dateText}
+      </div>
+
+      <div class="history-spread">
+        ${record.spreadName || "自由抽牌"}
       </div>
 
       <div class="history-question">
@@ -2582,6 +4192,22 @@ function openDetail(id){
   content.innerHTML = "";
 
 
+  const spread =
+    document.createElement("div");
+
+
+  spread.className =
+    "detail-spread";
+
+
+  spread.textContent =
+    record.spreadName ||
+    "自由抽牌";
+
+
+  content.appendChild(spread);
+
+
   if(record.question){
 
     const q =
@@ -2631,6 +4257,16 @@ function openDetail(id){
       >
 
       <div>
+
+        ${
+          card.position
+            ? `
+              <div class="detail-position">
+                位置 ${card.position.n} · ${card.position.label}
+              </div>
+            `
+            : ""
+        }
 
         <div class="detail-name">
           ${card.name}
@@ -2743,13 +4379,16 @@ function deleteRecord(id){
 
   const newHistory =
     history.filter(
-      record => record.id !== id
+      record =>
+        record.id !== id
     );
 
 
   localStorage.setItem(
     "myTarotHistory",
-    JSON.stringify(newHistory)
+    JSON.stringify(
+      newHistory
+    )
   );
 
 
@@ -2785,12 +4424,13 @@ function showToast(message){
   toastTimer =
     setTimeout(() => {
 
-      toast.classList.remove("show");
+      toast.classList.remove(
+        "show"
+      );
 
     },1800);
 
 }
-
 
 </script>
 
