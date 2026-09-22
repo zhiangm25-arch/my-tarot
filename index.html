@@ -1,37 +1,49 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
+
 <meta charset="UTF-8">
 
 <meta
-name=“viewport”
-content=“width=device-width,initial-scale=1,viewport-fit=cover”
+  name="viewport"
+  content="width=device-width,initial-scale=1,viewport-fit=cover"
+>
 
 <meta name="theme-color" content="#17151b">
 
 <meta
-name=“apple-mobile-web-app-capable”
-content=“yes”
+  name="apple-mobile-web-app-capable"
+  content="yes"
+>
 
 <meta
-name=“apple-mobile-web-app-status-bar-style”
-content=“black-translucent”
+  name="apple-mobile-web-app-status-bar-style"
+  content="black-translucent"
+>
 
 <meta
-name=“apple-mobile-web-app-title”
-content=“MY TAROT”
+  name="apple-mobile-web-app-title"
+  content="MY TAROT"
+>
 
 <link
   rel="manifest"
   href="./manifest.json"
 >
+
 <link
   rel="apple-touch-icon"
   href="https://zhiangm25-arch.github.io/my-tarot/2325ED3E-F36C-495C-BC76-A8E3857AC2D8.png"
 >
+
 <title>MY TAROT</title>
+
+
 <style>
+
 :root{
+
   --bg:#111016;
   --panel:#17151b;
   --panel2:#1d1a21;
@@ -40,19 +52,29 @@ content=“MY TAROT”
   --text:#eee8df;
   --muted:#918a82;
   --line:rgba(205,181,138,.20);
+
 }
+
+
 *{
+
   box-sizing:border-box;
+
   -webkit-tap-highlight-color:transparent;
+
 }
+
+
 html,
 body{
+
   margin:0;
   padding:0;
   width:100%;
   min-height:100%;
   background:var(--bg);
   color:var(--text);
+
   font-family:
     -apple-system,
     BlinkMacSystemFont,
@@ -60,1070 +82,1896 @@ body{
     "Helvetica Neue",
     Arial,
     sans-serif;
+
 }
+
+
 body{
+
   min-height:100vh;
   overflow-x:hidden;
+
 }
+
+
 button,
 input,
 textarea{
+
   font:inherit;
+
 }
+
+
 button{
+
   border:0;
   outline:0;
-  -webkit-appearance:none;
-  appearance:none;
+
 }
-/* =========================
-   通用按钮
-========================= */
-.secondary-btn{
-  padding:9px 15px;
-  border-radius:22px;
-  border:
-    1px solid
-    rgba(205,181,138,.28);
-  background:
-    rgba(205,181,138,.045);
-  color:#cdbb9d;
-  font-size:11px;
-  letter-spacing:.05em;
-  white-space:nowrap;
-  transition:
-    transform .18s ease,
-    background .18s ease,
-    border-color .18s ease;
-}
-.secondary-btn:active{
-  transform:scale(.95);
-  background:
-    rgba(205,181,138,.10);
-  border-color:
-    rgba(205,181,138,.45);
-}
-/* =========================
-   返回按钮
-========================= */
-.back-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:5px;
-  padding:8px 12px;
-  border-radius:20px;
-  background:
-    rgba(205,181,138,.035);
-  border:
-    1px solid
-    rgba(205,181,138,.16);
-  color:#a99f95;
-  font-size:11px;
-  letter-spacing:.03em;
-  transition:
-    transform .18s ease,
-    background .18s ease,
-    border-color .18s ease;
-}
-.back-btn:active{
-  transform:scale(.95);
-  background:
-    rgba(205,181,138,.08);
-  border-color:
-    rgba(205,181,138,.32);
-}
-/* =========================
-   App
-========================= */
+
+
 .app{
+
   min-height:100vh;
+
   padding:
     env(safe-area-inset-top)
     18px
     env(safe-area-inset-bottom);
+
 }
+
+
 .page{
+
   width:100%;
   max-width:680px;
   margin:0 auto;
   min-height:100vh;
+
 }
+
+
 .hidden{
+
   display:none !important;
+
 }
+
+
 /* =========================
    顶部
 ========================= */
+
 .header{
+
   padding-top:28px;
   text-align:center;
+
 }
+
+
 .logo{
+
   color:var(--gold2);
   font-size:25px;
   font-weight:500;
   letter-spacing:.24em;
   margin-left:.24em;
+
 }
+
+
 .subtitle{
+
   margin-top:8px;
   color:var(--muted);
   font-size:12px;
   letter-spacing:.12em;
+
 }
+
+
 /* =========================
    首页
 ========================= */
+
 .home-content{
+
   min-height:
     calc(100vh - 110px);
+
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   padding-bottom:70px;
+
 }
+
+
 .home-symbol{
+
   width:82px;
   height:108px;
+
   border:
     1px solid
     rgba(205,181,138,.42);
+
   border-radius:11px;
+
   display:grid;
   place-items:center;
+
   color:var(--gold);
   font-size:31px;
+
   margin-bottom:30px;
+
   box-shadow:
     0 0 40px
     rgba(205,181,138,.06);
+
 }
+
+
 .home-question{
+
   font-size:22px;
   letter-spacing:.08em;
   color:#eee8df;
   margin-bottom:11px;
+
 }
+
+
 .home-hint{
+
   color:var(--muted);
   font-size:12px;
   letter-spacing:.06em;
   margin-bottom:34px;
+
 }
+
+
 .home-buttons{
+
   width:100%;
   max-width:330px;
+
   display:flex;
   flex-direction:column;
   gap:11px;
+
 }
+
+
 .primary-btn{
+
   width:100%;
+
   padding:14px 26px;
+
   border-radius:30px;
+
   background:
     linear-gradient(
       135deg,
       #d8c49c,
       #b69c6e
     );
+
   color:#211c17;
+
   font-size:14px;
   letter-spacing:.08em;
+
   box-shadow:
     0 7px 25px
     rgba(205,181,138,.12);
+
   transition:
     transform .18s ease,
     box-shadow .18s ease;
+
 }
+
+
 .primary-btn:active{
+
   transform:scale(.96);
+
   box-shadow:
     0 3px 12px
     rgba(205,181,138,.08);
+
 }
+
+
 .spread-home-btn{
+
   width:100%;
+
   padding:13px 20px;
+
   border-radius:30px;
+
   border:
     1px solid
     rgba(205,181,138,.32);
+
   background:
     rgba(205,181,138,.04);
+
   color:var(--gold2);
+
   font-size:13px;
+
   letter-spacing:.08em;
+
 }
+
+
 .text-btn{
+
   background:none;
+
   color:var(--muted);
+
   font-size:12px;
+
   padding:8px;
+
 }
-.text-btn:active{
-  color:var(--gold2);
-}
+
+
 /* =========================
    页面标题
 ========================= */
+
 .page-title{
+
   margin-top:38px;
+
   text-align:center;
+
   font-size:18px;
   font-weight:400;
+
   letter-spacing:.10em;
+
 }
+
+
 .page-description{
+
   margin-top:9px;
+
   text-align:center;
+
   color:var(--muted);
+
   font-size:12px;
   line-height:1.7;
+
 }
+
+
 .top-actions{
+
   display:flex;
+
   justify-content:space-between;
+
   align-items:center;
+
   margin-top:25px;
+
 }
+
+
 /* =========================
    牌阵选择
 ========================= */
+
 .spread-list{
+
   margin-top:25px;
+
   padding-bottom:35px;
+
   display:flex;
   flex-direction:column;
+
   gap:10px;
+
 }
+
+
 .spread-card{
+
   width:100%;
+
   padding:17px 16px;
+
   border:
     1px solid
     rgba(205,181,138,.17);
+
   border-radius:12px;
+
   background:#17151b;
+
   color:var(--text);
+
   text-align:left;
+
   transition:
     transform .18s ease,
     border-color .18s ease,
     background .18s ease;
+
 }
+
+
 .spread-card:active{
+
   transform:scale(.985);
+
 }
+
+
 .spread-card-top{
+
   display:flex;
+
   justify-content:space-between;
+
   align-items:center;
+
   gap:10px;
+
 }
+
+
 .spread-name{
+
   color:#eee8df;
+
   font-size:15px;
+
 }
+
+
 .spread-count{
+
   color:var(--gold);
+
   font-size:10px;
+
   flex:none;
+
 }
+
+
 .spread-category{
+
   margin-top:7px;
+
   color:#9c9288;
+
   font-size:10px;
+
   letter-spacing:.08em;
+
 }
+
+
 .spread-description{
+
   margin-top:8px;
+
   color:#aaa3ad;
+
   font-size:12px;
+
   line-height:1.65;
+
 }
+
+
 /* =========================
    牌阵开始页面
 ========================= */
+
 .spread-start-info{
+
   margin-top:25px;
+
   padding:18px;
+
   border:
     1px solid
     rgba(205,181,138,.17);
+
   border-radius:12px;
+
   background:#17151b;
+
 }
+
+
 .spread-start-name{
+
   color:var(--gold2);
+
   text-align:center;
+
   font-size:17px;
+
 }
+
+
 .spread-start-category{
+
   margin-top:7px;
+
   text-align:center;
+
   color:var(--muted);
+
   font-size:10px;
+
 }
+
+
 .spread-start-description{
+
   margin-top:15px;
+
   color:#b7afb6;
+
   font-size:12px;
+
   line-height:1.8;
+
 }
+
+
 .spread-start-rule{
+
   margin-top:13px;
+
   padding:11px 12px;
+
   border-radius:8px;
+
   background:rgba(205,181,138,.05);
+
   color:#bba987;
+
   font-size:11px;
+
   line-height:1.7;
+
 }
+
+
 .spread-start-actions{
+
   margin-top:20px;
+
   display:flex;
+
   flex-direction:column;
+
   gap:10px;
+
 }
+
+
 /* =========================
    选择牌
 ========================= */
+
 .select-count{
+
   color:var(--gold2);
   font-size:12px;
+
 }
+
+
 .select-mode-label{
+
   color:var(--muted);
   font-size:11px;
+
 }
+
+
 .card-grid{
+
   display:grid;
+
   grid-template-columns:
     repeat(6,1fr);
+
   gap:9px;
+
   margin-top:20px;
+
   padding-bottom:30px;
+
 }
+
+
 @media(max-width:390px){
+
   .card-grid{
+
     grid-template-columns:
       repeat(5,1fr);
+
     gap:9px;
+
   }
+
 }
+
+
 .select-card{
+
   position:relative;
+
   aspect-ratio:2 / 3.45;
+
   perspective:900px;
+
   cursor:pointer;
+
 }
+
+
 .select-card-inner{
+
   position:absolute;
+
   inset:0;
+
   border-radius:7px;
+
   border:
     1px solid
     rgba(205,181,138,.18);
+
   background:
+
     radial-gradient(
       circle at center,
       rgba(205,181,138,.12),
       transparent 55%
     ),
+
     linear-gradient(
       145deg,
       #27222d,
       #17151b
     );
+
   display:flex;
+
   align-items:center;
+
   justify-content:center;
+
   overflow:hidden;
+
   transition:
     transform .22s ease,
     border-color .22s ease,
     box-shadow .22s ease;
+
 }
+
+
 .select-card-inner::before{
+
   content:"✦";
+
   color:
     rgba(205,181,138,.35);
+
   font-size:14px;
+
 }
+
+
 .select-card.selected
 .select-card-inner{
+
   transform:
     translateY(-4px)
     scale(.96);
+
   border-color:
     rgba(225,207,170,.8);
+
   box-shadow:
     0 7px 20px
     rgba(205,181,138,.14);
+
 }
+
+
 .select-card.selected::after{
+
   content:"✓";
+
   position:absolute;
+
   right:4px;
   top:4px;
+
   width:17px;
   height:17px;
+
   border-radius:50%;
+
   display:grid;
   place-items:center;
+
   background:var(--gold2);
+
   color:#211c17;
+
   font-size:10px;
   font-weight:bold;
+
 }
+
+
 /* =========================
    选择页面底部
 ========================= */
+
 .select-bottom{
+
   position:sticky;
+
   bottom:0;
+
   padding:
     14px
     0
     calc(14px + env(safe-area-inset-bottom));
+
   background:
     linear-gradient(
       to bottom,
       rgba(17,16,22,0),
       rgba(17,16,22,.95) 30%
     );
+
   text-align:center;
+
 }
+
+
 .confirm-btn{
+
   width:100%;
   max-width:330px;
+
   padding:14px;
+
   border-radius:28px;
+
   background:
     linear-gradient(
       135deg,
       #d8c49c,
       #b69c6e
     );
+
   color:#211c17;
+
   font-size:14px;
+
   letter-spacing:.08em;
+
 }
+
+
 .confirm-btn:disabled{
+
   opacity:.35;
+
 }
+
+
 /* =========================
    翻牌页面
 ========================= */
+
 .reveal-header{
+
   display:flex;
+
   align-items:center;
+
   justify-content:space-between;
+
   margin-top:30px;
+
 }
+
+
 .reveal-progress{
+
   color:var(--muted);
   font-size:12px;
+
 }
+
+
 .reveal-spread-name{
+
   margin-top:18px;
+
   text-align:center;
+
   color:var(--gold2);
+
   font-size:14px;
+
   letter-spacing:.08em;
+
 }
+
+
 .reveal-grid{
+
   display:grid;
+
   grid-template-columns:
     repeat(3,1fr);
+
   gap:17px;
+
   margin-top:28px;
+
   padding-bottom:20px;
+
 }
+
+
 @media(max-width:390px){
+
   .reveal-grid{
+
     gap:12px;
+
   }
+
 }
+
+
 /* =========================
    真正的 3D 翻牌
 ========================= */
+
 .tarot-flip{
+
   position:relative;
+
   width:100%;
+
   aspect-ratio:2 / 3.45;
+
   perspective:1100px;
+
   cursor:pointer;
+
 }
+
+
 .tarot-inner{
+
   position:absolute;
+
   inset:0;
+
   width:100%;
   height:100%;
+
   transform-style:preserve-3d;
+
   transition:
     transform .68s
     cubic-bezier(.22,.75,.25,1);
+
 }
+
+
 .tarot-flip.flipped
 .tarot-inner{
+
   transform:
     rotateY(180deg);
+
 }
+
+
 .tarot-face{
+
   position:absolute;
+
   inset:0;
+
   width:100%;
   height:100%;
+
   border-radius:9px;
+
   overflow:hidden;
+
   backface-visibility:hidden;
+
   -webkit-backface-visibility:hidden;
+
 }
+
+
 .tarot-back{
+
   display:flex;
+
   align-items:center;
   justify-content:center;
+
   background:
+
     radial-gradient(
       circle at center,
       rgba(205,181,138,.10),
       transparent 55%
     ),
+
     linear-gradient(
       145deg,
       #27222d,
       #141319
     );
+
   border:
     1px solid
     rgba(205,181,138,.34);
+
   box-shadow:
     0 8px 25px
     rgba(0,0,0,.22);
+
 }
+
+
 .tarot-back::before{
+
   content:"✦";
+
   width:34px;
   height:48px;
+
   border:
     1px solid
     rgba(205,181,138,.45);
+
   border-radius:5px;
+
   display:grid;
   place-items:center;
+
   color:var(--gold);
+
   font-size:16px;
+
   box-shadow:
     inset 0 0 15px
     rgba(205,181,138,.05);
+
 }
+
+
 .tarot-back::after{
+
   content:"点击翻牌";
+
   position:absolute;
+
   bottom:9px;
+
   left:0;
   right:0;
+
   text-align:center;
+
   color:
     rgba(225,207,170,.45);
+
   font-size:9px;
+
   letter-spacing:.05em;
+
 }
+
+
 .tarot-front{
+
   transform:
     rotateY(180deg);
+
   background:#201c22;
+
   border:
     1px solid
     rgba(205,181,138,.45);
+
   box-shadow:
     0 10px 30px
     rgba(0,0,0,.28);
+
 }
+
+
 .tarot-front img{
+
   display:block;
+
   width:100%;
   height:100%;
+
   object-fit:cover;
+
   transition:
     transform .15s ease;
+
 }
+
+
 .tarot-front img.reversed{
+
   transform:rotate(180deg);
+
 }
+
+
 .tarot-flip.flipped
 .tarot-front{
+
   box-shadow:
     0 0 24px
     rgba(205,181,138,.11),
+
     0 10px 30px
     rgba(0,0,0,.3);
+
 }
+
+
 /* =========================
    牌位名称
 ========================= */
+
 .card-position{
+
   margin-bottom:5px;
+
   color:#b9a88c;
+
   font-size:10px;
+
   line-height:1.4;
+
 }
+
+
 .card-info{
+
   text-align:center;
+
   margin-top:10px;
+
   min-height:54px;
+
   opacity:0;
+
   transform:
     translateY(-4px);
+
 }
+
+
 .card-info.show{
+
   animation:
     cardInfoIn .42s
     ease forwards;
+
 }
+
+
 @keyframes cardInfoIn{
+
   from{
+
     opacity:0;
+
     transform:
       translateY(-5px);
+
   }
+
   to{
+
     opacity:1;
+
     transform:
       translateY(0);
+
   }
+
 }
+
+
 .card-name{
+
   color:#e5dccd;
+
   font-size:12px;
+
   line-height:1.4;
+
 }
+
+
 .card-orientation{
+
   margin-top:3px;
+
   color:var(--gold);
+
   font-size:10px;
+
 }
+
+
 /* =========================
    翻牌底部
 ========================= */
+
 .reveal-actions{
+
   display:flex;
+
   gap:10px;
+
   justify-content:center;
+
   padding:
     10px
     0
     calc(20px + env(safe-area-inset-bottom));
+
 }
+
+
 .reveal-actions button{
+
   flex:1;
+
   max-width:180px;
+
 }
+
+
 .save-btn{
+
   padding:13px 20px;
+
   border-radius:25px;
+
   background:
     linear-gradient(
       135deg,
       #d8c49c,
       #b69c6e
     );
+
   color:#211c17;
+
   font-size:13px;
+
 }
+
+
 .save-btn:disabled{
+
   opacity:.35;
+
 }
+
+
 /* =========================
    问题 / 笔记
 ========================= */
+
 .form-section{
+
   margin-top:20px;
+
 }
+
+
 .form-label{
+
   display:block;
+
   color:var(--gold2);
+
   font-size:12px;
+
   margin-bottom:8px;
+
   letter-spacing:.05em;
+
 }
+
+
 .form-input,
 .form-textarea{
+
   width:100%;
+
   border:
     1px solid
     rgba(205,181,138,.16);
+
   border-radius:10px;
+
   outline:none;
+
   background:#18161c;
+
   color:var(--text);
+
   padding:12px 13px;
+
 }
+
+
 .form-input{
+
   height:43px;
+
 }
+
+
 .form-textarea{
+
   min-height:100px;
+
   resize:vertical;
+
   line-height:1.7;
+
 }
+
+
 .form-input:focus,
 .form-textarea:focus{
+
   border-color:
     rgba(205,181,138,.42);
+
 }
+
+
 /* =========================
    历史记录
 ========================= */
+
 .history-list{
+
   margin-top:25px;
+
   padding-bottom:30px;
+
 }
+
+
 .history-item{
+
   padding:16px;
+
   margin-bottom:10px;
+
   border:
     1px solid
     rgba(205,181,138,.13);
+
   border-radius:11px;
+
   background:#17151b;
+
 }
+
+
 .history-date{
+
   color:var(--gold);
+
   font-size:11px;
+
 }
+
+
 .history-spread{
+
   margin-top:7px;
+
   color:#bcae96;
+
   font-size:11px;
+
 }
+
+
 .history-question{
+
   margin-top:8px;
+
   color:#e8e0d4;
+
   font-size:13px;
+
   line-height:1.6;
+
 }
+
+
 .history-cards{
+
   margin-top:9px;
+
   color:var(--muted);
+
   font-size:11px;
+
   line-height:1.7;
+
 }
+
+
 .history-actions{
+
   display:flex;
+
   justify-content:flex-end;
+
   gap:8px;
+
   margin-top:11px;
+
 }
+
+
 .empty-history{
+
   text-align:center;
+
   color:var(--muted);
+
   font-size:12px;
+
   padding-top:60px;
+
 }
+
+
 /* =========================
    详情弹窗
 ========================= */
+
 .modal{
+
   position:fixed;
+
   inset:0;
+
   z-index:30;
+
   display:flex;
+
   align-items:flex-end;
+
   justify-content:center;
+
   background:
     rgba(0,0,0,.62);
+
   opacity:0;
+
   visibility:hidden;
+
   transition:
     opacity .25s ease,
     visibility 0s linear .25s;
+
 }
+
+
 .modal.show{
+
   opacity:1;
+
   visibility:visible;
+
   transition:
     opacity .25s ease,
     visibility 0s linear 0s;
+
 }
+
+
 .modal-panel{
+
   width:100%;
   max-width:680px;
+
   max-height:82vh;
+
   overflow-y:auto;
+
   border-radius:
     18px
     18px
     0
     0;
+
   background:#1a171e;
+
   padding:
     24px
     20px
     calc(25px + env(safe-area-inset-bottom));
+
   transform:
     translateY(30px);
+
   transition:
     transform .3s
     cubic-bezier(.2,.8,.2,1);
+
 }
+
+
 .modal.show
 .modal-panel{
+
   transform:
     translateY(0);
+
 }
+
+
 .modal-title{
+
   text-align:center;
+
   color:var(--gold2);
+
   font-size:15px;
+
   letter-spacing:.08em;
+
 }
+
+
 .detail-spread{
+
   margin-top:8px;
+
   text-align:center;
+
   color:#bcae96;
+
   font-size:11px;
+
 }
+
+
 .detail-card{
+
   margin-top:18px;
+
   display:flex;
+
   gap:14px;
+
   align-items:center;
+
 }
+
+
 .detail-card img{
+
   width:65px;
   height:105px;
+
   object-fit:cover;
+
   border-radius:6px;
+
 }
+
+
 .detail-name{
+
   color:#eee8df;
+
   font-size:13px;
+
 }
+
+
 .detail-position{
+
   margin-bottom:5px;
+
   color:#bcae96;
+
   font-size:10px;
+
 }
+
+
 .detail-orientation{
+
   margin-top:5px;
+
   color:var(--gold);
+
   font-size:11px;
+
 }
+
+
 .close-modal{
+
   display:block;
+
   width:100%;
+
   margin-top:22px;
+
   padding:12px;
+
   border-radius:25px;
+
   border:
     1px solid
     var(--line);
+
   background:none;
+
   color:var(--gold2);
+
 }
+
+
 /* =========================
    页面进入动画
 ========================= */
+
 .page-enter{
+
   animation:
     pageEnter .38s
     ease both;
+
 }
+
+
 @keyframes pageEnter{
+
   from{
+
     opacity:0;
+
     transform:
       translateY(8px);
+
   }
+
   to{
+
     opacity:1;
+
     transform:
       translateY(0);
+
   }
+
 }
+
+
 /* =========================
    Toast
 ========================= */
+
 .toast{
+
   position:fixed;
+
   left:50%;
+
   bottom:
     calc(32px + env(safe-area-inset-bottom));
+
   z-index:50;
+
   transform:
     translate(-50%,10px);
+
   padding:10px 16px;
+
   border-radius:22px;
+
   background:
     rgba(35,31,39,.94);
+
   border:
     1px solid
     rgba(205,181,138,.22);
+
   color:#e6ddcf;
+
   font-size:11px;
+
   opacity:0;
+
   pointer-events:none;
+
   transition:
     opacity .25s ease,
     transform .25s ease;
+
 }
+
+
 .toast.show{
+
   opacity:1;
+
   transform:
     translate(-50%,0);
+
 }
+
+
 /* =========================
    小屏幕
 ========================= */
+
 @media(max-width:360px){
+
   .app{
+
     padding-left:14px;
     padding-right:14px;
+
   }
+
   .reveal-grid{
+
     gap:10px;
+
   }
+
   .card-name{
+
     font-size:11px;
+
   }
+
 }
+
+/* =========================
+   Reveal 页面操作按钮
+   ========================= */
+
+.reveal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.reveal-actions button {
+  flex: 1;
+  min-height: 46px;
+  border-radius: 12px;
+  border: 1px solid rgba(205,181,138,.38);
+  background: #211d24;
+  color: #d8c7a8;
+  font-size: 14px;
+  font-family: inherit;
+  letter-spacing: .04em;
+  cursor: pointer;
+  transition:
+    background .2s ease,
+    border-color .2s ease,
+    transform .15s ease;
+}
+
+.reveal-actions button:hover {
+  background: #29232d;
+  border-color: rgba(205,181,138,.65);
+}
+
+.reveal-actions button:active {
+  transform: scale(.97);
+}
+
+
+/* =========================
+   选择牌页面：返回主页
+   ========================= */
+
+.select-home-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 44px;
+  margin-top: 18px;
+
+  border: 1px solid rgba(205,181,138,.28);
+  border-radius: 12px;
+
+  background: transparent;
+  color: rgba(216,199,168,.78);
+
+  font-size: 14px;
+  font-family: inherit;
+  letter-spacing: .04em;
+
+  cursor: pointer;
+
+  transition:
+    background .2s ease,
+    border-color .2s ease,
+    color .2s ease,
+    transform .15s ease;
+}
+
+.select-home-btn:hover {
+  background: rgba(205,181,138,.06);
+  border-color: rgba(205,181,138,.5);
+  color: #d8c7a8;
+}
+
+.select-home-btn:active {
+  transform: scale(.98);
+}
+
 </style>
+
 </head>
+
+
 <body>
+
+
 <div class="app">
+
 <div class="page">
+
+
 <!-- =========================
      首页
 ========================= -->
+
 <section id="homeView">
+
   <header class="header">
-<div class="logo">
-  MY TAROT
-</div>
-<div class="subtitle">
-  你选牌，我只负责记录
-</div>
+
+    <div class="logo">
+      MY TAROT
+    </div>
+
+    <div class="subtitle">
+      你选牌，我只负责记录
+    </div>
+
   </header>
+
+
   <div class="home-content">
-<div class="home-symbol">
-  ✦
-</div>
-<div class="home-question">
-  今天，想问什么？
-</div>
-<div class="home-hint">
-  静下来，凭第一感觉选择你的牌
-</div>
-<div class="home-buttons">
-  <button
-    class="primary-btn"
-    onclick="startReading()"
-  >
-    自由抽牌
-  </button>
-  <button
-    class="spread-home-btn"
-    onclick="openSpreadMode()"
-  >
-    牌阵占卜
-  </button>
-</div>
-<button
-  class="text-btn"
-  style="margin-top:18px"
-  onclick="showHistory()"
->
-  查看历史记录
-</button>
+
+    <div class="home-symbol">
+      ✦
+    </div>
+
+    <div class="home-question">
+      今天，想问什么？
+    </div>
+
+    <div class="home-hint">
+      静下来，凭第一感觉选择你的牌
+    </div>
+
+
+    <div class="home-buttons">
+
+      <button
+        class="primary-btn"
+        onclick="startReading()"
+      >
+        自由抽牌
+      </button>
+
+
+      <button
+        class="spread-home-btn"
+        onclick="openSpreadMode()"
+      >
+        牌阵占卜
+      </button>
+
+    </div>
+
+
+    <button
+      class="text-btn"
+      style="margin-top:18px"
+      onclick="showHistory()"
+    >
+      查看历史记录
+    </button>
+
   </div>
+
 </section>
+
+
+
 <!-- =========================
      牌阵列表
 ========================= -->
+
 <section
   id="spreadView"
   class="hidden"
 >
+
   <header class="header">
-<div class="logo">
-  MY TAROT
-</div>
-<div class="subtitle">
-  SPREADS
-</div>
+
+    <div class="logo">
+      MY TAROT
+    </div>
+
+    <div class="subtitle">
+      SPREADS
+    </div>
+
   </header>
+
+
   <div class="top-actions">
-<button
-  class="back-btn"
-  onclick="goHome()"
->
-  ← 返回主页
-</button>
+
+    <button
+      class="text-btn"
+      onclick="goHome()"
+    >
+      ← 返回
+    </button>
+
   </div>
+
+
   <div class="page-title">
     选择牌阵
   </div>
+
   <div class="page-description">
     找到适合你问题的牌阵
   </div>
+
+
   <div
     id="spreadList"
     class="spread-list"
   ></div>
+
 </section>
+
+
+
 <!-- =========================
      牌阵说明页面
 ========================= -->
+
 <section
   id="spreadStartView"
   class="hidden"
 >
+
   <header class="header">
-<div class="logo">
-  MY TAROT
-</div>
-<div class="subtitle">
-  SPREAD
-</div>
+
+    <div class="logo">
+      MY TAROT
+    </div>
+
+    <div class="subtitle">
+      SPREAD
+    </div>
+
   </header>
+
+
   <div class="top-actions">
-<button
-  class="back-btn"
-  onclick="openSpreadMode()"
->
-  ← 返回牌阵
-</button>
+
+    <button
+      class="text-btn"
+      onclick="openSpreadMode()"
+    >
+      ← 返回
+    </button>
+
   </div>
+
+
   <div
     id="spreadStartContent"
   ></div>
+
 </section>
+
+
+
 <!-- =========================
      选牌页面
 ========================= -->
+
 <section
   id="selectView"
   class="hidden"
 >
+
   <header class="header">
-<div class="logo">
-  MY TAROT
-</div>
-<div class="subtitle">
-  选择你的牌
-</div>
+
+    <div class="logo">
+      MY TAROT
+    </div>
+
+    <div class="subtitle">
+      选择你的牌
+    </div>
+
   </header>
+
+
   <div
     id="selectSpreadName"
     class="page-title"
   >
     凭感觉选牌
   </div>
+
+
   <div
     id="selectDescription"
     class="page-description"
@@ -1131,200 +1979,283 @@ button{
     不需要想太久。<br>
     哪张牌吸引你，就选择哪张。
   </div>
+
+
   <div class="top-actions">
-<button
-  class="back-btn"
-  onclick="backFromSelect()"
->
-  ← 返回主页
-</button>
-<span
-  id="selectCount"
-  class="select-count"
->
-  已选择 0 张
-</span>
-<button
-  class="secondary-btn"
-  onclick="resetSelection()"
->
-  重新选
-</button>
+
+    <span
+      id="selectCount"
+      class="select-count"
+    >
+      已选择 0 张
+    </span>
+
+    <span
+      id="selectModeLabel"
+      class="select-mode-label"
+    >
+      自由抽牌
+    </span>
+
+    <button
+      class="secondary-btn"
+      onclick="resetSelection()"
+    >
+      重新选
+    </button>
+
   </div>
-  <div
-    id="selectModeLabel"
-    class="select-mode-label"
-    style="text-align:center;margin-top:10px"
-  >
-    自由抽牌
-  </div>
+
+
   <div
     id="selectGrid"
     class="card-grid"
   ></div>
+
+
   <div class="select-bottom">
+
+    <button
+      id="confirmBtn"
+      class="confirm-btn"
+      onclick="confirmSelection()"
+      disabled
+    >
+      选好了
+    </button>
+
 <button
-  id="confirmBtn"
-  class="confirm-btn"
-  onclick="confirmSelection()"
-  disabled
+  class="select-home-btn"
+  onclick="backToHomeFromSelect()"
 >
-  选好了
+  返回主页
 </button>
+
   </div>
+
 </section>
+
+
+
 <!-- =========================
      翻牌页面
 ========================= -->
+
 <section
   id="revealView"
   class="hidden"
 >
+
   <header class="header">
-<div class="logo">
-  MY TAROT
-</div>
-<div class="subtitle">
-  你的牌已经准备好了
-</div>
+
+    <div class="logo">
+      MY TAROT
+    </div>
+
+    <div class="subtitle">
+      你的牌已经准备好了
+    </div>
+
   </header>
+
+
   <div
     id="revealSpreadName"
     class="reveal-spread-name"
   ></div>
+
+
   <div class="reveal-header">
-<button
-  class="back-btn"
-  onclick="backToSelect()"
->
-  ← 返回选牌
-</button>
-<div
-  id="revealProgress"
-  class="reveal-progress"
->
-  已揭示 0 / 0
-</div>
+
+    <button
+      class="text-btn"
+      onclick="backToSelect()"
+    >
+      ← 返回
+    </button>
+
+    <div
+      id="revealProgress"
+      class="reveal-progress"
+    >
+      已揭示 0 / 0
+    </div>
+
   </div>
+
+
   <div
     id="revealGrid"
     class="reveal-grid"
   ></div>
+
+
   <div class="form-section">
-<label
-  class="form-label"
-  for="questionInput"
->
-  这次想问什么？
-</label>
-<input
-  id="questionInput"
-  class="form-input"
-  placeholder="可以简单记下一句话"
-  maxlength="200"
->
+
+    <label
+      class="form-label"
+      for="questionInput"
+    >
+      这次想问什么？
+    </label>
+
+    <input
+      id="questionInput"
+      class="form-input"
+      placeholder="可以简单记下一句话"
+      maxlength="200"
+    >
+
   </div>
+
+
   <div class="form-section">
-<label
-  class="form-label"
-  for="noteInput"
->
-  备注
-</label>
-<textarea
-  id="noteInput"
-  class="form-textarea"
-  placeholder="记录当时的想法、背景或之后的验证……"
-  maxlength="2000"
-></textarea>
+
+    <label
+      class="form-label"
+      for="noteInput"
+    >
+      备注
+    </label>
+
+    <textarea
+      id="noteInput"
+      class="form-textarea"
+      placeholder="记录当时的想法、背景或之后的验证……"
+      maxlength="2000"
+    ></textarea>
+
   </div>
-  <div class="reveal-actions">
-<button
-  class="secondary-btn"
-  onclick="revealAll()"
->
-  全部翻开
-</button>
-<button
-  id="saveBtn"
-  class="save-btn"
-  onclick="saveReading()"
-  disabled
->
-  保存记录
-</button>
+
+
+<div class="reveal-actions">
+  <button onclick="resetSelection()">重新选</button>
+  <button onclick="revealAll()">全部翻开</button>
+
+    <button
+      id="saveBtn"
+      class="save-btn"
+      onclick="saveReading()"
+      disabled
+    >
+      保存记录
+    </button>
+
   </div>
+
 </section>
+
+
+
 <!-- =========================
      历史记录
 ========================= -->
+
 <section
   id="historyView"
   class="hidden"
 >
+
   <header class="header">
-<div class="logo">
-  MY TAROT
-</div>
-<div class="subtitle">
-  HISTORY
-</div>
+
+    <div class="logo">
+      MY TAROT
+    </div>
+
+    <div class="subtitle">
+      HISTORY
+    </div>
+
   </header>
+
+
   <div class="top-actions">
-<button
-  class="back-btn"
-  onclick="goHome()"
->
-  ← 返回主页
-</button>
+
+    <button
+      class="text-btn"
+      onclick="goHome()"
+    >
+      ← 返回
+    </button>
+
   </div>
+
+
   <div
     id="historyList"
     class="history-list"
   ></div>
+
 </section>
+
+
 </div>
+
 </div>
+
+
+
 <!-- =========================
      详情弹窗
 ========================= -->
+
 <div
   id="detailModal"
   class="modal"
   onclick="closeModal(event)"
 >
+
   <div
     class="modal-panel"
     onclick="event.stopPropagation()"
   >
-<div class="modal-title">
-  抽牌记录
-</div>
-<div
-  id="detailContent"
-></div>
-<button
-  class="close-modal"
-  onclick="closeDetailModal()"
->
-  关闭
-</button>
+
+    <div class="modal-title">
+      抽牌记录
+    </div>
+
+    <div
+      id="detailContent"
+    ></div>
+
+    <button
+      class="close-modal"
+      onclick="closeDetailModal()"
+    >
+      关闭
+    </button>
+
   </div>
+
 </div>
+
+
+
 <div
   id="toast"
   class="toast"
 ></div>
+
+
+
 <script>
+
+
 /* =========================
    工具
 ========================= */
+
 const $ = id =>
   document.getElementById(id);
+
+
+
 /* =========================
    78 张塔罗牌
 ========================= */
+
 const deck = [
+
   {name:"愚人",code:"ar00"},
   {name:"魔术师",code:"ar01"},
   {name:"女祭司",code:"ar02"},
@@ -1347,6 +2278,7 @@ const deck = [
   {name:"太阳",code:"ar19"},
   {name:"审判",code:"ar20"},
   {name:"世界",code:"ar21"},
+
   {name:"权杖王牌",code:"waac"},
   {name:"权杖二",code:"wa02"},
   {name:"权杖三",code:"wa03"},
@@ -1361,6 +2293,7 @@ const deck = [
   {name:"权杖骑士",code:"wakn"},
   {name:"权杖皇后",code:"waqu"},
   {name:"权杖国王",code:"waki"},
+
   {name:"圣杯王牌",code:"cuac"},
   {name:"圣杯二",code:"cu02"},
   {name:"圣杯三",code:"cu03"},
@@ -1375,6 +2308,7 @@ const deck = [
   {name:"圣杯骑士",code:"cukn"},
   {name:"圣杯皇后",code:"cuqu"},
   {name:"圣杯国王",code:"cuki"},
+
   {name:"宝剑王牌",code:"swac"},
   {name:"宝剑二",code:"sw02"},
   {name:"宝剑三",code:"sw03"},
@@ -1389,6 +2323,7 @@ const deck = [
   {name:"宝剑骑士",code:"swkn"},
   {name:"宝剑皇后",code:"swqu"},
   {name:"宝剑国王",code:"swki"},
+
   {name:"星币王牌",code:"peac"},
   {name:"星币二",code:"pe02"},
   {name:"星币三",code:"pe03"},
@@ -1403,11 +2338,17 @@ const deck = [
   {name:"星币骑士",code:"pekn"},
   {name:"星币皇后",code:"pequ"},
   {name:"星币国王",code:"peki"}
+
 ];
+
+
+
 /* =========================
    29 个牌阵
 ========================= */
+
 const SPREADS = [
+
   {
     id:"three_triangle",
     name:"圣三角",
@@ -1420,6 +2361,8 @@ const SPREADS = [
       {n:3,label:"结果"}
     ]
   },
+
+
   {
     id:"arrow_of_time",
     name:"时间之箭",
@@ -1432,6 +2375,8 @@ const SPREADS = [
       {n:3,label:"未来"}
     ]
   },
+
+
   {
     id:"yes_no",
     name:"是非问题",
@@ -1445,6 +2390,8 @@ const SPREADS = [
     ],
     specialRule:"yes_no"
   },
+
+
   {
     id:"self_exploration",
     name:"自我探索",
@@ -1458,6 +2405,8 @@ const SPREADS = [
       {n:4,label:"潜意识需求"}
     ]
   },
+
+
   {
     id:"new_love",
     name:"新的恋情",
@@ -1473,6 +2422,8 @@ const SPREADS = [
       {n:6,label:"是否正式确定关系"}
     ]
   },
+
+
   {
     id:"flower_cat",
     name:"圣花猫占卜法",
@@ -1489,6 +2440,8 @@ const SPREADS = [
       {n:6,label:"最终结果"}
     ]
   },
+
+
   {
     id:"emotional_relationship",
     name:"情感关系",
@@ -1503,6 +2456,8 @@ const SPREADS = [
       {n:5,label:"最终结果"}
     ]
   },
+
+
   {
     id:"hexagram",
     name:"六芒星",
@@ -1519,6 +2474,8 @@ const SPREADS = [
       {n:7,label:"最终方向"}
     ]
   },
+
+
   {
     id:"lover_pyramid",
     name:"恋人金字塔",
@@ -1532,6 +2489,8 @@ const SPREADS = [
       {n:4,label:"未来关系"}
     ]
   },
+
+
   {
     id:"love_prospect",
     name:"恋爱前景",
@@ -1546,6 +2505,8 @@ const SPREADS = [
       {n:5,label:"未来发展"}
     ]
   },
+
+
   {
     id:"gypsy_cross",
     name:"吉普赛十字",
@@ -1560,6 +2521,8 @@ const SPREADS = [
       {n:5,label:"关系发展与结果"}
     ]
   },
+
+
   {
     id:"marriage_analysis",
     name:"婚姻剖析",
@@ -1577,6 +2540,8 @@ const SPREADS = [
       {n:8,label:"塔罗建议"}
     ]
   },
+
+
   {
     id:"windmill_marriage",
     name:"婚姻牌阵·风车形",
@@ -1593,6 +2558,8 @@ const SPREADS = [
       {n:7,label:"未来发展"}
     ]
   },
+
+
   {
     id:"peace_fan",
     name:"平安扇牌阵",
@@ -1606,6 +2573,8 @@ const SPREADS = [
       {n:4,label:"关系结论"}
     ]
   },
+
+
   {
     id:"court_guard",
     name:"宫廷仪仗牌阵",
@@ -1620,6 +2589,8 @@ const SPREADS = [
       {n:4,label:"国王｜你需要掌控与决定的"}
     ]
   },
+
+
   {
     id:"emotional_mirror",
     name:"情感之镜",
@@ -1634,6 +2605,8 @@ const SPREADS = [
       {n:5,label:"最终结果"}
     ]
   },
+
+
   {
     id:"two_choices",
     name:"二选一",
@@ -1648,6 +2621,8 @@ const SPREADS = [
       {n:5,label:"选择B｜最终结果"}
     ]
   },
+
+
   {
     id:"wealth_hope",
     name:"财富希望",
@@ -1661,6 +2636,8 @@ const SPREADS = [
       {n:4,label:"最终财务趋势"}
     ]
   },
+
+
   {
     id:"future_development",
     name:"未来发展牌阵",
@@ -1676,6 +2653,8 @@ const SPREADS = [
       {n:6,label:"最终结果"}
     ]
   },
+
+
   {
     id:"love_cross",
     name:"爱情十字牌阵",
@@ -1690,6 +2669,8 @@ const SPREADS = [
       {n:5,label:"最终结果"}
     ]
   },
+
+
   {
     id:"diamond",
     name:"钻石展开法",
@@ -1703,6 +2684,8 @@ const SPREADS = [
       {n:4,label:"结果"}
     ]
   },
+
+
   {
     id:"love_form",
     name:"爱的模样牌阵",
@@ -1718,6 +2701,8 @@ const SPREADS = [
       {n:6,label:"你能够采取的行动"}
     ]
   },
+
+
   {
     id:"career_development",
     name:"事业发展",
@@ -1734,6 +2719,8 @@ const SPREADS = [
       {n:7,label:"塔罗建议"}
     ]
   },
+
+
   {
     id:"time_pyramid",
     name:"时间金字塔牌阵",
@@ -1754,6 +2741,8 @@ const SPREADS = [
       {n:10,label:"最终结果"}
     ]
   },
+
+
   {
     id:"tree_of_life",
     name:"生命之树牌阵",
@@ -1775,6 +2764,8 @@ const SPREADS = [
       {n:11,label:"知识"}
     ]
   },
+
+
   {
     id:"future_gate",
     name:"未来之门牌阵",
@@ -1793,6 +2784,8 @@ const SPREADS = [
       {n:9,label:"建议四"}
     ]
   },
+
+
   {
     id:"birth_house",
     name:"灵感出生宫牌阵",
@@ -1816,6 +2809,8 @@ const SPREADS = [
       {n:13,label:"整体趋势"}
     ]
   },
+
+
   {
     id:"reconciliation",
     name:"恋人复合牌阵",
@@ -1834,6 +2829,8 @@ const SPREADS = [
       {n:9,label:"最终结果"}
     ]
   },
+
+
   {
     id:"zodiac_12",
     name:"黄道12宫牌阵",
@@ -1856,19 +2853,33 @@ const SPREADS = [
       {n:12,label:"隐藏事物／隐藏敌人／潜意识"}
     ]
   }
+
 ];
+
+
+
 /* =========================
    状态
 ========================= */
+
 let selected = [];
+
 let revealed = [];
+
 let readingCards = [];
+
 let currentSpread = null;
+
 let spreadDrawMode = "manual";
+
+
+
 /* =========================
    页面切换
 ========================= */
+
 function showView(id){
+
   const views = [
     "homeView",
     "spreadView",
@@ -1877,237 +2888,406 @@ function showView(id){
     "revealView",
     "historyView"
   ];
+
+
   views.forEach(view => {
+
     $(view).classList.add("hidden");
+
   });
+
+
   $(id).classList.remove("hidden");
+
   $(id).classList.add("page-enter");
-  window.scrollTo({
-    top:0,
-    behavior:"instant"
-  });
+
+
   setTimeout(() => {
+
     $(id).classList.remove("page-enter");
+
   },450);
+
 }
+
+
 function goHome(){
+
   currentSpread = null;
-  selected = [];
-  readingCards = [];
-  revealed = [];
+
   showView("homeView");
+
 }
-/* =========================
-   从选牌页返回
-========================= */
-function backFromSelect(){
-  selected = [];
-  readingCards = [];
-  revealed = [];
-  if(currentSpread){
-    currentSpread = null;
-    openSpreadMode();
-  }else{
-    goHome();
-  }
-}
+
+
+
 /* =========================
    自由抽牌
 ========================= */
+
 function startReading(){
+
   currentSpread = null;
+
   selected = [];
+
   spreadDrawMode = "manual";
+
   renderSelect();
+
   showView("selectView");
+
 }
+
+
+
 /* =========================
    牌阵入口
 ========================= */
+
 function openSpreadMode(){
+
   renderSpreadList();
+
   showView("spreadView");
+
 }
+
+
 function renderSpreadList(){
+
   const list =
     $("spreadList");
+
+
   list.innerHTML = "";
+
+
   SPREADS.forEach(spread => {
+
     const button =
       document.createElement("button");
+
+
     button.className =
       "spread-card";
+
+
     button.innerHTML = `
+
       <div class="spread-card-top">
+
         <span class="spread-name">
           ${spread.name}
         </span>
+
         <span class="spread-count">
           ${spread.count} 张
         </span>
+
       </div>
+
       <div class="spread-category">
         ${spread.category}
       </div>
+
       <div class="spread-description">
         ${spread.description}
       </div>
+
     `;
+
+
     button.addEventListener(
       "click",
       () => selectSpread(spread.id)
     );
+
+
     list.appendChild(button);
+
   });
+
 }
+
+
 function selectSpread(spreadId){
+
   currentSpread =
     SPREADS.find(
       spread => spread.id === spreadId
     );
+
+
   if(!currentSpread){
+
     return;
+
   }
+
+
   renderSpreadStart();
+
   showView("spreadStartView");
+
 }
+
+
+
 /* =========================
    牌阵说明
 ========================= */
+
 function renderSpreadStart(){
+
   const spread =
     currentSpread;
+
+
   let ruleText =
     `这个牌阵需要 ${spread.count} 张牌。`;
+
+
   if(spread.specialRule === "flower_cat"){
+
     ruleText =
       "原牌阵规则：洗牌后，从牌堆顶开始数牌，使用第 7～12 张牌作为六个位置。";
+
   }
+
+
   if(spread.specialRule === "court_only"){
+
     ruleText =
       "原牌阵规则：只使用 16 张宫廷牌，并分别从侍从、骑士、王后、国王四组中各取一张。";
+
   }
+
+
   if(spread.specialRule === "birth_house"){
+
     ruleText =
       "原牌阵规则：洗牌后，从第 7 张牌开始依次取 13 张牌，对应 13 个位置。";
+
   }
+
+
   if(spread.specialRule === "significator"){
+
     ruleText =
       "这个牌阵包含额外的切牌／指示牌。当前版本会单独保存指示牌信息。";
+
   }
+
+
   $("spreadStartContent").innerHTML = `
+
     <div class="spread-start-info">
+
       <div class="spread-start-name">
         ${spread.name}
       </div>
+
       <div class="spread-start-category">
         ${spread.category} · ${spread.count} 张牌
       </div>
+
       <div class="spread-start-description">
         ${spread.description}
       </div>
+
       <div class="spread-start-rule">
         ${ruleText}
       </div>
+
       <div class="spread-start-actions">
+
         <button
           class="primary-btn"
           onclick="beginSpread()"
         >
           开始占卜
         </button>
+
       </div>
+
     </div>
+
   `;
+
 }
+
+
+
 /* =========================
    开始牌阵
 ========================= */
+
 function beginSpread(){
+
   if(!currentSpread){
+
     return;
+
   }
+
+
   selected = [];
+
   spreadDrawMode =
     currentSpread.specialRule || "manual";
+
+
+  /*
+    圣花猫：
+    按原规则自动从洗牌后的牌堆取第7～12张。
+  */
+
   if(
     currentSpread.specialRule ===
     "flower_cat"
   ){
+
     startFlowerCat();
+
     return;
+
   }
+
+
+  /*
+    灵感出生宫：
+    按原规则自动从洗牌后的第7张开始取13张。
+  */
+
   if(
     currentSpread.specialRule ===
     "birth_house"
   ){
+
     startBirthHouse();
+
     return;
+
   }
+
+
   renderSelect();
+
   showView("selectView");
+
 }
+
+
+
 /* =========================
    圣花猫
 ========================= */
+
 function startFlowerCat(){
+
   const shuffled =
     shuffleDeck(deck);
+
+
   const chosen =
     shuffled.slice(6,12);
+
+
   readingCards =
     chosen.map((card,index) => ({
+
       ...card,
+
       position:
         currentSpread.positions[index],
+
       orientation:null,
+
       revealed:false
+
     }));
+
+
   revealed =
     new Array(
       readingCards.length
     ).fill(false);
+
+
   renderReveal();
+
   showView("revealView");
+
 }
+
+
+
 /* =========================
    灵感出生宫
 ========================= */
+
 function startBirthHouse(){
+
   const shuffled =
     shuffleDeck(deck);
+
+
   const chosen =
     shuffled.slice(6,19);
+
+
   readingCards =
     chosen.map((card,index) => ({
+
       ...card,
+
       position:
         currentSpread.positions[index],
+
       orientation:null,
+
       revealed:false
+
     }));
+
+
   revealed =
     new Array(
       readingCards.length
     ).fill(false);
+
+
   renderReveal();
+
   showView("revealView");
+
 }
+
+
+
 /* =========================
    洗牌
 ========================= */
+
 function shuffleDeck(source){
+
   const array =
     [...source];
+
+
   for(
     let i = array.length - 1;
     i > 0;
     i--
   ){
+
     const j =
       Math.floor(
         Math.random() * (i + 1)
       );
+
+
     [
       array[i],
       array[j]
@@ -2116,23 +3296,44 @@ function shuffleDeck(source){
       array[j],
       array[i]
     ];
+
   }
+
+
   return array;
+
 }
+
+
+
 /* =========================
    选牌
 ========================= */
+
 function renderSelect(){
+
   const grid =
     $("selectGrid");
+
+
   grid.innerHTML = "";
+
+
   let availableDeck =
     deck;
+
+
+  /*
+    宫廷仪仗：
+    只显示 16 张宫廷牌。
+  */
+
   if(
     currentSpread &&
     currentSpread.specialRule ===
     "court_only"
   ){
+
     availableDeck =
       deck.filter(card =>
         [
@@ -2142,86 +3343,153 @@ function renderSelect(){
           "pepa","pekn","pequ","peki"
         ].includes(card.code)
       );
+
   }
+
+
   availableDeck.forEach(card => {
+
     const originalIndex =
       deck.findIndex(
         item =>
           item.code === card.code
       );
+
+
     const item =
       document.createElement("div");
+
+
     item.className =
       "select-card";
+
+
     if(
       selected.includes(
         originalIndex
       )
     ){
+
       item.classList.add("selected");
+
     }
+
+
     item.innerHTML = `
+
       <div class="select-card-inner"></div>
+
     `;
+
+
     item.onclick = () =>
       toggleCard(originalIndex);
+
+
     grid.appendChild(item);
+
   });
+
+
   updateSelectCount();
+
+
   if(currentSpread){
+
     $("selectSpreadName").textContent =
       currentSpread.name;
+
+
     $("selectDescription").innerHTML =
       `请选择 ${currentSpread.count} 张牌。<br>
        ${currentSpread.description}`;
+
+
     $("selectModeLabel").textContent =
       currentSpread.specialRule ===
       "court_only"
         ? "仅限16张宫廷牌"
         : `需要 ${currentSpread.count} 张`;
+
   }else{
+
     $("selectSpreadName").textContent =
       "凭感觉选牌";
+
+
     $("selectDescription").innerHTML =
       `不需要想太久。<br>
        哪张牌吸引你，就选择哪张。`;
+
+
     $("selectModeLabel").textContent =
       "自由抽牌";
+
   }
+
 }
+
+
+
 /* =========================
    点击牌
 ========================= */
+
 function toggleCard(index){
+
   const pos =
     selected.indexOf(index);
+
+
   if(pos >= 0){
+
     selected.splice(
       pos,
       1
     );
+
   }else{
+
+    /*
+      牌阵模式必须达到准确数量。
+    */
+
     if(
       currentSpread &&
       selected.length >=
       currentSpread.count
     ){
+
       showToast(
         `这个牌阵需要 ${currentSpread.count} 张牌`
       );
+
       return;
+
     }
+
+
+    /*
+      宫廷仪仗：
+      四个宫廷等级各一张。
+    */
+
     if(
       currentSpread &&
       currentSpread.specialRule ===
       "court_only"
     ){
+
       const newCard =
         deck[index];
+
+
       const rank =
         getCourtRank(
           newCard.code
         );
+
+
       const already =
         selected.some(
           selectedIndex =>
@@ -2229,313 +3497,560 @@ function toggleCard(index){
               deck[selectedIndex].code
             ) === rank
         );
+
+
       if(already){
+
         showToast(
           `已经选择了一张${rank}，每组只能选择一张`
         );
+
         return;
+
       }
+
     }
+
+
     selected.push(index);
+
   }
+
+
   renderSelect();
+
 }
+
+
 function getCourtRank(code){
+
   if(
     code.endsWith("pa")
   ){
+
     return "侍从";
+
   }
+
+
   if(
     code.endsWith("kn")
   ){
+
     return "骑士";
+
   }
+
+
   if(
     code.endsWith("qu")
   ){
+
     return "王后";
+
   }
+
+
   if(
     code.endsWith("ki")
   ){
+
     return "国王";
+
   }
+
+
   return "";
+
 }
+
+
+
 /* =========================
    选择数量
 ========================= */
+
 function updateSelectCount(){
+
   $("selectCount").textContent =
     `已选择 ${selected.length} 张`;
+
+
   if(currentSpread){
+
     $("confirmBtn").disabled =
       selected.length !==
       currentSpread.count;
+
   }else{
+
     $("confirmBtn").disabled =
       selected.length === 0;
+
   }
+
 }
+
+
 function resetSelection(){
+
   selected = [];
+
   renderSelect();
+
 }
+
+
 function backToSelect(){
+
   renderSelect();
+
   showView("selectView");
+
 }
+
+
+
 /* =========================
    确认选牌
 ========================= */
+
 function confirmSelection(){
+
   if(
     currentSpread &&
     selected.length !==
     currentSpread.count
   ){
+
     showToast(
       `请选择 ${currentSpread.count} 张牌`
     );
+
     return;
+
   }
+
+
   if(
     !currentSpread &&
     selected.length === 0
   ){
+
     return;
+
   }
+
+
   readingCards =
     selected.map(
       (index,positionIndex) => ({
+
         ...deck[index],
+
         position:
           currentSpread
             ? currentSpread.positions[
                 positionIndex
               ]
             : null,
+
         orientation:null,
+
         revealed:false
+
       })
     );
+
+
   revealed =
     new Array(
       readingCards.length
     ).fill(false);
+
+
   renderReveal();
+
   showView("revealView");
+
 }
+
+
+
 /* =========================
    翻牌页面
 ========================= */
+
 function renderReveal(){
+
   const grid =
     $("revealGrid");
+
+
   grid.innerHTML = "";
+
+
   if(currentSpread){
+
     $("revealSpreadName").textContent =
       currentSpread.name;
+
   }else{
+
     $("revealSpreadName").textContent =
       "";
+
   }
+
+
   readingCards.forEach(
     (card,index) => {
+
       const wrapper =
         document.createElement("div");
+
+
       const position =
         document.createElement("div");
+
+
       position.className =
         "card-position";
+
+
       if(card.position){
+
         position.textContent =
           `位置 ${card.position.n} · ${card.position.label}`;
+
       }
+
+
       const flip =
         document.createElement("div");
+
+
       flip.className =
         "tarot-flip";
+
+
       flip.dataset.index =
         index;
+
+
       const inner =
         document.createElement("div");
+
+
       inner.className =
         "tarot-inner";
+
+
       const back =
         document.createElement("div");
+
+
       back.className =
         "tarot-face tarot-back";
+
+
       const front =
         document.createElement("div");
+
+
       front.className =
         "tarot-face tarot-front";
+
+
       const img =
         document.createElement("img");
+
+
       img.src =
         `./${card.code}.jpg`;
+
+
       img.alt =
         card.name;
+
+
       front.appendChild(img);
+
+
       inner.appendChild(back);
+
       inner.appendChild(front);
+
       flip.appendChild(inner);
+
       wrapper.appendChild(position);
+
       wrapper.appendChild(flip);
+
+
       const info =
         document.createElement("div");
+
+
       info.className =
         "card-info";
+
+
       info.id =
         `cardInfo-${index}`;
+
+
       info.innerHTML = `
+
         <div class="card-name">
           ${card.name}
         </div>
+
         <div
           class="card-orientation"
           id="orientation-${index}"
         ></div>
+
       `;
+
+
       wrapper.appendChild(info);
+
       grid.appendChild(wrapper);
+
+
       flip.addEventListener(
         "click",
         () => flipCard(index)
       );
+
     }
   );
+
+
   updateRevealProgress();
+
 }
+
+
+
 /* =========================
    真正翻牌
 ========================= */
+
 function flipCard(index){
+
   if(
     !readingCards[index] ||
     readingCards[index].revealed
   ){
+
     return;
+
   }
+
+
   const card =
     readingCards[index];
+
+
   card.orientation =
     Math.random() < .5
       ? "upright"
       : "reversed";
+
+
   card.revealed = true;
+
   revealed[index] = true;
+
+
   const flip =
     document.querySelector(
       `.tarot-flip[data-index="${index}"]`
     );
+
+
   if(!flip){
+
     return;
+
   }
+
+
   requestAnimationFrame(() => {
+
     requestAnimationFrame(() => {
+
       flip.classList.add("flipped");
+
     });
+
   });
+
+
   const orientation =
     $(`orientation-${index}`);
+
+
   orientation.textContent =
     card.orientation === "upright"
       ? "正位"
       : "逆位";
+
+
   const cardImage =
     flip.querySelector("img");
+
+
   if(
     card.orientation ===
     "reversed"
   ){
+
     cardImage.classList.add(
       "reversed"
     );
+
   }
+
+
   const info =
     $(`cardInfo-${index}`);
+
+
   setTimeout(() => {
+
     info.classList.add("show");
+
   },430);
+
+
   updateRevealProgress();
+
 }
+
+
+
 /* =========================
    全部翻开
 ========================= */
+
 async function revealAll(){
+
   for(
     let i = 0;
     i < readingCards.length;
     i++
   ){
+
     if(
       !readingCards[i].revealed
     ){
+
       flipCard(i);
+
       await wait(210);
+
     }
+
   }
+
 }
+
+
 function wait(ms){
+
   return new Promise(
     resolve =>
       setTimeout(resolve,ms)
   );
+
 }
+
+
+
 /* =========================
    进度
 ========================= */
+
 function updateRevealProgress(){
+
   const count =
     readingCards.filter(
       card => card.revealed
     ).length;
+
+
   $("revealProgress").textContent =
     `已揭示 ${count} / ${readingCards.length}`;
+
+
   $("saveBtn").disabled =
     count !== readingCards.length;
+
 }
+
+
+
 /* =========================
    保存记录
 ========================= */
+
 function saveReading(){
+
   const allRevealed =
     readingCards.every(
       card => card.revealed
     );
+
+
   if(!allRevealed){
+
     showToast(
       "请先揭示全部牌面"
     );
+
     return;
+
   }
+
+
   const history =
     JSON.parse(
       localStorage.getItem(
         "myTarotHistory"
       ) || "[]"
     );
+
+
   const record = {
+
     id:
       Date.now(),
+
     date:
       new Date().toISOString(),
+
     spreadId:
       currentSpread
         ? currentSpread.id
         : null,
+
     spreadName:
       currentSpread
         ? currentSpread.name
         : "自由抽牌",
+
     question:
       $("questionInput").value.trim(),
+
     note:
       $("noteInput").value.trim(),
+
     cards:
       readingCards.map(card => ({
+
         position:
           card.position
             ? {
@@ -2543,58 +4058,104 @@ function saveReading(){
                 label:card.position.label
               }
             : null,
+
         name:
           card.name,
+
         code:
           card.code,
+
         orientation:
           card.orientation
+
       }))
+
   };
+
+
   history.unshift(record);
+
+
   localStorage.setItem(
     "myTarotHistory",
     JSON.stringify(history)
   );
+
+
   showToast(
     "已保存这次抽牌"
   );
+
+
   setTimeout(() => {
+
     showHistory();
+
   },700);
+
 }
+
+
+
 /* =========================
    历史记录
 ========================= */
+
 function showHistory(){
+
   renderHistory();
+
   showView("historyView");
+
 }
+
+
 function renderHistory(){
+
   const list =
     $("historyList");
+
+
   const history =
     JSON.parse(
       localStorage.getItem(
         "myTarotHistory"
       ) || "[]"
     );
+
+
   if(history.length === 0){
+
     list.innerHTML = `
+
       <div class="empty-history">
         还没有抽牌记录
       </div>
+
     `;
+
     return;
+
   }
+
+
   list.innerHTML = "";
+
+
   history.forEach(record => {
+
     const item =
       document.createElement("div");
+
+
     item.className =
       "history-item";
+
+
     const date =
       new Date(record.date);
+
+
     const dateText =
       date.toLocaleString(
         "zh-CN",
@@ -2606,108 +4167,177 @@ function renderHistory(){
           minute:"2-digit"
         }
       );
+
+
     const names =
       record.cards
         .map(card => {
+
           const position =
             card.position
               ? `${card.position.label}：`
               : "";
+
           return `${position}${card.name} · ${
             card.orientation === "upright"
               ? "正"
               : "逆"
           }`;
+
         })
         .join("　");
+
+
     item.innerHTML = `
+
       <div class="history-date">
         ${dateText}
       </div>
+
       <div class="history-spread">
         ${record.spreadName || "自由抽牌"}
       </div>
+
       <div class="history-question">
         ${
           record.question ||
           "未填写问题"
         }
       </div>
+
       <div class="history-cards">
         ${names}
       </div>
+
       <div class="history-actions">
+
         <button
           class="text-btn"
           onclick="openDetail(${record.id})"
         >
           查看
         </button>
+
         <button
           class="text-btn"
           onclick="deleteRecord(${record.id})"
         >
           删除
         </button>
+
       </div>
+
     `;
+
+
     list.appendChild(item);
+
   });
+
 }
+
+
+
 /* =========================
    历史详情
 ========================= */
+
 function openDetail(id){
+
   const history =
     JSON.parse(
       localStorage.getItem(
         "myTarotHistory"
       ) || "[]"
     );
+
+
   const record =
     history.find(
       item => item.id === id
     );
+
+
   if(!record){
+
     return;
+
   }
+
+
   const content =
     $("detailContent");
+
+
   content.innerHTML = "";
+
+
   const spread =
     document.createElement("div");
+
+
   spread.className =
     "detail-spread";
+
+
   spread.textContent =
     record.spreadName ||
     "自由抽牌";
+
+
   content.appendChild(spread);
+
+
   if(record.question){
+
     const q =
       document.createElement("div");
+
+
     q.style.marginTop =
       "22px";
+
+
     q.style.color =
       "#eee8df";
+
+
     q.style.fontSize =
       "13px";
+
+
     q.style.lineHeight =
       "1.7";
+
+
     q.textContent =
       `问题：${record.question}`;
+
+
     content.appendChild(q);
+
   }
+
+
   record.cards.forEach(card => {
+
     const row =
       document.createElement("div");
+
+
     row.className =
       "detail-card";
+
+
     row.innerHTML = `
+
       <img
         src="./${card.code}.jpg"
         alt="${card.name}"
       >
+
       <div>
+
         ${
           card.position
             ? `
@@ -2717,9 +4347,11 @@ function openDetail(id){
             `
             : ""
         }
+
         <div class="detail-name">
           ${card.name}
         </div>
+
         <div class="detail-orientation">
           ${
             card.orientation === "upright"
@@ -2727,88 +4359,173 @@ function openDetail(id){
               : "逆位"
           }
         </div>
+
       </div>
+
     `;
+
+
     content.appendChild(row);
+
   });
+
+
   if(record.note){
+
     const note =
       document.createElement("div");
+
+
     note.style.marginTop =
       "20px";
+
+
     note.style.color =
       "#a49d95";
+
+
     note.style.fontSize =
       "12px";
+
+
     note.style.lineHeight =
       "1.8";
+
+
     note.textContent =
       `备注：${record.note}`;
+
+
     content.appendChild(note);
+
   }
+
+
   $("detailModal")
     .classList.add("show");
+
 }
+
+
 function closeDetailModal(){
+
   $("detailModal")
     .classList.remove("show");
+
 }
+
+
 function closeModal(event){
+
   if(
     event.target ===
     $("detailModal")
   ){
+
     closeDetailModal();
+
   }
+
 }
+
+
+
 /* =========================
    删除记录
 ========================= */
+
 function deleteRecord(id){
+
   const ok =
     confirm(
       "确定删除这条抽牌记录吗？"
     );
+
+
   if(!ok){
+
     return;
+
   }
+
+
   const history =
     JSON.parse(
       localStorage.getItem(
         "myTarotHistory"
       ) || "[]"
     );
+
+
   const newHistory =
     history.filter(
       record =>
         record.id !== id
     );
+
+
   localStorage.setItem(
     "myTarotHistory",
     JSON.stringify(
       newHistory
     )
   );
+
+
   renderHistory();
+
 }
+
+
+
 /* =========================
    Toast
 ========================= */
+
 let toastTimer;
+
+
 function showToast(message){
+
   const toast =
     $("toast");
+
+
   toast.textContent =
     message;
+
+
   toast.classList.add("show");
+
+
   clearTimeout(toastTimer);
+
+
   toastTimer =
     setTimeout(() => {
+
       toast.classList.remove(
         "show"
       );
+
     },1800);
+
 }
+
 </script>
+
+function backToHomeFromSelect(){
+
+  selectedIndices = [];
+
+  readingCards = [];
+
+  revealed = [];
+
+  showView("homeView");
+
+}
+
 </body>
+
 </html>
