@@ -1689,84 +1689,6 @@ button{
 
 }
 
-/* =========================
-   Reveal 页面操作按钮
-   ========================= */
-
-.reveal-actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 18px;
-}
-
-.reveal-actions button {
-  flex: 1;
-  min-height: 46px;
-  border-radius: 12px;
-  border: 1px solid rgba(205,181,138,.38);
-  background: #211d24;
-  color: #d8c7a8;
-  font-size: 14px;
-  font-family: inherit;
-  letter-spacing: .04em;
-  cursor: pointer;
-  transition:
-    background .2s ease,
-    border-color .2s ease,
-    transform .15s ease;
-}
-
-.reveal-actions button:hover {
-  background: #29232d;
-  border-color: rgba(205,181,138,.65);
-}
-
-.reveal-actions button:active {
-  transform: scale(.97);
-}
-
-
-/* =========================
-   选择牌页面：返回主页
-   ========================= */
-
-.select-home-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  min-height: 44px;
-  margin-top: 18px;
-
-  border: 1px solid rgba(205,181,138,.28);
-  border-radius: 12px;
-
-  background: transparent;
-  color: rgba(216,199,168,.78);
-
-  font-size: 14px;
-  font-family: inherit;
-  letter-spacing: .04em;
-
-  cursor: pointer;
-
-  transition:
-    background .2s ease,
-    border-color .2s ease,
-    color .2s ease,
-    transform .15s ease;
-}
-
-.select-home-btn:hover {
-  background: rgba(205,181,138,.06);
-  border-color: rgba(205,181,138,.5);
-  color: #d8c7a8;
-}
-
-.select-home-btn:active {
-  transform: scale(.98);
-}
-
 </style>
 
 </head>
@@ -2024,13 +1946,6 @@ button{
       选好了
     </button>
 
-<button
-  class="select-home-btn"
-  onclick="backToHomeFromSelect()"
->
-  返回主页
-</button>
-
   </div>
 
 </section>
@@ -2128,9 +2043,14 @@ button{
   </div>
 
 
-<div class="reveal-actions">
-  <button onclick="resetSelection()">重新选</button>
-  <button onclick="revealAll()">全部翻开</button>
+  <div class="reveal-actions">
+
+    <button
+      class="secondary-btn"
+      onclick="revealAll()"
+    >
+      全部翻开
+    </button>
 
     <button
       id="saveBtn"
@@ -4513,18 +4433,6 @@ function showToast(message){
 }
 
 </script>
-
-function backToHomeFromSelect(){
-
-  selectedIndices = [];
-
-  readingCards = [];
-
-  revealed = [];
-
-  showView("homeView");
-
-}
 
 </body>
 
