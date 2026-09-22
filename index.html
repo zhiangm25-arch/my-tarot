@@ -27,10 +27,7 @@
   content="MY TAROT"
 >
 
-<link
-  rel="manifest"
-  href="./manifest.json"
->
+<link rel="manifest" href="./manifest.json">
 
 <link
   rel="apple-touch-icon"
@@ -42,8 +39,11 @@
 
 <style>
 
-:root{
+/* =========================================================
+   基础
+========================================================= */
 
+:root{
   --bg:#111016;
   --panel:#17151b;
   --panel2:#1d1a21;
@@ -52,29 +52,21 @@
   --text:#eee8df;
   --muted:#918a82;
   --line:rgba(205,181,138,.20);
-
 }
-
 
 *{
-
   box-sizing:border-box;
-
   -webkit-tap-highlight-color:transparent;
-
 }
-
 
 html,
 body{
-
   margin:0;
   padding:0;
   width:100%;
   min-height:100%;
   background:var(--bg);
   color:var(--text);
-
   font-family:
     -apple-system,
     BlinkMacSystemFont,
@@ -82,1609 +74,1108 @@ body{
     "Helvetica Neue",
     Arial,
     sans-serif;
-
 }
-
 
 body{
-
   min-height:100vh;
   overflow-x:hidden;
-
 }
-
 
 button,
 input,
 textarea{
-
   font:inherit;
-
 }
-
 
 button{
-
   border:0;
   outline:0;
-
+  cursor:pointer;
 }
 
-
 .app{
-
   min-height:100vh;
-
   padding:
     env(safe-area-inset-top)
     18px
     env(safe-area-inset-bottom);
-
 }
 
-
 .page{
-
   width:100%;
   max-width:680px;
   margin:0 auto;
   min-height:100vh;
-
 }
-
 
 .hidden{
-
   display:none !important;
-
 }
 
 
-/* =========================
+/* =========================================================
    顶部
-========================= */
+========================================================= */
 
 .header{
-
   padding-top:28px;
   text-align:center;
-
 }
 
-
 .logo{
-
   color:var(--gold2);
   font-size:25px;
   font-weight:500;
   letter-spacing:.24em;
   margin-left:.24em;
-
 }
 
-
 .subtitle{
-
   margin-top:8px;
   color:var(--muted);
   font-size:12px;
   letter-spacing:.12em;
-
 }
 
 
-/* =========================
+/* =========================================================
    首页
-========================= */
+========================================================= */
 
 .home-content{
-
-  min-height:
-    calc(100vh - 110px);
-
+  min-height:calc(100vh - 110px);
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   padding-bottom:70px;
-
 }
-
 
 .home-symbol{
-
   width:82px;
   height:108px;
-
-  border:
-    1px solid
-    rgba(205,181,138,.42);
-
+  border:1px solid rgba(205,181,138,.42);
   border-radius:11px;
-
   display:grid;
   place-items:center;
-
   color:var(--gold);
   font-size:31px;
-
   margin-bottom:30px;
-
-  box-shadow:
-    0 0 40px
-    rgba(205,181,138,.06);
-
+  box-shadow:0 0 40px rgba(205,181,138,.06);
 }
 
-
 .home-question{
-
   font-size:22px;
   letter-spacing:.08em;
   color:#eee8df;
   margin-bottom:11px;
-
 }
 
-
 .home-hint{
-
   color:var(--muted);
   font-size:12px;
   letter-spacing:.06em;
   margin-bottom:34px;
-
 }
 
-
 .home-buttons{
-
   width:100%;
   max-width:330px;
-
   display:flex;
   flex-direction:column;
   gap:11px;
-
 }
 
-
 .primary-btn{
-
   width:100%;
-
   padding:14px 26px;
-
   border-radius:30px;
-
   background:
     linear-gradient(
       135deg,
       #d8c49c,
       #b69c6e
     );
-
   color:#211c17;
-
   font-size:14px;
   letter-spacing:.08em;
-
-  box-shadow:
-    0 7px 25px
-    rgba(205,181,138,.12);
-
+  box-shadow:0 7px 25px rgba(205,181,138,.12);
   transition:
     transform .18s ease,
     box-shadow .18s ease;
-
 }
-
 
 .primary-btn:active{
-
   transform:scale(.96);
-
-  box-shadow:
-    0 3px 12px
-    rgba(205,181,138,.08);
-
+  box-shadow:0 3px 12px rgba(205,181,138,.08);
 }
-
 
 .spread-home-btn{
-
   width:100%;
-
   padding:13px 20px;
-
   border-radius:30px;
-
-  border:
-    1px solid
-    rgba(205,181,138,.32);
-
-  background:
-    rgba(205,181,138,.04);
-
+  border:1px solid rgba(205,181,138,.32);
+  background:rgba(205,181,138,.04);
   color:var(--gold2);
-
   font-size:13px;
-
   letter-spacing:.08em;
-
 }
-
 
 .text-btn{
-
   background:none;
-
   color:var(--muted);
-
   font-size:12px;
-
   padding:8px;
+}
 
+.text-btn:active{
+  color:var(--gold2);
 }
 
 
-/* =========================
-   页面标题
-========================= */
+/* =========================================================
+   通用页面
+========================================================= */
 
 .page-title{
-
   margin-top:38px;
-
   text-align:center;
-
   font-size:18px;
   font-weight:400;
-
   letter-spacing:.10em;
-
 }
-
 
 .page-description{
-
   margin-top:9px;
-
   text-align:center;
-
   color:var(--muted);
-
   font-size:12px;
   line-height:1.7;
-
 }
-
 
 .top-actions{
-
   display:flex;
-
   justify-content:space-between;
-
   align-items:center;
-
   margin-top:25px;
-
 }
 
 
-/* =========================
-   牌阵选择
-========================= */
+/* =========================================================
+   牌阵列表
+========================================================= */
 
 .spread-list{
-
   margin-top:25px;
-
   padding-bottom:35px;
-
   display:flex;
   flex-direction:column;
-
   gap:10px;
-
 }
 
-
 .spread-card{
-
   width:100%;
-
   padding:17px 16px;
-
-  border:
-    1px solid
-    rgba(205,181,138,.17);
-
+  border:1px solid rgba(205,181,138,.17);
   border-radius:12px;
-
   background:#17151b;
-
   color:var(--text);
-
   text-align:left;
-
   transition:
     transform .18s ease,
     border-color .18s ease,
     background .18s ease;
-
 }
-
 
 .spread-card:active{
-
   transform:scale(.985);
-
+  background:#1b181f;
 }
-
 
 .spread-card-top{
-
   display:flex;
-
   justify-content:space-between;
-
   align-items:center;
-
   gap:10px;
-
 }
-
 
 .spread-name{
-
   color:#eee8df;
-
   font-size:15px;
-
 }
-
 
 .spread-count{
-
   color:var(--gold);
-
   font-size:10px;
-
   flex:none;
-
 }
-
 
 .spread-category{
-
   margin-top:7px;
-
   color:#9c9288;
-
   font-size:10px;
-
   letter-spacing:.08em;
-
 }
-
 
 .spread-description{
-
   margin-top:8px;
-
   color:#aaa3ad;
-
   font-size:12px;
-
   line-height:1.65;
-
 }
 
 
-/* =========================
-   牌阵开始页面
-========================= */
+/* =========================================================
+   牌阵说明
+========================================================= */
 
 .spread-start-info{
-
   margin-top:25px;
-
   padding:18px;
-
-  border:
-    1px solid
-    rgba(205,181,138,.17);
-
+  border:1px solid rgba(205,181,138,.17);
   border-radius:12px;
-
   background:#17151b;
-
 }
-
 
 .spread-start-name{
-
   color:var(--gold2);
-
   text-align:center;
-
   font-size:17px;
-
 }
-
 
 .spread-start-category{
-
   margin-top:7px;
-
   text-align:center;
-
   color:var(--muted);
-
   font-size:10px;
-
 }
-
 
 .spread-start-description{
-
   margin-top:15px;
-
   color:#b7afb6;
-
   font-size:12px;
-
   line-height:1.8;
-
 }
-
 
 .spread-start-rule{
-
   margin-top:13px;
-
   padding:11px 12px;
-
   border-radius:8px;
-
   background:rgba(205,181,138,.05);
-
   color:#bba987;
-
   font-size:11px;
-
   line-height:1.7;
-
 }
-
 
 .spread-start-actions{
-
   margin-top:20px;
-
   display:flex;
-
   flex-direction:column;
-
   gap:10px;
-
 }
 
 
-/* =========================
+/* =========================================================
+   牌阵视觉预览
+========================================================= */
+
+.spread-visual-title{
+  margin-top:24px;
+  color:#aaa3ad;
+  text-align:center;
+  font-size:10px;
+  letter-spacing:.10em;
+}
+
+.spread-visual{
+  position:relative;
+  width:100%;
+  height:270px;
+  margin-top:10px;
+  border:1px solid rgba(205,181,138,.13);
+  border-radius:14px;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(205,181,138,.045),
+      transparent 62%
+    ),
+    #141218;
+  overflow:hidden;
+}
+
+.visual-card{
+  position:absolute;
+  width:46px;
+  height:70px;
+  transform:translate(-50%,-50%);
+  border:1px solid rgba(205,181,138,.36);
+  border-radius:6px;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(205,181,138,.12),
+      transparent 58%
+    ),
+    linear-gradient(
+      145deg,
+      #29242f,
+      #17151b
+    );
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:
+    0 5px 18px rgba(0,0,0,.24);
+}
+
+.visual-card::before{
+  content:"✦";
+  width:22px;
+  height:31px;
+  border:1px solid rgba(205,181,138,.30);
+  border-radius:4px;
+  display:grid;
+  place-items:center;
+  color:rgba(205,181,138,.55);
+  font-size:10px;
+}
+
+.visual-number{
+  position:absolute;
+  top:3px;
+  left:5px;
+  color:rgba(225,207,170,.68);
+  font-size:8px;
+}
+
+.visual-label{
+  position:absolute;
+  left:50%;
+  top:calc(100% + 5px);
+  transform:translateX(-50%);
+  width:80px;
+  text-align:center;
+  color:#aaa09a;
+  font-size:8px;
+  line-height:1.3;
+}
+
+.visual-card.significator{
+  border-color:rgba(225,207,170,.65);
+  box-shadow:
+    0 0 18px rgba(205,181,138,.10),
+    0 5px 18px rgba(0,0,0,.24);
+}
+
+
+/* =========================================================
    选择牌
-========================= */
+========================================================= */
+
+.select-top{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  margin-top:25px;
+}
+
+.select-top-left{
+  justify-self:start;
+}
+
+.select-top-center{
+  justify-self:center;
+}
+
+.select-top-right{
+  justify-self:end;
+}
 
 .select-count{
-
   color:var(--gold2);
   font-size:12px;
-
 }
-
 
 .select-mode-label{
-
   color:var(--muted);
-  font-size:11px;
-
+  font-size:10px;
 }
 
+.secondary-btn{
+  padding:10px 15px;
+  border-radius:22px;
+  border:1px solid rgba(205,181,138,.30);
+  background:#211d24;
+  color:var(--gold2);
+  font-size:12px;
+  letter-spacing:.04em;
+  transition:
+    background .18s ease,
+    border-color .18s ease,
+    transform .15s ease;
+}
+
+.secondary-btn:active{
+  transform:scale(.96);
+  background:#29232d;
+}
+
+.select-home-btn{
+  width:100%;
+  margin-top:15px;
+  padding:12px;
+  border-radius:24px;
+  border:1px solid rgba(205,181,138,.20);
+  background:transparent;
+  color:#8f887f;
+  font-size:12px;
+  letter-spacing:.05em;
+}
+
+.select-home-btn:active{
+  color:var(--gold2);
+  border-color:rgba(205,181,138,.42);
+}
 
 .card-grid{
-
   display:grid;
-
-  grid-template-columns:
-    repeat(6,1fr);
-
+  grid-template-columns:repeat(6,1fr);
   gap:9px;
-
   margin-top:20px;
-
   padding-bottom:30px;
-
 }
-
 
 @media(max-width:390px){
-
   .card-grid{
-
-    grid-template-columns:
-      repeat(5,1fr);
-
+    grid-template-columns:repeat(5,1fr);
     gap:9px;
-
   }
-
 }
-
 
 .select-card{
-
   position:relative;
-
   aspect-ratio:2 / 3.45;
-
   perspective:900px;
-
   cursor:pointer;
-
 }
 
-
 .select-card-inner{
-
   position:absolute;
-
   inset:0;
-
   border-radius:7px;
-
-  border:
-    1px solid
-    rgba(205,181,138,.18);
-
+  border:1px solid rgba(205,181,138,.18);
   background:
-
     radial-gradient(
       circle at center,
       rgba(205,181,138,.12),
       transparent 55%
     ),
-
     linear-gradient(
       145deg,
       #27222d,
       #17151b
     );
-
   display:flex;
-
   align-items:center;
-
   justify-content:center;
-
   overflow:hidden;
-
   transition:
     transform .22s ease,
     border-color .22s ease,
     box-shadow .22s ease;
-
 }
-
 
 .select-card-inner::before{
-
   content:"✦";
-
-  color:
-    rgba(205,181,138,.35);
-
+  color:rgba(205,181,138,.35);
   font-size:14px;
-
 }
 
-
-.select-card.selected
-.select-card-inner{
-
+.select-card.selected .select-card-inner{
   transform:
     translateY(-4px)
     scale(.96);
-
-  border-color:
-    rgba(225,207,170,.8);
-
+  border-color:rgba(225,207,170,.8);
   box-shadow:
     0 7px 20px
     rgba(205,181,138,.14);
-
 }
-
 
 .select-card.selected::after{
-
   content:"✓";
-
   position:absolute;
-
   right:4px;
   top:4px;
-
   width:17px;
   height:17px;
-
   border-radius:50%;
-
   display:grid;
   place-items:center;
-
   background:var(--gold2);
-
   color:#211c17;
-
   font-size:10px;
   font-weight:bold;
-
 }
 
 
-/* =========================
+/* =========================================================
    选择页面底部
-========================= */
+========================================================= */
 
 .select-bottom{
-
   position:sticky;
-
   bottom:0;
-
   padding:
     14px
     0
     calc(14px + env(safe-area-inset-bottom));
-
   background:
     linear-gradient(
       to bottom,
       rgba(17,16,22,0),
       rgba(17,16,22,.95) 30%
     );
-
   text-align:center;
-
 }
 
-
 .confirm-btn{
-
   width:100%;
   max-width:330px;
-
   padding:14px;
-
   border-radius:28px;
-
   background:
     linear-gradient(
       135deg,
       #d8c49c,
       #b69c6e
     );
-
   color:#211c17;
-
   font-size:14px;
-
   letter-spacing:.08em;
-
 }
-
 
 .confirm-btn:disabled{
-
   opacity:.35;
-
 }
 
 
-/* =========================
+/* =========================================================
    翻牌页面
-========================= */
+========================================================= */
 
 .reveal-header{
-
   display:flex;
-
   align-items:center;
-
   justify-content:space-between;
-
   margin-top:30px;
-
 }
-
 
 .reveal-progress{
-
   color:var(--muted);
   font-size:12px;
-
 }
-
 
 .reveal-spread-name{
-
   margin-top:18px;
-
   text-align:center;
-
   color:var(--gold2);
-
   font-size:14px;
-
   letter-spacing:.08em;
-
 }
-
 
 .reveal-grid{
-
   display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
-
+  grid-template-columns:repeat(3,1fr);
   gap:17px;
-
   margin-top:28px;
-
   padding-bottom:20px;
-
 }
-
 
 @media(max-width:390px){
-
   .reveal-grid{
-
     gap:12px;
-
   }
-
 }
 
 
-/* =========================
+/* =========================================================
    真正的 3D 翻牌
-========================= */
+========================================================= */
 
 .tarot-flip{
-
   position:relative;
-
   width:100%;
-
   aspect-ratio:2 / 3.45;
-
   perspective:1100px;
-
   cursor:pointer;
-
 }
 
-
 .tarot-inner{
-
   position:absolute;
-
   inset:0;
-
   width:100%;
   height:100%;
-
   transform-style:preserve-3d;
-
   transition:
     transform .68s
     cubic-bezier(.22,.75,.25,1);
-
 }
 
-
-.tarot-flip.flipped
-.tarot-inner{
-
-  transform:
-    rotateY(180deg);
-
+.tarot-flip.flipped .tarot-inner{
+  transform:rotateY(180deg);
 }
-
 
 .tarot-face{
-
   position:absolute;
-
   inset:0;
-
   width:100%;
   height:100%;
-
   border-radius:9px;
-
   overflow:hidden;
-
   backface-visibility:hidden;
-
   -webkit-backface-visibility:hidden;
-
 }
 
-
 .tarot-back{
-
   display:flex;
-
   align-items:center;
   justify-content:center;
-
   background:
-
     radial-gradient(
       circle at center,
       rgba(205,181,138,.10),
       transparent 55%
     ),
-
     linear-gradient(
       145deg,
       #27222d,
       #141319
     );
-
-  border:
-    1px solid
-    rgba(205,181,138,.34);
-
-  box-shadow:
-    0 8px 25px
-    rgba(0,0,0,.22);
-
+  border:1px solid rgba(205,181,138,.34);
+  box-shadow:0 8px 25px rgba(0,0,0,.22);
 }
-
 
 .tarot-back::before{
-
   content:"✦";
-
   width:34px;
   height:48px;
-
-  border:
-    1px solid
-    rgba(205,181,138,.45);
-
+  border:1px solid rgba(205,181,138,.45);
   border-radius:5px;
-
   display:grid;
   place-items:center;
-
   color:var(--gold);
-
   font-size:16px;
-
-  box-shadow:
-    inset 0 0 15px
-    rgba(205,181,138,.05);
-
+  box-shadow:inset 0 0 15px rgba(205,181,138,.05);
 }
-
 
 .tarot-back::after{
-
   content:"点击翻牌";
-
   position:absolute;
-
   bottom:9px;
-
   left:0;
   right:0;
-
   text-align:center;
-
-  color:
-    rgba(225,207,170,.45);
-
+  color:rgba(225,207,170,.45);
   font-size:9px;
-
   letter-spacing:.05em;
-
 }
-
 
 .tarot-front{
-
-  transform:
-    rotateY(180deg);
-
+  transform:rotateY(180deg);
   background:#201c22;
-
-  border:
-    1px solid
-    rgba(205,181,138,.45);
-
-  box-shadow:
-    0 10px 30px
-    rgba(0,0,0,.28);
-
+  border:1px solid rgba(205,181,138,.45);
+  box-shadow:0 10px 30px rgba(0,0,0,.28);
 }
-
 
 .tarot-front img{
-
   display:block;
-
   width:100%;
   height:100%;
-
   object-fit:cover;
-
-  transition:
-    transform .15s ease;
-
+  transition:transform .15s ease;
 }
-
 
 .tarot-front img.reversed{
-
   transform:rotate(180deg);
-
 }
 
-
-.tarot-flip.flipped
-.tarot-front{
-
+.tarot-flip.flipped .tarot-front{
   box-shadow:
-    0 0 24px
-    rgba(205,181,138,.11),
-
-    0 10px 30px
-    rgba(0,0,0,.3);
-
+    0 0 24px rgba(205,181,138,.11),
+    0 10px 30px rgba(0,0,0,.3);
 }
 
 
-/* =========================
-   牌位名称
-========================= */
+/* =========================================================
+   牌位
+========================================================= */
 
 .card-position{
-
   margin-bottom:5px;
-
   color:#b9a88c;
-
   font-size:10px;
-
   line-height:1.4;
-
+  min-height:14px;
 }
-
 
 .card-info{
-
   text-align:center;
-
   margin-top:10px;
-
   min-height:54px;
-
   opacity:0;
-
-  transform:
-    translateY(-4px);
-
+  transform:translateY(-4px);
 }
 
-
 .card-info.show{
-
   animation:
     cardInfoIn .42s
     ease forwards;
-
 }
-
 
 @keyframes cardInfoIn{
-
   from{
-
     opacity:0;
-
-    transform:
-      translateY(-5px);
-
+    transform:translateY(-5px);
   }
-
   to{
-
     opacity:1;
-
-    transform:
-      translateY(0);
-
+    transform:translateY(0);
   }
-
 }
-
 
 .card-name{
-
   color:#e5dccd;
-
   font-size:12px;
-
   line-height:1.4;
-
 }
-
 
 .card-orientation{
-
   margin-top:3px;
-
   color:var(--gold);
-
   font-size:10px;
-
 }
 
 
-/* =========================
+/* =========================================================
    翻牌底部
-========================= */
+========================================================= */
 
 .reveal-actions{
-
   display:flex;
-
   gap:10px;
-
   justify-content:center;
-
   padding:
     10px
     0
     calc(20px + env(safe-area-inset-bottom));
-
 }
-
 
 .reveal-actions button{
-
   flex:1;
-
   max-width:180px;
-
 }
 
-
 .save-btn{
-
   padding:13px 20px;
-
   border-radius:25px;
-
   background:
     linear-gradient(
       135deg,
       #d8c49c,
       #b69c6e
     );
-
   color:#211c17;
-
   font-size:13px;
-
 }
-
 
 .save-btn:disabled{
-
   opacity:.35;
-
 }
 
 
-/* =========================
+/* =========================================================
    问题 / 笔记
-========================= */
+========================================================= */
 
 .form-section{
-
   margin-top:20px;
-
 }
-
 
 .form-label{
-
   display:block;
-
   color:var(--gold2);
-
   font-size:12px;
-
   margin-bottom:8px;
-
   letter-spacing:.05em;
-
 }
-
 
 .form-input,
 .form-textarea{
-
   width:100%;
-
-  border:
-    1px solid
-    rgba(205,181,138,.16);
-
+  border:1px solid rgba(205,181,138,.16);
   border-radius:10px;
-
   outline:none;
-
   background:#18161c;
-
   color:var(--text);
-
   padding:12px 13px;
-
 }
-
 
 .form-input{
-
   height:43px;
-
 }
-
 
 .form-textarea{
-
   min-height:100px;
-
   resize:vertical;
-
   line-height:1.7;
-
 }
-
 
 .form-input:focus,
 .form-textarea:focus{
-
-  border-color:
-    rgba(205,181,138,.42);
-
+  border-color:rgba(205,181,138,.42);
 }
 
 
-/* =========================
-   历史记录
-========================= */
+/* =========================================================
+   历史
+========================================================= */
 
 .history-list{
-
   margin-top:25px;
-
   padding-bottom:30px;
-
 }
-
 
 .history-item{
-
   padding:16px;
-
   margin-bottom:10px;
-
-  border:
-    1px solid
-    rgba(205,181,138,.13);
-
+  border:1px solid rgba(205,181,138,.13);
   border-radius:11px;
-
   background:#17151b;
-
 }
-
 
 .history-date{
-
   color:var(--gold);
-
   font-size:11px;
-
 }
-
 
 .history-spread{
-
   margin-top:7px;
-
   color:#bcae96;
-
   font-size:11px;
-
 }
-
 
 .history-question{
-
   margin-top:8px;
-
   color:#e8e0d4;
-
   font-size:13px;
-
   line-height:1.6;
-
 }
-
 
 .history-cards{
-
   margin-top:9px;
-
   color:var(--muted);
-
   font-size:11px;
-
   line-height:1.7;
-
 }
-
 
 .history-actions{
-
   display:flex;
-
   justify-content:flex-end;
-
   gap:8px;
-
   margin-top:11px;
-
 }
-
 
 .empty-history{
-
   text-align:center;
-
   color:var(--muted);
-
   font-size:12px;
-
   padding-top:60px;
-
 }
 
 
-/* =========================
-   详情弹窗
-========================= */
+/* =========================================================
+   弹窗
+========================================================= */
 
 .modal{
-
   position:fixed;
-
   inset:0;
-
   z-index:30;
-
   display:flex;
-
   align-items:flex-end;
-
   justify-content:center;
-
-  background:
-    rgba(0,0,0,.62);
-
+  background:rgba(0,0,0,.62);
   opacity:0;
-
   visibility:hidden;
-
   transition:
     opacity .25s ease,
     visibility 0s linear .25s;
-
 }
 
-
 .modal.show{
-
   opacity:1;
-
   visibility:visible;
-
   transition:
     opacity .25s ease,
     visibility 0s linear 0s;
-
 }
 
-
 .modal-panel{
-
   width:100%;
   max-width:680px;
-
   max-height:82vh;
-
   overflow-y:auto;
-
-  border-radius:
-    18px
-    18px
-    0
-    0;
-
+  border-radius:18px 18px 0 0;
   background:#1a171e;
-
   padding:
     24px
     20px
     calc(25px + env(safe-area-inset-bottom));
-
-  transform:
-    translateY(30px);
-
+  transform:translateY(30px);
   transition:
     transform .3s
     cubic-bezier(.2,.8,.2,1);
-
 }
 
-
-.modal.show
-.modal-panel{
-
-  transform:
-    translateY(0);
-
+.modal.show .modal-panel{
+  transform:translateY(0);
 }
-
 
 .modal-title{
-
   text-align:center;
-
   color:var(--gold2);
-
   font-size:15px;
-
   letter-spacing:.08em;
-
 }
-
 
 .detail-spread{
-
   margin-top:8px;
-
   text-align:center;
-
   color:#bcae96;
-
   font-size:11px;
-
 }
-
 
 .detail-card{
-
   margin-top:18px;
-
   display:flex;
-
   gap:14px;
-
   align-items:center;
-
 }
-
 
 .detail-card img{
-
   width:65px;
   height:105px;
-
   object-fit:cover;
-
   border-radius:6px;
-
 }
-
 
 .detail-name{
-
   color:#eee8df;
-
   font-size:13px;
-
 }
-
 
 .detail-position{
-
   margin-bottom:5px;
-
   color:#bcae96;
-
   font-size:10px;
-
 }
-
 
 .detail-orientation{
-
   margin-top:5px;
-
   color:var(--gold);
-
   font-size:11px;
-
 }
-
 
 .close-modal{
-
   display:block;
-
   width:100%;
-
   margin-top:22px;
-
   padding:12px;
-
   border-radius:25px;
-
-  border:
-    1px solid
-    var(--line);
-
+  border:1px solid var(--line);
   background:none;
-
   color:var(--gold2);
-
 }
 
 
-/* =========================
-   页面进入动画
-========================= */
+/* =========================================================
+   动画
+========================================================= */
 
 .page-enter{
-
   animation:
     pageEnter .38s
     ease both;
-
 }
-
 
 @keyframes pageEnter{
-
   from{
-
     opacity:0;
-
-    transform:
-      translateY(8px);
-
+    transform:translateY(8px);
   }
-
   to{
-
     opacity:1;
-
-    transform:
-      translateY(0);
-
+    transform:translateY(0);
   }
-
 }
 
 
-/* =========================
+/* =========================================================
    Toast
-========================= */
+========================================================= */
 
 .toast{
-
   position:fixed;
-
   left:50%;
-
-  bottom:
-    calc(32px + env(safe-area-inset-bottom));
-
+  bottom:calc(32px + env(safe-area-inset-bottom));
   z-index:50;
-
-  transform:
-    translate(-50%,10px);
-
+  transform:translate(-50%,10px);
   padding:10px 16px;
-
   border-radius:22px;
-
-  background:
-    rgba(35,31,39,.94);
-
-  border:
-    1px solid
-    rgba(205,181,138,.22);
-
+  background:rgba(35,31,39,.94);
+  border:1px solid rgba(205,181,138,.22);
   color:#e6ddcf;
-
   font-size:11px;
-
   opacity:0;
-
   pointer-events:none;
-
   transition:
     opacity .25s ease,
     transform .25s ease;
-
 }
-
 
 .toast.show{
-
   opacity:1;
-
-  transform:
-    translate(-50%,0);
-
+  transform:translate(-50%,0);
 }
 
 
-/* =========================
+/* =========================================================
    小屏幕
-========================= */
+========================================================= */
 
 @media(max-width:360px){
 
   .app{
-
     padding-left:14px;
     padding-right:14px;
-
   }
 
   .reveal-grid{
-
     gap:10px;
-
   }
 
   .card-name{
-
     font-size:11px;
+  }
 
+  .spread-visual{
+    height:245px;
+  }
+
+  .visual-card{
+    width:41px;
+    height:62px;
   }
 
 }
@@ -1696,23 +1187,20 @@ button{
 
 <body>
 
-
 <div class="app">
 
 <div class="page">
 
 
-<!-- =========================
+<!-- =======================================================
      首页
-========================= -->
+======================================================= -->
 
 <section id="homeView">
 
   <header class="header">
 
-    <div class="logo">
-      MY TAROT
-    </div>
+    <div class="logo">MY TAROT</div>
 
     <div class="subtitle">
       你选牌，我只负责记录
@@ -1770,9 +1258,9 @@ button{
 
 
 
-<!-- =========================
+<!-- =======================================================
      牌阵列表
-========================= -->
+======================================================= -->
 
 <section
   id="spreadView"
@@ -1798,7 +1286,7 @@ button{
       class="text-btn"
       onclick="goHome()"
     >
-      ← 返回
+      ← 返回主页
     </button>
 
   </div>
@@ -1822,9 +1310,9 @@ button{
 
 
 
-<!-- =========================
-     牌阵说明页面
-========================= -->
+<!-- =======================================================
+     牌阵说明
+======================================================= -->
 
 <section
   id="spreadStartView"
@@ -1850,23 +1338,21 @@ button{
       class="text-btn"
       onclick="openSpreadMode()"
     >
-      ← 返回
+      ← 返回牌阵
     </button>
 
   </div>
 
 
-  <div
-    id="spreadStartContent"
-  ></div>
+  <div id="spreadStartContent"></div>
 
 </section>
 
 
 
-<!-- =========================
+<!-- =======================================================
      选牌页面
-========================= -->
+======================================================= -->
 
 <section
   id="selectView"
@@ -1903,29 +1389,55 @@ button{
   </div>
 
 
-  <div class="top-actions">
+  <div class="select-top">
 
-    <span
-      id="selectCount"
-      class="select-count"
-    >
-      已选择 0 张
-    </span>
+    <div class="select-top-left">
 
-    <span
-      id="selectModeLabel"
-      class="select-mode-label"
-    >
-      自由抽牌
-    </span>
+      <button
+        class="text-btn"
+        onclick="backToHomeFromSelect()"
+      >
+        ← 返回主页
+      </button>
 
-    <button
-      class="secondary-btn"
-      onclick="resetSelection()"
-    >
-      重新选
-    </button>
+    </div>
 
+
+    <div class="select-top-center">
+
+      <span
+        id="selectCount"
+        class="select-count"
+      >
+        已选择 0 张
+      </span>
+
+    </div>
+
+
+    <div class="select-top-right">
+
+      <button
+        class="secondary-btn"
+        onclick="resetSelection()"
+      >
+        重新选
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div
+    id="selectModeLabel"
+    style="
+      margin-top:7px;
+      text-align:center;
+    "
+    class="select-mode-label"
+  >
+    自由抽牌
   </div>
 
 
@@ -1952,9 +1464,9 @@ button{
 
 
 
-<!-- =========================
+<!-- =======================================================
      翻牌页面
-========================= -->
+======================================================= -->
 
 <section
   id="revealView"
@@ -2067,9 +1579,9 @@ button{
 
 
 
-<!-- =========================
+<!-- =======================================================
      历史记录
-========================= -->
+======================================================= -->
 
 <section
   id="historyView"
@@ -2095,7 +1607,7 @@ button{
       class="text-btn"
       onclick="goHome()"
     >
-      ← 返回
+      ← 返回主页
     </button>
 
   </div>
@@ -2115,9 +1627,9 @@ button{
 
 
 
-<!-- =========================
+<!-- =======================================================
      详情弹窗
-========================= -->
+======================================================= -->
 
 <div
   id="detailModal"
@@ -2134,9 +1646,7 @@ button{
       抽牌记录
     </div>
 
-    <div
-      id="detailContent"
-    ></div>
+    <div id="detailContent"></div>
 
     <button
       class="close-modal"
@@ -2160,19 +1670,17 @@ button{
 
 <script>
 
-
-/* =========================
+/* =========================================================
    工具
-========================= */
+========================================================= */
 
 const $ = id =>
   document.getElementById(id);
 
 
-
-/* =========================
+/* =========================================================
    78 张塔罗牌
-========================= */
+========================================================= */
 
 const deck = [
 
@@ -2262,10 +1770,9 @@ const deck = [
 ];
 
 
-
-/* =========================
+/* =========================================================
    29 个牌阵
-========================= */
+========================================================= */
 
 const SPREADS = [
 
@@ -2282,7 +1789,6 @@ const SPREADS = [
     ]
   },
 
-
   {
     id:"arrow_of_time",
     name:"时间之箭",
@@ -2296,21 +1802,19 @@ const SPREADS = [
     ]
   },
 
-
   {
     id:"yes_no",
     name:"是非问题",
     category:"是非",
     count:3,
     description:"适合会不会、能不能、行不行、爱不爱等明确的是非问题。",
+    specialRule:"yes_no",
     positions:[
       {n:1,label:"第一张"},
       {n:2,label:"第二张"},
       {n:3,label:"第三张"}
-    ],
-    specialRule:"yes_no"
+    ]
   },
-
 
   {
     id:"self_exploration",
@@ -2326,7 +1830,6 @@ const SPREADS = [
     ]
   },
 
-
   {
     id:"new_love",
     name:"新的恋情",
@@ -2335,7 +1838,7 @@ const SPREADS = [
     description:"适合单身时探索下一段感情的发展。",
     positions:[
       {n:1,label:"何时遇见下一任"},
-      {n:2,label:"对方的特征"},
+      {n:2,label:"对方特征"},
       {n:3,label:"相处方式"},
       {n:4,label:"关系是否长久"},
       {n:5,label:"是否是灵魂伴侣"},
@@ -2343,13 +1846,12 @@ const SPREADS = [
     ]
   },
 
-
   {
     id:"flower_cat",
     name:"圣花猫占卜法",
     category:"通用",
     count:6,
-    description:"按照牌阵原规则，从洗牌后的牌堆中取第7～12张牌。",
+    description:"按照原牌阵规则，从洗牌后的牌堆中取第7～12张牌。",
     specialRule:"flower_cat",
     positions:[
       {n:1,label:"过去"},
@@ -2361,13 +1863,12 @@ const SPREADS = [
     ]
   },
 
-
   {
     id:"emotional_relationship",
     name:"情感关系",
     category:"爱情",
     count:5,
-    description:"适合已经处于关系中的两个人，观察感情的发展与最终结果。",
+    description:"适合分析两个人当前的感情状态与最终结果。",
     positions:[
       {n:1,label:"当前情况"},
       {n:2,label:"女性一方的感受"},
@@ -2376,7 +1877,6 @@ const SPREADS = [
       {n:5,label:"最终结果"}
     ]
   },
-
 
   {
     id:"hexagram",
@@ -2395,7 +1895,6 @@ const SPREADS = [
     ]
   },
 
-
   {
     id:"lover_pyramid",
     name:"恋人金字塔",
@@ -2409,7 +1908,6 @@ const SPREADS = [
       {n:4,label:"未来关系"}
     ]
   },
-
 
   {
     id:"love_prospect",
@@ -2426,7 +1924,6 @@ const SPREADS = [
     ]
   },
 
-
   {
     id:"gypsy_cross",
     name:"吉普赛十字",
@@ -2441,7 +1938,6 @@ const SPREADS = [
       {n:5,label:"关系发展与结果"}
     ]
   },
-
 
   {
     id:"marriage_analysis",
@@ -2461,7 +1957,6 @@ const SPREADS = [
     ]
   },
 
-
   {
     id:"windmill_marriage",
     name:"婚姻牌阵·风车形",
@@ -2479,7 +1974,6 @@ const SPREADS = [
     ]
   },
 
-
   {
     id:"peace_fan",
     name:"平安扇牌阵",
@@ -2494,7 +1988,6 @@ const SPREADS = [
     ]
   },
 
-
   {
     id:"court_guard",
     name:"宫廷仪仗牌阵",
@@ -2503,13 +1996,12 @@ const SPREADS = [
     description:"只使用16张宫廷牌，从侍从、骑士、王后、国王四个层面获得行动方向。",
     specialRule:"court_only",
     positions:[
-      {n:1,label:"侍从｜你需要学习的"},
-      {n:2,label:"骑士｜你应该立即行动的"},
-      {n:3,label:"王后｜你需要培养的"},
-      {n:4,label:"国王｜你需要掌控与决定的"}
+      {n:1,label:"侍从｜需要学习"},
+      {n:2,label:"骑士｜立即行动"},
+      {n:3,label:"王后｜需要培养"},
+      {n:4,label:"国王｜掌控与决定"}
     ]
   },
-
 
   {
     id:"emotional_mirror",
@@ -2526,7 +2018,6 @@ const SPREADS = [
     ]
   },
 
-
   {
     id:"two_choices",
     name:"二选一",
@@ -2542,7 +2033,6 @@ const SPREADS = [
     ]
   },
 
-
   {
     id:"wealth_hope",
     name:"财富希望",
@@ -2550,13 +2040,12 @@ const SPREADS = [
     count:4,
     description:"观察未来财务趋势、优势、阻碍与改善方式。",
     positions:[
-      {n:1,label:"你的优势与资产"},
+      {n:1,label:"优势与资产"},
       {n:2,label:"财富阻碍"},
       {n:3,label:"改善财富的方法"},
       {n:4,label:"最终财务趋势"}
     ]
   },
-
 
   {
     id:"future_development",
@@ -2574,7 +2063,6 @@ const SPREADS = [
     ]
   },
 
-
   {
     id:"love_cross",
     name:"爱情十字牌阵",
@@ -2590,7 +2078,6 @@ const SPREADS = [
     ]
   },
 
-
   {
     id:"diamond",
     name:"钻石展开法",
@@ -2605,7 +2092,6 @@ const SPREADS = [
     ]
   },
 
-
   {
     id:"love_form",
     name:"爱的模样牌阵",
@@ -2617,11 +2103,10 @@ const SPREADS = [
       {n:2,label:"你的态度与想法"},
       {n:3,label:"对方的态度与想法"},
       {n:4,label:"爱情在你生命中的意义"},
-      {n:5,label:"你需要知道的未知信息"},
-      {n:6,label:"你能够采取的行动"}
+      {n:5,label:"未知信息"},
+      {n:6,label:"你可以采取的行动"}
     ]
   },
-
 
   {
     id:"career_development",
@@ -2640,12 +2125,11 @@ const SPREADS = [
     ]
   },
 
-
   {
     id:"time_pyramid",
     name:"时间金字塔牌阵",
     category:"时间",
-    count:10,
+    count:11,
     description:"针对一个具体事件，从过去、现在、未来直到最终结果进行详细分析。",
     specialRule:"significator",
     positions:[
@@ -2658,16 +2142,16 @@ const SPREADS = [
       {n:7,label:"现在"},
       {n:8,label:"未来"},
       {n:9,label:"未来"},
-      {n:10,label:"最终结果"}
+      {n:10,label:"最终结果"},
+      {n:11,label:"切牌／指示牌",significator:true}
     ]
   },
-
 
   {
     id:"tree_of_life",
     name:"生命之树牌阵",
     category:"自我",
-    count:11,
+    count:12,
     description:"用于深入探索自我，从理想、创造力、智慧、人格、习惯到当前状态进行分析。",
     specialRule:"significator",
     positions:[
@@ -2681,10 +2165,10 @@ const SPREADS = [
       {n:8,label:"表达／沟通／学习"},
       {n:9,label:"习惯"},
       {n:10,label:"当前状态"},
-      {n:11,label:"知识"}
+      {n:11,label:"知识"},
+      {n:12,label:"切牌／指示牌",significator:true}
     ]
   },
-
 
   {
     id:"future_gate",
@@ -2705,13 +2189,12 @@ const SPREADS = [
     ]
   },
 
-
   {
     id:"birth_house",
     name:"灵感出生宫牌阵",
     category:"综合",
     count:13,
-    description:"按照牌阵原规则，从洗牌后的第7张开始取13张牌，观察特定时期的整体趋势。",
+    description:"按照原牌阵规则，从洗牌后的第7张开始取13张牌，观察特定时期的整体趋势。",
     specialRule:"birth_house",
     positions:[
       {n:1,label:"个人特征／行为方式"},
@@ -2729,7 +2212,6 @@ const SPREADS = [
       {n:13,label:"整体趋势"}
     ]
   },
-
 
   {
     id:"reconciliation",
@@ -2750,12 +2232,11 @@ const SPREADS = [
     ]
   },
 
-
   {
     id:"zodiac_12",
     name:"黄道12宫牌阵",
     category:"综合",
-    count:12,
+    count:13,
     description:"通过十二宫位分析一个具体的人、事件或问题，需要结合一定的占星知识。",
     specialRule:"significator",
     positions:[
@@ -2770,17 +2251,172 @@ const SPREADS = [
       {n:9,label:"信念／高等学习／远行"},
       {n:10,label:"事业／社会形象／地位"},
       {n:11,label:"朋友／团体／理想"},
-      {n:12,label:"隐藏事物／隐藏敌人／潜意识"}
+      {n:12,label:"隐藏事物／隐藏敌人／潜意识"},
+      {n:13,label:"切牌／指示牌",significator:true}
     ]
   }
 
 ];
 
 
+/* =========================================================
+   牌阵视觉布局
+   数值为 x/y 百分比
+========================================================= */
 
-/* =========================
+const SPREAD_LAYOUTS = {
+
+  three_triangle:[
+    [25,62],[50,32],[75,62]
+  ],
+
+  arrow_of_time:[
+    [20,50],[50,50],[80,50]
+  ],
+
+  yes_no:[
+    [25,62],[50,32],[75,62]
+  ],
+
+  self_exploration:[
+    [50,24],[76,50],[50,76],[24,50]
+  ],
+
+  new_love:[
+    [25,28],[50,28],[75,28],
+    [25,70],[50,70],[75,70]
+  ],
+
+  flower_cat:[
+    [27,30],[73,30],
+    [27,52],[73,52],
+    [27,74],[73,74]
+  ],
+
+  emotional_relationship:[
+    [25,50],[50,25],[75,50],[50,75],[50,50]
+  ],
+
+  hexagram:[
+    [50,18],[77,34],[77,66],
+    [50,82],[23,66],[23,34],[50,50]
+  ],
+
+  lover_pyramid:[
+    [32,28],[68,28],
+    [50,55],[50,78]
+  ],
+
+  love_prospect:[
+    [28,27],[72,27],
+    [25,62],[50,62],[75,62]
+  ],
+
+  gypsy_cross:[
+    [50,24],[24,50],[50,50],[76,50],[50,76]
+  ],
+
+  marriage_analysis:[
+    [20,25],[50,25],[80,25],[20,70],
+    [50,50],[80,70],[50,82],[80,50]
+  ],
+
+  windmill_marriage:[
+    [50,50],[25,28],[75,28],[25,72],
+    [75,72],[50,18],[50,84]
+  ],
+
+  peace_fan:[
+    [22,65],[42,45],[62,28],[82,18]
+  ],
+
+  court_guard:[
+    [20,50],[40,50],[60,50],[80,50]
+  ],
+
+  emotional_mirror:[
+    [25,30],[75,30],[50,50],[25,75],[75,75]
+  ],
+
+  two_choices:[
+    [50,18],[27,43],[73,43],[27,72],[73,72]
+  ],
+
+  wealth_hope:[
+    [25,30],[75,30],[25,70],[75,70]
+  ],
+
+  future_development:[
+    [50,20],[25,43],[75,43],
+    [25,72],[75,72],[50,86]
+  ],
+
+  love_cross:[
+    [50,22],[25,50],[50,50],[75,50],[50,78]
+  ],
+
+  diamond:[
+    [50,20],[27,50],[73,50],[50,80]
+  ],
+
+  love_form:[
+    [50,18],[25,42],[75,42],
+    [25,72],[75,72],[50,84]
+  ],
+
+  career_development:[
+    [50,18],[24,35],[50,38],[76,35],
+    [24,65],[76,65],[50,84]
+  ],
+
+  time_pyramid:[
+    [20,78],[40,78],[60,78],[80,78],
+    [27,52],[50,52],[73,52],
+    [35,28],[65,28],
+    [50,10],
+    [87,18]
+  ],
+
+  tree_of_life:[
+    [50,12],[30,24],[70,24],
+    [25,43],[75,43],
+    [50,50],[30,62],[70,62],
+    [25,80],[75,80],[50,88],
+    [88,50]
+  ],
+
+  future_gate:[
+    [50,15],[50,34],[50,55],
+    [27,76],[43,76],[57,76],[73,76],
+    [27,92],[73,92]
+  ],
+
+  birth_house:[
+    [50,12],[68,18],[82,34],[86,52],
+    [76,70],[62,82],[50,88],
+    [38,82],[24,70],[14,52],
+    [18,34],[32,18],[50,50]
+  ],
+
+  reconciliation:[
+    [20,25],[50,25],[80,25],
+    [20,53],[50,53],[80,53],
+    [20,80],[50,80],[80,80]
+  ],
+
+  zodiac_12:[
+    [50,11],[70,16],[84,30],[89,50],
+    [84,70],[70,84],[50,89],
+    [30,84],[16,70],[11,50],
+    [16,30],[30,16],[50,50]
+  ]
+
+};
+
+
+/* =========================================================
    状态
-========================= */
+========================================================= */
 
 let selected = [];
 
@@ -2793,10 +2429,9 @@ let currentSpread = null;
 let spreadDrawMode = "manual";
 
 
-
-/* =========================
+/* =========================================================
    页面切换
-========================= */
+========================================================= */
 
 function showView(id){
 
@@ -2809,23 +2444,16 @@ function showView(id){
     "historyView"
   ];
 
-
   views.forEach(view => {
-
     $(view).classList.add("hidden");
-
   });
-
 
   $(id).classList.remove("hidden");
 
   $(id).classList.add("page-enter");
 
-
   setTimeout(() => {
-
     $(id).classList.remove("page-enter");
-
   },450);
 
 }
@@ -2835,15 +2463,20 @@ function goHome(){
 
   currentSpread = null;
 
+  selected = [];
+
+  readingCards = [];
+
+  revealed = [];
+
   showView("homeView");
 
 }
 
 
-
-/* =========================
+/* =========================================================
    自由抽牌
-========================= */
+========================================================= */
 
 function startReading(){
 
@@ -2851,7 +2484,15 @@ function startReading(){
 
   selected = [];
 
+  readingCards = [];
+
+  revealed = [];
+
   spreadDrawMode = "manual";
+
+  $("questionInput").value = "";
+
+  $("noteInput").value = "";
 
   renderSelect();
 
@@ -2860,10 +2501,9 @@ function startReading(){
 }
 
 
-
-/* =========================
+/* =========================================================
    牌阵入口
-========================= */
+========================================================= */
 
 function openSpreadMode(){
 
@@ -2876,22 +2516,16 @@ function openSpreadMode(){
 
 function renderSpreadList(){
 
-  const list =
-    $("spreadList");
-
+  const list = $("spreadList");
 
   list.innerHTML = "";
-
 
   SPREADS.forEach(spread => {
 
     const button =
       document.createElement("button");
 
-
-    button.className =
-      "spread-card";
-
+    button.className = "spread-card";
 
     button.innerHTML = `
 
@@ -2917,12 +2551,10 @@ function renderSpreadList(){
 
     `;
 
-
     button.addEventListener(
       "click",
       () => selectSpread(spread.id)
     );
-
 
     list.appendChild(button);
 
@@ -2938,13 +2570,9 @@ function selectSpread(spreadId){
       spread => spread.id === spreadId
     );
 
-
   if(!currentSpread){
-
     return;
-
   }
-
 
   renderSpreadStart();
 
@@ -2953,10 +2581,143 @@ function selectSpread(spreadId){
 }
 
 
+/* =========================================================
+   牌阵视觉预览
+========================================================= */
 
-/* =========================
+function renderSpreadVisual(spread){
+
+  const container =
+    document.createElement("div");
+
+  const title =
+    document.createElement("div");
+
+  title.className =
+    "spread-visual-title";
+
+  title.textContent =
+    "牌阵布局预览";
+
+  container.appendChild(title);
+
+
+  const visual =
+    document.createElement("div");
+
+  visual.className =
+    "spread-visual";
+
+
+  let layout =
+    SPREAD_LAYOUTS[spread.id];
+
+
+  if(!layout){
+
+    layout =
+      getFallbackLayout(
+        spread.positions.length
+      );
+
+  }
+
+
+  spread.positions.forEach(
+    (position,index) => {
+
+      const point =
+        layout[index] ||
+        [50,50];
+
+
+      const card =
+        document.createElement("div");
+
+      card.className =
+        "visual-card";
+
+
+      if(position.significator){
+        card.classList.add("significator");
+      }
+
+
+      card.style.left =
+        `${point[0]}%`;
+
+      card.style.top =
+        `${point[1]}%`;
+
+
+      card.innerHTML = `
+
+        <span class="visual-number">
+          ${position.n}
+        </span>
+
+        <span class="visual-label">
+          ${position.significator
+            ? "切牌／指示牌"
+            : position.label}
+        </span>
+
+      `;
+
+
+      visual.appendChild(card);
+
+    }
+  );
+
+
+  container.appendChild(visual);
+
+  return container;
+
+}
+
+
+function getFallbackLayout(count){
+
+  const result = [];
+
+  const columns =
+    count <= 4
+      ? count
+      : 4;
+
+  const rows =
+    Math.ceil(
+      count / columns
+    );
+
+  for(let i=0;i<count;i++){
+
+    const col =
+      i % columns;
+
+    const row =
+      Math.floor(i / columns);
+
+    result.push([
+
+      ((col + .5) / columns) * 100,
+
+      ((row + .5) / rows) * 100
+
+    ]);
+
+  }
+
+  return result;
+
+}
+
+
+/* =========================================================
    牌阵说明
-========================= */
+========================================================= */
 
 function renderSpreadStart(){
 
@@ -2971,7 +2732,7 @@ function renderSpreadStart(){
   if(spread.specialRule === "flower_cat"){
 
     ruleText =
-      "原牌阵规则：洗牌后，从牌堆顶开始数牌，使用第 7～12 张牌作为六个位置。";
+      "原牌阵规则：洗牌后，从牌堆顶开始数牌，使用第 7～12 张牌。";
 
   }
 
@@ -2979,7 +2740,7 @@ function renderSpreadStart(){
   if(spread.specialRule === "court_only"){
 
     ruleText =
-      "原牌阵规则：只使用 16 张宫廷牌，并分别从侍从、骑士、王后、国王四组中各取一张。";
+      "原牌阵规则：只使用16张宫廷牌，并分别从侍从、骑士、王后、国王四组中各取一张。";
 
   }
 
@@ -2987,7 +2748,7 @@ function renderSpreadStart(){
   if(spread.specialRule === "birth_house"){
 
     ruleText =
-      "原牌阵规则：洗牌后，从第 7 张牌开始依次取 13 张牌，对应 13 个位置。";
+      "原牌阵规则：洗牌后，从第7张牌开始依次取13张牌。";
 
   }
 
@@ -2995,7 +2756,7 @@ function renderSpreadStart(){
   if(spread.specialRule === "significator"){
 
     ruleText =
-      "这个牌阵包含额外的切牌／指示牌。当前版本会单独保存指示牌信息。";
+      "这个牌阵包含额外的切牌／指示牌。当前版本会将最后选择的一张作为切牌／指示牌单独标记。";
 
   }
 
@@ -3020,48 +2781,67 @@ function renderSpreadStart(){
         ${ruleText}
       </div>
 
-      <div class="spread-start-actions">
-
-        <button
-          class="primary-btn"
-          onclick="beginSpread()"
-        >
-          开始占卜
-        </button>
-
-      </div>
-
     </div>
 
   `;
 
+
+  const visual =
+    renderSpreadVisual(spread);
+
+
+  $("spreadStartContent")
+    .appendChild(visual);
+
+
+  const actions =
+    document.createElement("div");
+
+  actions.className =
+    "spread-start-actions";
+
+
+  actions.innerHTML = `
+
+    <button
+      class="primary-btn"
+      onclick="beginSpread()"
+    >
+      开始占卜
+    </button>
+
+  `;
+
+
+  $("spreadStartContent")
+    .appendChild(actions);
+
 }
 
 
-
-/* =========================
+/* =========================================================
    开始牌阵
-========================= */
+========================================================= */
 
 function beginSpread(){
 
   if(!currentSpread){
-
     return;
-
   }
 
-
   selected = [];
+
+  readingCards = [];
+
+  revealed = [];
 
   spreadDrawMode =
     currentSpread.specialRule || "manual";
 
+  $("questionInput").value = "";
 
-  /*
-    圣花猫：
-    按原规则自动从洗牌后的牌堆取第7～12张。
-  */
+  $("noteInput").value = "";
+
 
   if(
     currentSpread.specialRule ===
@@ -3074,11 +2854,6 @@ function beginSpread(){
 
   }
 
-
-  /*
-    灵感出生宫：
-    按原规则自动从洗牌后的第7张开始取13张。
-  */
 
   if(
     currentSpread.specialRule ===
@@ -3099,16 +2874,14 @@ function beginSpread(){
 }
 
 
-
-/* =========================
+/* =========================================================
    圣花猫
-========================= */
+========================================================= */
 
 function startFlowerCat(){
 
   const shuffled =
     shuffleDeck(deck);
-
 
   const chosen =
     shuffled.slice(6,12);
@@ -3142,16 +2915,14 @@ function startFlowerCat(){
 }
 
 
-
-/* =========================
+/* =========================================================
    灵感出生宫
-========================= */
+========================================================= */
 
 function startBirthHouse(){
 
   const shuffled =
     shuffleDeck(deck);
-
 
   const chosen =
     shuffled.slice(6,19);
@@ -3185,10 +2956,9 @@ function startBirthHouse(){
 }
 
 
-
-/* =========================
+/* =========================================================
    洗牌
-========================= */
+========================================================= */
 
 function shuffleDeck(source){
 
@@ -3225,16 +2995,14 @@ function shuffleDeck(source){
 }
 
 
-
-/* =========================
-   选牌
-========================= */
+/* =========================================================
+   选择牌
+========================================================= */
 
 function renderSelect(){
 
   const grid =
     $("selectGrid");
-
 
   grid.innerHTML = "";
 
@@ -3242,11 +3010,6 @@ function renderSelect(){
   let availableDeck =
     deck;
 
-
-  /*
-    宫廷仪仗：
-    只显示 16 张宫廷牌。
-  */
 
   if(
     currentSpread &&
@@ -3296,9 +3059,7 @@ function renderSelect(){
 
 
     item.innerHTML = `
-
       <div class="select-card-inner"></div>
-
     `;
 
 
@@ -3325,11 +3086,28 @@ function renderSelect(){
        ${currentSpread.description}`;
 
 
-    $("selectModeLabel").textContent =
+    if(
       currentSpread.specialRule ===
       "court_only"
-        ? "仅限16张宫廷牌"
-        : `需要 ${currentSpread.count} 张`;
+    ){
+
+      $("selectModeLabel").textContent =
+        "16张宫廷牌｜侍从／骑士／王后／国王各一张";
+
+    }else if(
+      currentSpread.specialRule ===
+      "significator"
+    ){
+
+      $("selectModeLabel").textContent =
+        `需要 ${currentSpread.count} 张｜最后一张为切牌／指示牌`;
+
+    }else{
+
+      $("selectModeLabel").textContent =
+        `需要 ${currentSpread.count} 张`;
+
+    }
 
   }else{
 
@@ -3350,10 +3128,9 @@ function renderSelect(){
 }
 
 
-
-/* =========================
+/* =========================================================
    点击牌
-========================= */
+========================================================= */
 
 function toggleCard(index){
 
@@ -3370,10 +3147,6 @@ function toggleCard(index){
 
   }else{
 
-    /*
-      牌阵模式必须达到准确数量。
-    */
-
     if(
       currentSpread &&
       selected.length >=
@@ -3388,11 +3161,6 @@ function toggleCard(index){
 
     }
 
-
-    /*
-      宫廷仪仗：
-      四个宫廷等级各一张。
-    */
 
     if(
       currentSpread &&
@@ -3444,51 +3212,30 @@ function toggleCard(index){
 
 function getCourtRank(code){
 
-  if(
-    code.endsWith("pa")
-  ){
-
+  if(code.endsWith("pa")){
     return "侍从";
-
   }
 
-
-  if(
-    code.endsWith("kn")
-  ){
-
+  if(code.endsWith("kn")){
     return "骑士";
-
   }
 
-
-  if(
-    code.endsWith("qu")
-  ){
-
+  if(code.endsWith("qu")){
     return "王后";
-
   }
 
-
-  if(
-    code.endsWith("ki")
-  ){
-
+  if(code.endsWith("ki")){
     return "国王";
-
   }
-
 
   return "";
 
 }
 
 
-
-/* =========================
-   选择数量
-========================= */
+/* =========================================================
+   数量
+========================================================= */
 
 function updateSelectCount(){
 
@@ -3530,10 +3277,28 @@ function backToSelect(){
 }
 
 
+/* =========================================================
+   选择牌页面 → 首页
+========================================================= */
 
-/* =========================
+function backToHomeFromSelect(){
+
+  selected = [];
+
+  readingCards = [];
+
+  revealed = [];
+
+  currentSpread = null;
+
+  showView("homeView");
+
+}
+
+
+/* =========================================================
    确认选牌
-========================= */
+========================================================= */
 
 function confirmSelection(){
 
@@ -3596,10 +3361,9 @@ function confirmSelection(){
 }
 
 
-
-/* =========================
+/* =========================================================
    翻牌页面
-========================= */
+========================================================= */
 
 function renderReveal(){
 
@@ -3696,7 +3460,6 @@ function renderReveal(){
 
       front.appendChild(img);
 
-
       inner.appendChild(back);
 
       inner.appendChild(front);
@@ -3753,10 +3516,9 @@ function renderReveal(){
 }
 
 
-
-/* =========================
+/* =========================================================
    真正翻牌
-========================= */
+========================================================= */
 
 function flipCard(index){
 
@@ -3792,9 +3554,7 @@ function flipCard(index){
 
 
   if(!flip){
-
     return;
-
   }
 
 
@@ -3851,10 +3611,9 @@ function flipCard(index){
 }
 
 
-
-/* =========================
+/* =========================================================
    全部翻开
-========================= */
+========================================================= */
 
 async function revealAll(){
 
@@ -3889,10 +3648,9 @@ function wait(ms){
 }
 
 
-
-/* =========================
+/* =========================================================
    进度
-========================= */
+========================================================= */
 
 function updateRevealProgress(){
 
@@ -3912,10 +3670,9 @@ function updateRevealProgress(){
 }
 
 
-
-/* =========================
-   保存记录
-========================= */
+/* =========================================================
+   保存
+========================================================= */
 
 function saveReading(){
 
@@ -4016,10 +3773,9 @@ function saveReading(){
 }
 
 
-
-/* =========================
-   历史记录
-========================= */
+/* =========================================================
+   历史
+========================================================= */
 
 function showHistory(){
 
@@ -4157,10 +3913,9 @@ function renderHistory(){
 }
 
 
-
-/* =========================
+/* =========================================================
    历史详情
-========================= */
+========================================================= */
 
 function openDetail(id){
 
@@ -4179,9 +3934,7 @@ function openDetail(id){
 
 
   if(!record){
-
     return;
-
   }
 
 
@@ -4217,18 +3970,14 @@ function openDetail(id){
     q.style.marginTop =
       "22px";
 
-
     q.style.color =
       "#eee8df";
-
 
     q.style.fontSize =
       "13px";
 
-
     q.style.lineHeight =
       "1.7";
-
 
     q.textContent =
       `问题：${record.question}`;
@@ -4299,18 +4048,14 @@ function openDetail(id){
     note.style.marginTop =
       "20px";
 
-
     note.style.color =
       "#a49d95";
-
 
     note.style.fontSize =
       "12px";
 
-
     note.style.lineHeight =
       "1.8";
-
 
     note.textContent =
       `备注：${record.note}`;
@@ -4349,10 +4094,9 @@ function closeModal(event){
 }
 
 
-
-/* =========================
-   删除记录
-========================= */
+/* =========================================================
+   删除
+========================================================= */
 
 function deleteRecord(id){
 
@@ -4363,9 +4107,7 @@ function deleteRecord(id){
 
 
   if(!ok){
-
     return;
-
   }
 
 
@@ -4397,10 +4139,9 @@ function deleteRecord(id){
 }
 
 
-
-/* =========================
+/* =========================================================
    Toast
-========================= */
+========================================================= */
 
 let toastTimer;
 
