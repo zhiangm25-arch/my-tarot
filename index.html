@@ -494,7 +494,7 @@ button{
 
 
 /* =========================
-   REVEAL
+   REVEAL HEADER
 ========================= */
 
 .reveal-header{
@@ -517,38 +517,6 @@ button{
   margin-top:8px;
   color:#77717b;
   font-size:11px;
-}
-
-.question-box{
-  margin:18px 0 25px;
-}
-
-.input-label{
-  display:block;
-  color:#89838d;
-  font-size:11px;
-  margin-bottom:7px;
-}
-
-.input,
-.textarea{
-  width:100%;
-  border:1px solid rgba(205,181,138,.13);
-  background:rgba(255,255,255,.025);
-  color:#eee9e2;
-  border-radius:8px;
-  outline:none;
-  padding:11px 12px;
-}
-
-.textarea{
-  min-height:80px;
-  resize:vertical;
-}
-
-.input:focus,
-.textarea:focus{
-  border-color:rgba(205,181,138,.45);
 }
 
 
@@ -640,7 +608,7 @@ button{
 
 .card-info{
   text-align:center;
-  padding-top:12px;
+  padding-top:9px;
   opacity:0;
   transform:translateY(5px);
   transition:
@@ -655,79 +623,85 @@ button{
 
 .position-number{
   color:#cdb58a;
-  font-size:10px;
+  font-size:9px;
   letter-spacing:.12em;
 }
 
 .position-label{
-  margin-top:4px;
-  color:#bdb5ad;
-  font-size:11px;
+  margin-top:3px;
+  color:#aaa29a;
+  font-size:10px;
+  line-height:1.35;
 }
 
 .card-name{
-  margin-top:5px;
+  margin-top:4px;
   font-family:Georgia,serif;
   color:#eee9e2;
-  font-size:16px;
+  font-size:14px;
 }
 
 .orientation{
-  margin-top:4px;
+  margin-top:3px;
   color:#817b84;
-  font-size:11px;
+  font-size:10px;
 }
 
 
-/* =========================
-   GENERIC REVEAL GRID
-========================= */
+/* =========================================================
+   REVEAL LAYOUT BASE
+========================================================= */
 
 .reveal-layout{
+  position:relative;
   width:100%;
-  margin:25px auto;
+  margin:30px auto 45px;
+}
+
+.reveal-card{
+  position:relative;
+  width:100%;
+  min-width:0;
+}
+
+.reveal-card .tarot-flip{
+  width:100%;
 }
 
 
-/* 默认 */
-
-.layout-default{
-  display:grid;
-  grid-template-columns:
-    repeat(2,minmax(0,1fr));
-  gap:25px 12px;
-}
-
-
-/* 3张 */
+/* =========================================================
+   3 张：圣三角 / 时间之箭 / 是非
+========================================================= */
 
 .layout-triangle{
   display:grid;
-  grid-template-columns:
-    repeat(3,minmax(0,1fr));
-  gap:14px;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  align-items:start;
 }
 
 .layout-triangle .reveal-card:nth-child(1){
-  grid-column:1;
+  transform:translateY(32px);
 }
 
 .layout-triangle .reveal-card:nth-child(2){
-  grid-column:2;
+  transform:translateY(0);
 }
 
 .layout-triangle .reveal-card:nth-child(3){
-  grid-column:3;
+  transform:translateY(32px);
 }
 
 
-/* 4张 */
+/* =========================================================
+   4 张：菱形
+========================================================= */
 
 .layout-diamond{
   display:grid;
-  grid-template-columns:
-    repeat(3,minmax(0,1fr));
-  gap:14px;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px 12px;
+  align-items:start;
 }
 
 .layout-diamond .reveal-card:nth-child(1){
@@ -750,13 +724,15 @@ button{
 }
 
 
-/* 5张 */
+/* =========================================================
+   5 张：十字
+========================================================= */
 
 .layout-cross{
   display:grid;
-  grid-template-columns:
-    repeat(3,minmax(0,1fr));
-  gap:14px;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px 12px;
+  align-items:start;
 }
 
 .layout-cross .reveal-card:nth-child(1){
@@ -785,182 +761,585 @@ button{
 }
 
 
-/* 6张 */
+/* =========================================================
+   6 张：左右展开
+========================================================= */
 
 .layout-six{
   display:grid;
-  grid-template-columns:
-    repeat(3,minmax(0,1fr));
-  gap:18px 10px;
+  grid-template-columns:repeat(3,1fr);
+  gap:26px 12px;
+  align-items:start;
+}
+
+.layout-six .reveal-card:nth-child(1){
+  transform:translateY(28px);
+}
+
+.layout-six .reveal-card:nth-child(2){
+  transform:translateY(0);
+}
+
+.layout-six .reveal-card:nth-child(3){
+  transform:translateY(28px);
+}
+
+.layout-six .reveal-card:nth-child(4){
+  transform:translateY(-4px);
+}
+
+.layout-six .reveal-card:nth-child(5){
+  transform:translateY(-28px);
+}
+
+.layout-six .reveal-card:nth-child(6){
+  transform:translateY(-4px);
 }
 
 
-/* 7张 */
+/* =========================================================
+   六芒星
+========================================================= */
+
+.layout-hexagram{
+  position:relative;
+  display:block;
+  min-height:510px;
+}
+
+.layout-hexagram .reveal-card{
+  position:absolute;
+  width:22%;
+}
+
+.layout-hexagram .reveal-card:nth-child(1){
+  left:39%;
+  top:0;
+}
+
+.layout-hexagram .reveal-card:nth-child(2){
+  left:8%;
+  top:22%;
+}
+
+.layout-hexagram .reveal-card:nth-child(3){
+  left:70%;
+  top:22%;
+}
+
+.layout-hexagram .reveal-card:nth-child(4){
+  left:8%;
+  top:57%;
+}
+
+.layout-hexagram .reveal-card:nth-child(5){
+  left:70%;
+  top:57%;
+}
+
+.layout-hexagram .reveal-card:nth-child(6){
+  left:39%;
+  top:42%;
+}
+
+.layout-hexagram .reveal-card:nth-child(7){
+  left:39%;
+  top:76%;
+}
+
+
+/* =========================================================
+   7 张：风车 / 事业 / 周边
+========================================================= */
 
 .layout-seven{
-  display:grid;
-  grid-template-columns:
-    repeat(3,minmax(0,1fr));
-  gap:18px 10px;
+  position:relative;
+  display:block;
+  min-height:500px;
+}
+
+.layout-seven .reveal-card{
+  position:absolute;
+  width:22%;
+}
+
+.layout-seven .reveal-card:nth-child(1){
+  left:39%;
+  top:0;
+}
+
+.layout-seven .reveal-card:nth-child(2){
+  left:7%;
+  top:16%;
+}
+
+.layout-seven .reveal-card:nth-child(3){
+  left:71%;
+  top:16%;
+}
+
+.layout-seven .reveal-card:nth-child(4){
+  left:39%;
+  top:27%;
+}
+
+.layout-seven .reveal-card:nth-child(5){
+  left:7%;
+  top:49%;
+}
+
+.layout-seven .reveal-card:nth-child(6){
+  left:71%;
+  top:49%;
 }
 
 .layout-seven .reveal-card:nth-child(7){
-  grid-column:2;
+  left:39%;
+  top:70%;
 }
 
 
-/* 8张 */
+/* =========================================================
+   8 张：婚姻剖析
+========================================================= */
 
 .layout-eight{
   display:grid;
-  grid-template-columns:
-    repeat(4,minmax(0,1fr));
-  gap:18px 8px;
+  grid-template-columns:repeat(4,1fr);
+  gap:25px 8px;
+  align-items:start;
+}
+
+.layout-eight .reveal-card:nth-child(1),
+.layout-eight .reveal-card:nth-child(8){
+  transform:translateY(24px);
 }
 
 
-/* 9张 */
+/* =========================================================
+   9 张：未来之门 / 复合
+========================================================= */
 
 .layout-nine{
   display:grid;
-  grid-template-columns:
-    repeat(3,minmax(0,1fr));
-  gap:18px 10px;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px 10px;
+  align-items:start;
 }
 
 
-/* 10张 */
+/* =========================================================
+   二选一
+========================================================= */
 
-.layout-ten{
+.layout-choice{
   display:grid;
-  grid-template-columns:
-    repeat(5,minmax(0,1fr));
-  gap:16px 7px;
+  grid-template-columns:repeat(2,1fr);
+  gap:30px 14px;
 }
 
-
-/* 11张 / 时间金字塔 */
-
-.layout-pyramid{
-  display:grid;
-  grid-template-columns:
-    repeat(4,minmax(0,1fr));
-  gap:17px 8px;
-}
-
-.layout-pyramid .reveal-card:nth-child(-n+4){
-  grid-row:1;
-}
-
-.layout-pyramid .reveal-card:nth-child(n+5):nth-child(-n+7){
-  grid-row:2;
-}
-
-.layout-pyramid .reveal-card:nth-child(n+8):nth-child(-n+9){
-  grid-row:3;
-}
-
-.layout-pyramid .reveal-card:nth-child(10){
-  grid-column:2 / span 2;
-  grid-row:4;
-}
-
-.layout-pyramid .reveal-card:nth-child(11){
-  grid-column:1 / span 4;
-  grid-row:5;
-  max-width:90px;
+.layout-choice .reveal-card:nth-child(1){
+  grid-column:1 / span 2;
+  width:48%;
   justify-self:center;
 }
 
+.layout-choice .reveal-card:nth-child(2),
+.layout-choice .reveal-card:nth-child(3),
+.layout-choice .reveal-card:nth-child(4),
+.layout-choice .reveal-card:nth-child(5){
+  position:relative;
+}
 
-/* 12张生命之树 */
+.layout-choice .reveal-card:nth-child(2),
+.layout-choice .reveal-card:nth-child(4){
+  transform:translateY(5px);
+}
+
+.layout-choice .reveal-card:nth-child(3),
+.layout-choice .reveal-card:nth-child(5){
+  transform:translateY(5px);
+}
+
+
+/* =========================================================
+   时间金字塔
+========================================================= */
+
+.layout-pyramid{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  align-items:center;
+}
+
+.pyramid-row{
+  display:grid;
+  width:100%;
+  gap:9px;
+}
+
+.pyramid-row-4{
+  grid-template-columns:repeat(4,1fr);
+}
+
+.pyramid-row-3{
+  width:76%;
+  grid-template-columns:repeat(3,1fr);
+}
+
+.pyramid-row-2{
+  width:52%;
+  grid-template-columns:repeat(2,1fr);
+}
+
+.pyramid-result{
+  width:25%;
+}
+
+.pyramid-significator{
+  width:25%;
+  margin-top:8px;
+}
+
+
+/* =========================================================
+   生命之树
+========================================================= */
 
 .layout-tree{
   position:relative;
-  display:grid;
-  grid-template-columns:
-    repeat(4,minmax(0,1fr));
-  gap:16px 8px;
+  min-height:680px;
+  display:block;
+}
+
+.layout-tree .reveal-card{
+  position:absolute;
+  width:17%;
 }
 
 .layout-tree .reveal-card:nth-child(1){
-  grid-column:2 / span 2;
+  left:41.5%;
+  top:0;
 }
 
 .layout-tree .reveal-card:nth-child(2){
-  grid-column:1;
+  left:5%;
+  top:16%;
 }
 
 .layout-tree .reveal-card:nth-child(3){
-  grid-column:2;
+  left:28%;
+  top:16%;
 }
 
 .layout-tree .reveal-card:nth-child(4){
-  grid-column:3;
+  left:51%;
+  top:16%;
 }
 
 .layout-tree .reveal-card:nth-child(5){
-  grid-column:4;
+  left:74%;
+  top:16%;
 }
 
 .layout-tree .reveal-card:nth-child(6){
-  grid-column:1;
+  left:5%;
+  top:37%;
 }
 
 .layout-tree .reveal-card:nth-child(7){
-  grid-column:2;
+  left:28%;
+  top:37%;
 }
 
 .layout-tree .reveal-card:nth-child(8){
-  grid-column:3;
+  left:51%;
+  top:37%;
 }
 
 .layout-tree .reveal-card:nth-child(9){
-  grid-column:4;
+  left:74%;
+  top:37%;
 }
 
 .layout-tree .reveal-card:nth-child(10){
-  grid-column:2 / span 2;
+  left:41.5%;
+  top:57%;
 }
 
 .layout-tree .reveal-card:nth-child(11){
-  grid-column:1 / span 4;
-  max-width:90px;
-  justify-self:center;
+  left:28%;
+  top:76%;
 }
 
 .layout-tree .reveal-card:nth-child(12){
-  grid-column:1 / span 4;
-  max-width:90px;
-  justify-self:center;
+  left:55%;
+  top:76%;
 }
 
 
-/* 13张黄道 */
+/* =========================================================
+   未来之门
+========================================================= */
+
+.layout-future-door{
+  position:relative;
+  min-height:610px;
+  display:block;
+}
+
+.layout-future-door .reveal-card{
+  position:absolute;
+  width:17%;
+}
+
+.layout-future-door .reveal-card:nth-child(1){
+  left:5%;
+  top:0;
+}
+
+.layout-future-door .reveal-card:nth-child(2){
+  left:5%;
+  top:28%;
+}
+
+.layout-future-door .reveal-card:nth-child(3){
+  left:5%;
+  top:56%;
+}
+
+.layout-future-door .reveal-card:nth-child(4){
+  left:42%;
+  top:56%;
+}
+
+.layout-future-door .reveal-card:nth-child(5){
+  left:25%;
+  top:28%;
+}
+
+.layout-future-door .reveal-card:nth-child(6){
+  left:25%;
+  top:56%;
+}
+
+.layout-future-door .reveal-card:nth-child(7){
+  left:78%;
+  top:56%;
+}
+
+.layout-future-door .reveal-card:nth-child(8){
+  left:58%;
+  top:28%;
+}
+
+.layout-future-door .reveal-card:nth-child(9){
+  left:78%;
+  top:28%;
+}
+
+
+/* =========================================================
+   灵感出生宫 / 黄道12宫
+========================================================= */
 
 .layout-zodiac{
   position:relative;
-  display:grid;
-  grid-template-columns:
-    repeat(4,minmax(0,1fr));
-  gap:14px 8px;
+  min-height:680px;
+  display:block;
+}
+
+.layout-zodiac .reveal-card{
+  position:absolute;
+  width:17%;
+}
+
+/* 12宫环形 */
+
+.layout-zodiac .reveal-card:nth-child(1){
+  left:41.5%;
+  top:0;
+}
+
+.layout-zodiac .reveal-card:nth-child(2){
+  left:65%;
+  top:5%;
+}
+
+.layout-zodiac .reveal-card:nth-child(3){
+  left:79%;
+  top:19%;
+}
+
+.layout-zodiac .reveal-card:nth-child(4){
+  left:79%;
+  top:42%;
+}
+
+.layout-zodiac .reveal-card:nth-child(5){
+  left:65%;
+  top:61%;
+}
+
+.layout-zodiac .reveal-card:nth-child(6){
+  left:41.5%;
+  top:68%;
+}
+
+.layout-zodiac .reveal-card:nth-child(7){
+  left:17%;
+  top:61%;
+}
+
+.layout-zodiac .reveal-card:nth-child(8){
+  left:3%;
+  top:42%;
+}
+
+.layout-zodiac .reveal-card:nth-child(9){
+  left:3%;
+  top:19%;
+}
+
+.layout-zodiac .reveal-card:nth-child(10){
+  left:17%;
+  top:5%;
+}
+
+.layout-zodiac .reveal-card:nth-child(11){
+  left:28%;
+  top:28%;
+}
+
+.layout-zodiac .reveal-card:nth-child(12){
+  left:55%;
+  top:28%;
 }
 
 .layout-zodiac .reveal-card:nth-child(13){
-  grid-column:2 / span 2;
+  left:41.5%;
+  top:44%;
+  width:17%;
 }
 
 
-/* =========================
-   SPECIAL SPREAD DECORATION
-========================= */
+/* =========================================================
+   13 张出生宫
+========================================================= */
 
-.spread-layout-title{
-  text-align:center;
-  margin:4px 0 18px;
-  color:#625c66;
-  font-size:10px;
-  letter-spacing:.12em;
+.layout-birth{
+  position:relative;
+  min-height:680px;
+  display:block;
+}
+
+.layout-birth .reveal-card{
+  position:absolute;
+  width:17%;
+}
+
+.layout-birth .reveal-card:nth-child(1){
+  left:41.5%;
+  top:0;
+}
+
+.layout-birth .reveal-card:nth-child(2){
+  left:64%;
+  top:5%;
+}
+
+.layout-birth .reveal-card:nth-child(3){
+  left:78%;
+  top:19%;
+}
+
+.layout-birth .reveal-card:nth-child(4){
+  left:78%;
+  top:42%;
+}
+
+.layout-birth .reveal-card:nth-child(5){
+  left:64%;
+  top:61%;
+}
+
+.layout-birth .reveal-card:nth-child(6){
+  left:41.5%;
+  top:68%;
+}
+
+.layout-birth .reveal-card:nth-child(7){
+  left:18%;
+  top:61%;
+}
+
+.layout-birth .reveal-card:nth-child(8){
+  left:4%;
+  top:42%;
+}
+
+.layout-birth .reveal-card:nth-child(9){
+  left:4%;
+  top:19%;
+}
+
+.layout-birth .reveal-card:nth-child(10){
+  left:18%;
+  top:5%;
+}
+
+.layout-birth .reveal-card:nth-child(11){
+  left:27%;
+  top:28%;
+}
+
+.layout-birth .reveal-card:nth-child(12){
+  left:56%;
+  top:28%;
+}
+
+.layout-birth .reveal-card:nth-child(13){
+  left:41.5%;
+  top:45%;
+}
+
+
+/* =========================================================
+   问题 / 备注
+========================================================= */
+
+.question-box{
+  margin:0 0 25px;
+  padding-top:5px;
+}
+
+.input-label{
+  display:block;
+  color:#89838d;
+  font-size:11px;
+  margin-bottom:7px;
+}
+
+.input,
+.textarea{
+  width:100%;
+  border:1px solid rgba(205,181,138,.13);
+  background:rgba(255,255,255,.025);
+  color:#eee9e2;
+  border-radius:8px;
+  outline:none;
+  padding:11px 12px;
+}
+
+.textarea{
+  min-height:80px;
+  resize:vertical;
+}
+
+.input:focus,
+.textarea:focus{
+  border-color:rgba(205,181,138,.45);
 }
 
 
@@ -1136,9 +1515,9 @@ button{
 }
 
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media(max-width:420px){
 
@@ -1146,55 +1525,78 @@ button{
     gap:5px;
   }
 
+  .tarot-flip{
+    border-radius:7px;
+  }
+
+  .card-name{
+    font-size:12px;
+  }
+
+  .position-label{
+    font-size:9px;
+  }
+
+  .layout-hexagram{
+    min-height:450px;
+  }
+
+  .layout-seven{
+    min-height:450px;
+  }
+
+  .layout-tree{
+    min-height:590px;
+  }
+
+  .layout-zodiac,
+  .layout-birth{
+    min-height:600px;
+  }
+
+  .layout-future-door{
+    min-height:550px;
+  }
+
   .layout-eight{
-    grid-template-columns:
-      repeat(3,minmax(0,1fr));
+    grid-template-columns:repeat(4,1fr);
+    gap:22px 6px;
   }
 
-  .layout-eight .reveal-card:nth-child(7),
-  .layout-eight .reveal-card:nth-child(8){
-    grid-column:auto;
+}
+
+
+/* =========================================================
+   VERY SMALL SCREEN
+========================================================= */
+
+@media(max-width:360px){
+
+  .view{
+    padding-left:14px;
+    padding-right:14px;
   }
 
-  .layout-ten{
-    grid-template-columns:
-      repeat(3,minmax(0,1fr));
+  .deck-grid{
+    gap:4px;
   }
 
-  .layout-ten .reveal-card:nth-child(10){
-    grid-column:2;
+  .layout-triangle,
+  .layout-cross,
+  .layout-diamond{
+    gap:16px 8px;
   }
 
-  .layout-pyramid{
-    grid-template-columns:
-      repeat(3,minmax(0,1fr));
+  .layout-six{
+    gap:20px 8px;
   }
 
-  .layout-pyramid .reveal-card:nth-child(10){
-    grid-column:1 / span 3;
+  .layout-hexagram{
+    min-height:420px;
   }
 
-  .layout-pyramid .reveal-card:nth-child(11){
-    grid-column:1 / span 3;
-  }
-
-  .layout-tree,
-  .layout-zodiac{
-    grid-template-columns:
-      repeat(3,minmax(0,1fr));
-  }
-
-  .layout-tree .reveal-card:nth-child(1),
-  .layout-tree .reveal-card:nth-child(10),
-  .layout-tree .reveal-card:nth-child(11),
-  .layout-tree .reveal-card:nth-child(12){
-    grid-column:1 / span 3;
-  }
-
-  .layout-zodiac .reveal-card:nth-child(13){
-    grid-column:1 / span 3;
-    max-width:90px;
-    justify-self:center;
+  .layout-seven{
+    min-height:420px;
   }
 
 }
@@ -1348,7 +1750,6 @@ button{
 
     </div>
 
-
     <div class="page-heading">
 
       <h2 id="spreadSelectName">
@@ -1359,31 +1760,25 @@ button{
 
     </div>
 
-
     <div
       id="specialNote"
       class="special-note hidden"
     ></div>
-
 
     <div
       id="positionPreview"
       class="position-preview"
     ></div>
 
-
     <div
       id="spreadSelectionCount"
       class="selection-count"
-    >
-    </div>
-
+    ></div>
 
     <div
       id="spreadDeckGrid"
       class="deck-grid"
     ></div>
-
 
     <div class="selection-actions">
 
@@ -1430,7 +1825,6 @@ button{
 
     </div>
 
-
     <div class="page-heading">
 
       <h2>
@@ -1444,7 +1838,6 @@ button{
 
     </div>
 
-
     <div
       id="freeSelectionCount"
       class="selection-count"
@@ -1452,12 +1845,10 @@ button{
       已选择 0 张
     </div>
 
-
     <div
       id="freeDeckGrid"
       class="deck-grid"
     ></div>
-
 
     <div class="selection-actions">
 
@@ -1504,14 +1895,12 @@ button{
 
     </div>
 
-
     <div class="reveal-header">
 
       <div
         id="revealSpreadName"
         class="reveal-spread-name"
-      >
-      </div>
+      ></div>
 
       <h2>
         你的牌已经准备好了
@@ -1520,11 +1909,24 @@ button{
       <div
         id="revealProgress"
         class="reveal-progress"
-      >
-      </div>
+      ></div>
 
     </div>
 
+    <div
+      id="revealLayoutTitle"
+      class="spread-layout-title hidden"
+    ></div>
+
+    <!-- 牌阵本体 -->
+
+    <div
+      id="revealCards"
+      class="reveal-layout"
+    ></div>
+
+
+    <!-- 问题和备注：现在放到牌阵下面 -->
 
     <div class="question-box">
 
@@ -1551,19 +1953,6 @@ button{
       ></textarea>
 
     </div>
-
-
-    <div
-      id="revealLayoutTitle"
-      class="spread-layout-title hidden"
-    >
-    </div>
-
-
-    <div
-      id="revealCards"
-      class="reveal-layout"
-    ></div>
 
 
     <div class="reveal-actions">
@@ -1619,7 +2008,6 @@ button{
 
     </div>
 
-
     <div
       id="historyList"
       class="history-list"
@@ -1648,8 +2036,7 @@ button{
     <div
       id="modalTitle"
       class="modal-title"
-    >
-    </div>
+    ></div>
 
     <div
       id="modalBody"
@@ -1670,8 +2057,7 @@ button{
 <div
   id="toast"
   class="toast"
->
-</div>
+></div>
 
 
 </div>
@@ -1685,331 +2071,90 @@ button{
 
 const DECK = [
 
-  {
-    code:"ar00",
-    name:"愚人"
-  },
-  {
-    code:"ar01",
-    name:"魔术师"
-  },
-  {
-    code:"ar02",
-    name:"女祭司"
-  },
-  {
-    code:"ar03",
-    name:"皇后"
-  },
-  {
-    code:"ar04",
-    name:"皇帝"
-  },
-  {
-    code:"ar05",
-    name:"教皇"
-  },
-  {
-    code:"ar06",
-    name:"恋人"
-  },
-  {
-    code:"ar07",
-    name:"战车"
-  },
-  {
-    code:"ar08",
-    name:"力量"
-  },
-  {
-    code:"ar09",
-    name:"隐者"
-  },
-  {
-    code:"ar10",
-    name:"命运之轮"
-  },
-  {
-    code:"ar11",
-    name:"正义"
-  },
-  {
-    code:"ar12",
-    name:"倒吊人"
-  },
-  {
-    code:"ar13",
-    name:"死神"
-  },
-  {
-    code:"ar14",
-    name:"节制"
-  },
-  {
-    code:"ar15",
-    name:"恶魔"
-  },
-  {
-    code:"ar16",
-    name:"高塔"
-  },
-  {
-    code:"ar17",
-    name:"星星"
-  },
-  {
-    code:"ar18",
-    name:"月亮"
-  },
-  {
-    code:"ar19",
-    name:"太阳"
-  },
-  {
-    code:"ar20",
-    name:"审判"
-  },
-  {
-    code:"ar21",
-    name:"世界"
-  },
+  {code:"ar00",name:"愚人"},
+  {code:"ar01",name:"魔术师"},
+  {code:"ar02",name:"女祭司"},
+  {code:"ar03",name:"皇后"},
+  {code:"ar04",name:"皇帝"},
+  {code:"ar05",name:"教皇"},
+  {code:"ar06",name:"恋人"},
+  {code:"ar07",name:"战车"},
+  {code:"ar08",name:"力量"},
+  {code:"ar09",name:"隐者"},
+  {code:"ar10",name:"命运之轮"},
+  {code:"ar11",name:"正义"},
+  {code:"ar12",name:"倒吊人"},
+  {code:"ar13",name:"死神"},
+  {code:"ar14",name:"节制"},
+  {code:"ar15",name:"恶魔"},
+  {code:"ar16",name:"高塔"},
+  {code:"ar17",name:"星星"},
+  {code:"ar18",name:"月亮"},
+  {code:"ar19",name:"太阳"},
+  {code:"ar20",name:"审判"},
+  {code:"ar21",name:"世界"},
 
-  {
-    code:"waac",
-    name:"权杖王牌"
-  },
-  {
-    code:"wa02",
-    name:"权杖二"
-  },
-  {
-    code:"wa03",
-    name:"权杖三"
-  },
-  {
-    code:"wa04",
-    name:"权杖四"
-  },
-  {
-    code:"wa05",
-    name:"权杖五"
-  },
-  {
-    code:"wa06",
-    name:"权杖六"
-  },
-  {
-    code:"wa07",
-    name:"权杖七"
-  },
-  {
-    code:"wa08",
-    name:"权杖八"
-  },
-  {
-    code:"wa09",
-    name:"权杖九"
-  },
-  {
-    code:"wa10",
-    name:"权杖十"
-  },
-  {
-    code:"wapa",
-    name:"权杖侍者"
-  },
-  {
-    code:"waki",
-    name:"权杖骑士"
-  },
-  {
-    code:"waqu",
-    name:"权杖皇后"
-  },
-  {
-    code:"waki",
-    name:"权杖国王"
-  },
+  {code:"waac",name:"权杖王牌"},
+  {code:"wa02",name:"权杖二"},
+  {code:"wa03",name:"权杖三"},
+  {code:"wa04",name:"权杖四"},
+  {code:"wa05",name:"权杖五"},
+  {code:"wa06",name:"权杖六"},
+  {code:"wa07",name:"权杖七"},
+  {code:"wa08",name:"权杖八"},
+  {code:"wa09",name:"权杖九"},
+  {code:"wa10",name:"权杖十"},
+  {code:"wapa",name:"权杖侍者"},
+  {code:"waki",name:"权杖骑士"},
+  {code:"waqu",name:"权杖皇后"},
+  {code:"waki",name:"权杖国王"},
 
-  {
-    code:"cuac",
-    name:"圣杯王牌"
-  },
-  {
-    code:"cu02",
-    name:"圣杯二"
-  },
-  {
-    code:"cu03",
-    name:"圣杯三"
-  },
-  {
-    code:"cu04",
-    name:"圣杯四"
-  },
-  {
-    code:"cu05",
-    name:"圣杯五"
-  },
-  {
-    code:"cu06",
-    name:"圣杯六"
-  },
-  {
-    code:"cu07",
-    name:"圣杯七"
-  },
-  {
-    code:"cu08",
-    name:"圣杯八"
-  },
-  {
-    code:"cu09",
-    name:"圣杯九"
-  },
-  {
-    code:"cu10",
-    name:"圣杯十"
-  },
-  {
-    code:"cupa",
-    name:"圣杯侍者"
-  },
-  {
-    code:"cuki",
-    name:"圣杯骑士"
-  },
-  {
-    code:"cuqu",
-    name:"圣杯皇后"
-  },
-  {
-    code:"cuki",
-    name:"圣杯国王"
-  },
+  {code:"cuac",name:"圣杯王牌"},
+  {code:"cu02",name:"圣杯二"},
+  {code:"cu03",name:"圣杯三"},
+  {code:"cu04",name:"圣杯四"},
+  {code:"cu05",name:"圣杯五"},
+  {code:"cu06",name:"圣杯六"},
+  {code:"cu07",name:"圣杯七"},
+  {code:"cu08",name:"圣杯八"},
+  {code:"cu09",name:"圣杯九"},
+  {code:"cu10",name:"圣杯十"},
+  {code:"cupa",name:"圣杯侍者"},
+  {code:"cuki",name:"圣杯骑士"},
+  {code:"cuqu",name:"圣杯皇后"},
+  {code:"cuki",name:"圣杯国王"},
 
-  {
-    code:"swac",
-    name:"宝剑王牌"
-  },
-  {
-    code:"sw02",
-    name:"宝剑二"
-  },
-  {
-    code:"sw03",
-    name:"宝剑三"
-  },
-  {
-    code:"sw04",
-    name:"宝剑四"
-  },
-  {
-    code:"sw05",
-    name:"宝剑五"
-  },
-  {
-    code:"sw06",
-    name:"宝剑六"
-  },
-  {
-    code:"sw07",
-    name:"宝剑七"
-  },
-  {
-    code:"sw08",
-    name:"宝剑八"
-  },
-  {
-    code:"sw09",
-    name:"宝剑九"
-  },
-  {
-    code:"sw10",
-    name:"宝剑十"
-  },
-  {
-    code:"swpa",
-    name:"宝剑侍者"
-  },
-  {
-    code:"swki",
-    name:"宝剑骑士"
-  },
-  {
-    code:"swqu",
-    name:"宝剑皇后"
-  },
-  {
-    code:"swki",
-    name:"宝剑国王"
-  },
+  {code:"swac",name:"宝剑王牌"},
+  {code:"sw02",name:"宝剑二"},
+  {code:"sw03",name:"宝剑三"},
+  {code:"sw04",name:"宝剑四"},
+  {code:"sw05",name:"宝剑五"},
+  {code:"sw06",name:"宝剑六"},
+  {code:"sw07",name:"宝剑七"},
+  {code:"sw08",name:"宝剑八"},
+  {code:"sw09",name:"宝剑九"},
+  {code:"sw10",name:"宝剑十"},
+  {code:"swpa",name:"宝剑侍者"},
+  {code:"swki",name:"宝剑骑士"},
+  {code:"swqu",name:"宝剑皇后"},
+  {code:"swki",name:"宝剑国王"},
 
-  {
-    code:"peac",
-    name:"星币王牌"
-  },
-  {
-    code:"pe02",
-    name:"星币二"
-  },
-  {
-    code:"pe03",
-    name:"星币三"
-  },
-  {
-    code:"pe04",
-    name:"星币四"
-  },
-  {
-    code:"pe05",
-    name:"星币五"
-  },
-  {
-    code:"pe06",
-    name:"星币六"
-  },
-  {
-    code:"pe07",
-    name:"星币七"
-  },
-  {
-    code:"pe08",
-    name:"星币八"
-  },
-  {
-    code:"pe09",
-    name:"星币九"
-  },
-  {
-    code:"pe10",
-    name:"星币十"
-  },
-  {
-    code:"pepa",
-    name:"星币侍者"
-  },
-  {
-    code:"peki",
-    name:"星币骑士"
-  },
-  {
-    code:"pequ",
-    name:"星币皇后"
-  },
-  {
-    code:"peki",
-    name:"星币国王"
-  }
+  {code:"peac",name:"星币王牌"},
+  {code:"pe02",name:"星币二"},
+  {code:"pe03",name:"星币三"},
+  {code:"pe04",name:"星币四"},
+  {code:"pe05",name:"星币五"},
+  {code:"pe06",name:"星币六"},
+  {code:"pe07",name:"星币七"},
+  {code:"pe08",name:"星币八"},
+  {code:"pe09",name:"星币九"},
+  {code:"pe10",name:"星币十"},
+  {code:"pepa",name:"星币侍者"},
+  {code:"peki",name:"星币骑士"},
+  {code:"pequ",name:"星币皇后"},
+  {code:"peki",name:"星币国王"}
 
 ];
-
-
-/*
-  兼容你现有图片命名。
-  注意：如果你的四张国王牌文件名实际上与侍者/骑士
-  使用了相同缩写，请按你仓库中的实际文件名调整。
-*/
 
 
 /* =========================================================
@@ -2132,7 +2277,7 @@ const SPREADS = [
     category:"事业",
     count:7,
     description:"主要用于事业问题，也可以观察一件事情从过去到未来的发展方向。",
-    layout:"seven",
+    layout:"hexagram",
     positions:[
       ["过去"],
       ["现在"],
@@ -2281,7 +2426,7 @@ const SPREADS = [
     category:"选择",
     count:5,
     description:"比较两个选择的近期发展与最终结果。",
-    layout:"cross",
+    layout:"choice",
     positions:[
       ["当前状态"],
       ["选择A：近期"],
@@ -2442,7 +2587,7 @@ const SPREADS = [
     category:"综合",
     count:9,
     description:"比较不改变与做出改变之后的未来，并重点观察建议牌。",
-    layout:"nine",
+    layout:"future-door",
     positions:[
       ["过去"],
       ["现在"],
@@ -2462,7 +2607,7 @@ const SPREADS = [
     category:"综合",
     count:13,
     description:"适合进行一段时期的综合占卜，按照规则从洗好的牌组中取第7～19张牌。",
-    layout:"zodiac",
+    layout:"birth",
     special:"birth",
     positions:[
       ["个人特征／行为"],
@@ -2534,15 +2679,10 @@ const SPREADS = [
 ========================================================= */
 
 let currentMode = "free";
-
 let currentSpread = null;
-
 let selectedIndices = [];
-
 let readingCards = [];
-
 let revealed = [];
-
 let toastTimer = null;
 
 
@@ -2827,9 +2967,7 @@ function chooseSpread(id){
   }
 
   currentMode = "spread";
-
   currentSpread = spread;
-
   selectedIndices = [];
 
   renderSpreadSelection();
@@ -2869,12 +3007,6 @@ function drawSpecialSpread(){
     currentSpread.special === "cat"
   ){
 
-    /*
-      原牌阵规则：
-      取洗牌后第7～12张。
-      数组从0开始，因此为6～11。
-    */
-
     return shuffled.slice(6,12);
 
   }
@@ -2882,11 +3014,6 @@ function drawSpecialSpread(){
   if(
     currentSpread.special === "birth"
   ){
-
-    /*
-      原牌阵规则：
-      第7～19张。
-    */
 
     return shuffled.slice(6,19);
 
@@ -3185,9 +3312,7 @@ function toggleSpreadCard(index){
   }
 
   renderSpreadDeck();
-
   updateSpreadCount();
-
   renderPositionPreview();
 }
 
@@ -3309,7 +3434,7 @@ function confirmSpreadSelection(){
 
 
 /* =========================================================
-   REVEAL
+   REVEAL LAYOUT
 ========================================================= */
 
 function getRevealLayout(){
@@ -3335,6 +3460,9 @@ function getRevealLayout(){
     case "six":
       return "layout-six";
 
+    case "hexagram":
+      return "layout-hexagram";
+
     case "seven":
       return "layout-seven";
 
@@ -3344,14 +3472,20 @@ function getRevealLayout(){
     case "nine":
       return "layout-nine";
 
-    case "ten":
-      return "layout-ten";
+    case "choice":
+      return "layout-choice";
 
     case "pyramid":
       return "layout-pyramid";
 
     case "tree":
       return "layout-tree";
+
+    case "future-door":
+      return "layout-future-door";
+
+    case "birth":
+      return "layout-birth";
 
     case "zodiac":
       return "layout-zodiac";
@@ -3363,6 +3497,10 @@ function getRevealLayout(){
 
 }
 
+
+/* =========================================================
+   RENDER REVEAL
+========================================================= */
 
 function renderReveal(){
 
@@ -3400,132 +3538,239 @@ function renderReveal(){
 
   }
 
-  readingCards.forEach(
-    (card,index) => {
 
-      const wrapper =
-        document.createElement("div");
+  /* 时间金字塔特殊分行 */
 
-      wrapper.className =
-        "reveal-card";
+  let targetRows = null;
 
-      const flip =
-        document.createElement("div");
+  if(
+    currentSpread &&
+    currentSpread.id === "time-pyramid"
+  ){
 
-      flip.className =
-        "tarot-flip";
+    targetRows = [
 
-      flip.dataset.index =
-        index;
+      {
+        className:"pyramid-row pyramid-row-4",
+        count:4
+      },
 
-      const inner =
-        document.createElement("div");
+      {
+        className:"pyramid-row pyramid-row-3",
+        count:3
+      },
 
-      inner.className =
-        "tarot-inner";
+      {
+        className:"pyramid-row pyramid-row-2",
+        count:2
+      },
 
+      {
+        className:"pyramid-result",
+        count:1
+      },
 
-      const back =
-        document.createElement("div");
-
-      back.className =
-        "tarot-face tarot-back";
-
-
-      const front =
-        document.createElement("div");
-
-      front.className =
-        "tarot-face tarot-front";
-
-
-      const img =
-        document.createElement("img");
-
-      img.src =
-        `./${card.code}.jpg`;
-
-      img.alt =
-        card.name;
-
-
-      front.appendChild(img);
-
-      inner.appendChild(back);
-      inner.appendChild(front);
-
-      flip.appendChild(inner);
-
-      flip.onclick =
-        () => flipCard(index);
-
-
-      const info =
-        document.createElement("div");
-
-      info.className =
-        "card-info";
-
-      info.id =
-        `cardInfo-${index}`;
-
-
-      let positionLabel =
-        "";
-
-      if(
-        currentMode === "spread" &&
-        currentSpread
-      ){
-
-        positionLabel =
-          currentSpread
-            .positions[index][0];
-
+      {
+        className:"pyramid-significator",
+        count:1
       }
 
+    ];
 
-      info.innerHTML = `
+  }
 
-        ${
-          currentMode === "spread"
-            ? `
-              <div class="position-number">
-                ${index + 1}
-              </div>
 
-              <div class="position-label">
-                ${positionLabel}
-              </div>
-            `
-            : ""
+  if(targetRows){
+
+    let index = 0;
+
+    targetRows.forEach(
+      rowInfo => {
+
+        const row =
+          document.createElement("div");
+
+        row.className =
+          rowInfo.className;
+
+        for(
+          let i = 0;
+          i < rowInfo.count;
+          i++
+        ){
+
+          if(
+            !readingCards[index]
+          ){
+            break;
+          }
+
+          row.appendChild(
+            createRevealCard(
+              readingCards[index],
+              index
+            )
+          );
+
+          index++;
+
         }
 
-        <div class="card-name">
-          ${card.name}
-        </div>
+        layout.appendChild(row);
 
-        <div
-          id="orientation-${index}"
-          class="orientation"
-        >
-        </div>
+      }
+    );
 
-      `;
+  }else{
 
+    readingCards.forEach(
+      (card,index) => {
 
-      wrapper.appendChild(flip);
+        layout.appendChild(
+          createRevealCard(
+            card,
+            index
+          )
+        );
 
-      wrapper.appendChild(info);
+      }
+    );
 
-      layout.appendChild(wrapper);
+  }
 
-    }
-  );
 
   updateRevealProgress();
+
 }
 
+
+function createRevealCard(card,index){
+
+  const wrapper =
+    document.createElement("div");
+
+  wrapper.className =
+    "reveal-card";
+
+
+  const flip =
+    document.createElement("div");
+
+  flip.className =
+    "tarot-flip";
+
+  flip.dataset.index =
+    index;
+
+
+  const inner =
+    document.createElement("div");
+
+  inner.className =
+    "tarot-inner";
+
+
+  const back =
+    document.createElement("div");
+
+  back.className =
+    "tarot-face tarot-back";
+
+
+  const front =
+    document.createElement("div");
+
+  front.className =
+    "tarot-face tarot-front";
+
+
+  const img =
+    document.createElement("img");
+
+  img.src =
+    `./${card.code}.jpg`;
+
+  img.alt =
+    card.name;
+
+
+  front.appendChild(img);
+
+  inner.appendChild(back);
+  inner.appendChild(front);
+
+  flip.appendChild(inner);
+
+
+  flip.onclick =
+    () => flipCard(index);
+
+
+  const info =
+    document.createElement("div");
+
+  info.className =
+    "card-info";
+
+  info.id =
+    `cardInfo-${index}`;
+
+
+  let positionLabel = "";
+
+  if(
+    currentMode === "spread" &&
+    currentSpread
+  ){
+
+    positionLabel =
+      currentSpread
+        .positions[index][0];
+
+  }
+
+
+  info.innerHTML = `
+
+    ${
+      currentMode === "spread"
+        ? `
+
+          <div class="position-number">
+            ${index + 1}
+          </div>
+
+          <div class="position-label">
+            ${positionLabel}
+          </div>
+
+        `
+        : ""
+    }
+
+    <div class="card-name">
+      ${card.name}
+    </div>
+
+    <div
+      id="orientation-${index}"
+      class="orientation"
+    ></div>
+
+  `;
+
+
+  wrapper.appendChild(flip);
+  wrapper.appendChild(info);
+
+  return wrapper;
+
+}
+
+
+/* =========================================================
+   FLIP
+========================================================= */
 
 function flipCard(index){
 
@@ -3601,8 +3846,13 @@ function flipCard(index){
 
 
   updateRevealProgress();
+
 }
 
+
+/* =========================================================
+   REVEAL ALL
+========================================================= */
 
 async function revealAll(){
 
@@ -3627,6 +3877,10 @@ async function revealAll(){
 }
 
 
+/* =========================================================
+   PROGRESS
+========================================================= */
+
 function updateRevealProgress(){
 
   const total =
@@ -3643,11 +3897,12 @@ function updateRevealProgress(){
 
   $("saveBtn").disabled =
     count !== total;
+
 }
 
 
 /* =========================================================
-   BACK FROM REVEAL
+   BACK
 ========================================================= */
 
 function backFromReveal(){
@@ -3992,6 +4247,7 @@ function openHistoryDetail(record){
           ${
             position
               ? `
+
                 <div class="detail-position-number">
                   ${position.number}
                 </div>
@@ -3999,18 +4255,23 @@ function openHistoryDetail(record){
                 <div class="detail-position-name">
                   ${escapeHtml(position.label)}
                 </div>
+
               `
               : ""
           }
 
           <div class="detail-card">
+
             ${escapeHtml(card.name)}
+
             ·
+
             ${
               card.orientation === "reversed"
                 ? "逆位"
                 : "正位"
             }
+
           </div>
 
         </div>
